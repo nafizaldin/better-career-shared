@@ -1,0 +1,12 @@
+export * from "./forgot-password";
+export * from "./login";
+export * from "./message";
+export * from "./providers";
+export * from "./register";
+export * from "./reset-password";
+export * from "./response";
+export * from "./signup";
+export * from "./two-factor";
+export * from "./update-password";
+export * from "./verify-otp";
+export { ResetPasswordDto as NewResetPasswordDto } from "./reset-password-new";

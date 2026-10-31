@@ -1,0 +1,27358 @@
+import * as nestjs_zod_dto from 'nestjs-zod/dto';
+import * as nestjs_zod_z from 'nestjs-zod/z';
+import { z } from 'nestjs-zod/z';
+import * as zod from 'zod';
+
+declare const forgotPasswordSchema: z.ZodObject<{
+    email: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    email: string;
+}, {
+    email: string;
+}>;
+declare const ForgotPasswordDto_base: nestjs_zod_dto.ZodDto<{
+    email: string;
+}, z.ZodObjectDef<{
+    email: z.ZodString;
+}, "strip", z.ZodTypeAny>, {
+    email: string;
+}>;
+declare class ForgotPasswordDto extends ForgotPasswordDto_base {
+}
+
+declare const loginSchema: z.ZodEffects<z.ZodObject<{
+    identifier: z.ZodString;
+    password: z.ZodPassword;
+}, "strip", z.ZodTypeAny, {
+    password: string;
+    identifier: string;
+}, {
+    password: string;
+    identifier: string;
+}>, {
+    password: string;
+    identifier: string;
+}, {
+    password: string;
+    identifier: string;
+}>;
+declare const LoginDto_base: nestjs_zod_dto.ZodDto<{
+    password: string;
+    identifier: string;
+}, z.ZodEffectsDef<z.ZodObject<{
+    identifier: z.ZodString;
+    password: z.ZodPassword;
+}, "strip", z.ZodTypeAny, {
+    password: string;
+    identifier: string;
+}, {
+    password: string;
+    identifier: string;
+}>>, {
+    password: string;
+    identifier: string;
+}>;
+declare class LoginDto extends LoginDto_base {
+}
+
+declare const messageSchema: z.ZodObject<{
+    message: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    message: string;
+}, {
+    message: string;
+}>;
+declare const MessageDto_base: nestjs_zod_dto.ZodDto<{
+    message: string;
+}, z.ZodObjectDef<{
+    message: z.ZodString;
+}, "strip", z.ZodTypeAny>, {
+    message: string;
+}>;
+declare class MessageDto extends MessageDto_base {
+}
+
+declare const AuthProvidersDto_base: nestjs_zod_dto.ZodDto<("email" | "github" | "google")[], z.ZodArrayDef<z.ZodEnum<["email", "github", "google"]>>, ("email" | "github" | "google")[]>;
+declare class AuthProvidersDto extends AuthProvidersDto_base {
+}
+
+declare const registerSchema: z.ZodObject<Pick<{
+    id: z.ZodDefault<z.ZodString>;
+    name: z.ZodString;
+    picture: z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"">, z.ZodNull]>, z.ZodString]>;
+    username: z.ZodString;
+    email: z.ZodString;
+    locale: z.ZodDefault<z.ZodString>;
+    emailVerified: z.ZodDefault<z.ZodBoolean>;
+    twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
+    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+    shortName: z.ZodOptional<z.ZodString>;
+    status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
+    verificationToken: z.ZodOptional<z.ZodString>;
+    verificationExpires: z.ZodOptional<z.ZodUnion<[z.ZodDate, z.ZodDateString]>>;
+    tempData: z.ZodOptional<z.ZodAny>;
+    thumb: z.ZodOptional<z.ZodString>;
+    role: z.ZodDefault<z.ZodEnum<["USER", "ADMIN", "ACCOUNT_DEPARTMENT", "PUBLISHER_DEPARTMENT"]>>;
+    number: z.ZodOptional<z.ZodString>;
+    createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+}, "email" | "name" | "username" | "locale"> & {
+    password: z.ZodPassword;
+}, "strip", z.ZodTypeAny, {
+    email: string;
+    name: string;
+    username: string;
+    password: string;
+    locale: string;
+}, {
+    email: string;
+    name: string;
+    username: string;
+    password: string;
+    locale?: string | undefined;
+}>;
+declare const RegisterDto_base: nestjs_zod_dto.ZodDto<{
+    email: string;
+    name: string;
+    username: string;
+    password: string;
+    locale: string;
+}, z.ZodObjectDef<Pick<{
+    id: z.ZodDefault<z.ZodString>;
+    name: z.ZodString;
+    picture: z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"">, z.ZodNull]>, z.ZodString]>;
+    username: z.ZodString;
+    email: z.ZodString;
+    locale: z.ZodDefault<z.ZodString>;
+    emailVerified: z.ZodDefault<z.ZodBoolean>;
+    twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
+    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+    shortName: z.ZodOptional<z.ZodString>;
+    status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
+    verificationToken: z.ZodOptional<z.ZodString>;
+    verificationExpires: z.ZodOptional<z.ZodUnion<[z.ZodDate, z.ZodDateString]>>;
+    tempData: z.ZodOptional<z.ZodAny>;
+    thumb: z.ZodOptional<z.ZodString>;
+    role: z.ZodDefault<z.ZodEnum<["USER", "ADMIN", "ACCOUNT_DEPARTMENT", "PUBLISHER_DEPARTMENT"]>>;
+    number: z.ZodOptional<z.ZodString>;
+    createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+}, "email" | "name" | "username" | "locale"> & {
+    password: z.ZodPassword;
+}, "strip", z.ZodTypeAny>, {
+    email: string;
+    name: string;
+    username: string;
+    password: string;
+    locale?: string | undefined;
+}>;
+declare class RegisterDto extends RegisterDto_base {
+}
+
+declare const resetPasswordSchema: z.ZodObject<{
+    token: z.ZodString;
+    password: z.ZodPassword;
+}, "strip", z.ZodTypeAny, {
+    password: string;
+    token: string;
+}, {
+    password: string;
+    token: string;
+}>;
+declare const ResetPasswordDto_base$1: nestjs_zod_dto.ZodDto<{
+    password: string;
+    token: string;
+}, z.ZodObjectDef<{
+    token: z.ZodString;
+    password: z.ZodPassword;
+}, "strip", z.ZodTypeAny>, {
+    password: string;
+    token: string;
+}>;
+declare class ResetPasswordDto$1 extends ResetPasswordDto_base$1 {
+}
+
+declare const authResponseSchema: z.ZodObject<{
+    status: z.ZodEnum<["authenticated", "2fa_required"]>;
+    user: z.ZodObject<{
+        id: z.ZodDefault<z.ZodString>;
+        name: z.ZodString;
+        picture: z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"">, z.ZodNull]>, z.ZodString]>;
+        username: z.ZodString;
+        email: z.ZodString;
+        locale: z.ZodDefault<z.ZodString>;
+        emailVerified: z.ZodDefault<z.ZodBoolean>;
+        twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
+        provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+        shortName: z.ZodOptional<z.ZodString>;
+        status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
+        verificationToken: z.ZodOptional<z.ZodString>;
+        verificationExpires: z.ZodOptional<z.ZodUnion<[z.ZodDate, z.ZodDateString]>>;
+        tempData: z.ZodOptional<z.ZodAny>;
+        thumb: z.ZodOptional<z.ZodString>;
+        role: z.ZodDefault<z.ZodEnum<["USER", "ADMIN", "ACCOUNT_DEPARTMENT", "PUBLISHER_DEPARTMENT"]>>;
+        number: z.ZodOptional<z.ZodString>;
+        createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+        updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    }, "strip", z.ZodTypeAny, {
+        email: string;
+        status: "ACTIVE" | "INACTIVE";
+        id: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        locale: string;
+        emailVerified: boolean;
+        twoFactorEnabled: boolean;
+        provider: "email" | "github" | "google";
+        role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        verificationToken?: string | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+    }, {
+        email: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        status?: "ACTIVE" | "INACTIVE" | undefined;
+        id?: string | undefined;
+        verificationToken?: string | undefined;
+        locale?: string | undefined;
+        emailVerified?: boolean | undefined;
+        twoFactorEnabled?: boolean | undefined;
+        provider?: "email" | "github" | "google" | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+        role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+    }>;
+}, "strip", z.ZodTypeAny, {
+    status: "authenticated" | "2fa_required";
+    user: {
+        email: string;
+        status: "ACTIVE" | "INACTIVE";
+        id: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        locale: string;
+        emailVerified: boolean;
+        twoFactorEnabled: boolean;
+        provider: "email" | "github" | "google";
+        role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        verificationToken?: string | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+    };
+}, {
+    status: "authenticated" | "2fa_required";
+    user: {
+        email: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        status?: "ACTIVE" | "INACTIVE" | undefined;
+        id?: string | undefined;
+        verificationToken?: string | undefined;
+        locale?: string | undefined;
+        emailVerified?: boolean | undefined;
+        twoFactorEnabled?: boolean | undefined;
+        provider?: "email" | "github" | "google" | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+        role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+    };
+}>;
+declare const AuthResponseDto_base: nestjs_zod_dto.ZodDto<{
+    status: "authenticated" | "2fa_required";
+    user: {
+        email: string;
+        status: "ACTIVE" | "INACTIVE";
+        id: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        locale: string;
+        emailVerified: boolean;
+        twoFactorEnabled: boolean;
+        provider: "email" | "github" | "google";
+        role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        verificationToken?: string | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+    };
+}, z.ZodObjectDef<{
+    status: z.ZodEnum<["authenticated", "2fa_required"]>;
+    user: z.ZodObject<{
+        id: z.ZodDefault<z.ZodString>;
+        name: z.ZodString;
+        picture: z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"">, z.ZodNull]>, z.ZodString]>;
+        username: z.ZodString;
+        email: z.ZodString;
+        locale: z.ZodDefault<z.ZodString>;
+        emailVerified: z.ZodDefault<z.ZodBoolean>;
+        twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
+        provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+        shortName: z.ZodOptional<z.ZodString>;
+        status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
+        verificationToken: z.ZodOptional<z.ZodString>;
+        verificationExpires: z.ZodOptional<z.ZodUnion<[z.ZodDate, z.ZodDateString]>>;
+        tempData: z.ZodOptional<z.ZodAny>;
+        thumb: z.ZodOptional<z.ZodString>;
+        role: z.ZodDefault<z.ZodEnum<["USER", "ADMIN", "ACCOUNT_DEPARTMENT", "PUBLISHER_DEPARTMENT"]>>;
+        number: z.ZodOptional<z.ZodString>;
+        createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+        updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    }, "strip", z.ZodTypeAny, {
+        email: string;
+        status: "ACTIVE" | "INACTIVE";
+        id: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        locale: string;
+        emailVerified: boolean;
+        twoFactorEnabled: boolean;
+        provider: "email" | "github" | "google";
+        role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        verificationToken?: string | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+    }, {
+        email: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        status?: "ACTIVE" | "INACTIVE" | undefined;
+        id?: string | undefined;
+        verificationToken?: string | undefined;
+        locale?: string | undefined;
+        emailVerified?: boolean | undefined;
+        twoFactorEnabled?: boolean | undefined;
+        provider?: "email" | "github" | "google" | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+        role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+    }>;
+}, "strip", z.ZodTypeAny>, {
+    status: "authenticated" | "2fa_required";
+    user: {
+        email: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        status?: "ACTIVE" | "INACTIVE" | undefined;
+        id?: string | undefined;
+        verificationToken?: string | undefined;
+        locale?: string | undefined;
+        emailVerified?: boolean | undefined;
+        twoFactorEnabled?: boolean | undefined;
+        provider?: "email" | "github" | "google" | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+        role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+    };
+}>;
+declare class AuthResponseDto extends AuthResponseDto_base {
+}
+
+declare const signupSchema: z.ZodObject<{
+    username: z.ZodString;
+    email: z.ZodString;
+    password: z.ZodString;
+    shortName: z.ZodOptional<z.ZodString>;
+    thumb: z.ZodOptional<z.ZodString>;
+    number: z.ZodOptional<z.ZodString>;
+    go_crazy121211: z.ZodOptional<z.ZodBoolean>;
+    role: z.ZodDefault<z.ZodOptional<z.ZodEnum<["super-admin", "admin", "user"]>>>;
+}, "strip", z.ZodTypeAny, {
+    email: string;
+    username: string;
+    password: string;
+    role: "user" | "super-admin" | "admin";
+    number?: string | undefined;
+    shortName?: string | undefined;
+    thumb?: string | undefined;
+    go_crazy121211?: boolean | undefined;
+}, {
+    email: string;
+    username: string;
+    password: string;
+    number?: string | undefined;
+    shortName?: string | undefined;
+    thumb?: string | undefined;
+    role?: "user" | "super-admin" | "admin" | undefined;
+    go_crazy121211?: boolean | undefined;
+}>;
+declare const SignupDto_base: nestjs_zod_dto.ZodDto<{
+    email: string;
+    username: string;
+    password: string;
+    role: "user" | "super-admin" | "admin";
+    number?: string | undefined;
+    shortName?: string | undefined;
+    thumb?: string | undefined;
+    go_crazy121211?: boolean | undefined;
+}, z.ZodObjectDef<{
+    username: z.ZodString;
+    email: z.ZodString;
+    password: z.ZodString;
+    shortName: z.ZodOptional<z.ZodString>;
+    thumb: z.ZodOptional<z.ZodString>;
+    number: z.ZodOptional<z.ZodString>;
+    go_crazy121211: z.ZodOptional<z.ZodBoolean>;
+    role: z.ZodDefault<z.ZodOptional<z.ZodEnum<["super-admin", "admin", "user"]>>>;
+}, "strip", z.ZodTypeAny>, {
+    email: string;
+    username: string;
+    password: string;
+    number?: string | undefined;
+    shortName?: string | undefined;
+    thumb?: string | undefined;
+    role?: "user" | "super-admin" | "admin" | undefined;
+    go_crazy121211?: boolean | undefined;
+}>;
+declare class SignupDto extends SignupDto_base {
+}
+
+declare const twoFactorSchema: z.ZodObject<{
+    code: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    code: string;
+}, {
+    code: string;
+}>;
+declare const TwoFactorDto_base: nestjs_zod_dto.ZodDto<{
+    code: string;
+}, z.ZodObjectDef<{
+    code: z.ZodString;
+}, "strip", z.ZodTypeAny>, {
+    code: string;
+}>;
+declare class TwoFactorDto extends TwoFactorDto_base {
+}
+declare const backupCodesSchema: z.ZodObject<{
+    backupCodes: z.ZodArray<z.ZodString, "many">;
+}, "strip", z.ZodTypeAny, {
+    backupCodes: string[];
+}, {
+    backupCodes: string[];
+}>;
+declare const BackupCodesDto_base: nestjs_zod_dto.ZodDto<{
+    backupCodes: string[];
+}, z.ZodObjectDef<{
+    backupCodes: z.ZodArray<z.ZodString, "many">;
+}, "strip", z.ZodTypeAny>, {
+    backupCodes: string[];
+}>;
+declare class BackupCodesDto extends BackupCodesDto_base {
+}
+declare const twoFactorBackupSchema: z.ZodObject<{
+    code: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    code: string;
+}, {
+    code: string;
+}>;
+declare const TwoFactorBackupDto_base: nestjs_zod_dto.ZodDto<{
+    code: string;
+}, z.ZodObjectDef<{
+    code: z.ZodString;
+}, "strip", z.ZodTypeAny>, {
+    code: string;
+}>;
+declare class TwoFactorBackupDto extends TwoFactorBackupDto_base {
+}
+
+declare const updatePasswordSchema: z.ZodObject<{
+    password: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    password: string;
+}, {
+    password: string;
+}>;
+declare const UpdatePasswordDto_base: nestjs_zod_dto.ZodDto<{
+    password: string;
+}, z.ZodObjectDef<{
+    password: z.ZodString;
+}, "strip", z.ZodTypeAny>, {
+    password: string;
+}>;
+declare class UpdatePasswordDto extends UpdatePasswordDto_base {
+}
+
+declare const verifyOtpSchema: z.ZodObject<{
+    email: z.ZodString;
+    otp: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    email: string;
+    otp: string;
+}, {
+    email: string;
+    otp: string;
+}>;
+declare const VerifyOtpDto_base: nestjs_zod_dto.ZodDto<{
+    email: string;
+    otp: string;
+}, z.ZodObjectDef<{
+    email: z.ZodString;
+    otp: z.ZodString;
+}, "strip", z.ZodTypeAny>, {
+    email: string;
+    otp: string;
+}>;
+declare class VerifyOtpDto extends VerifyOtpDto_base {
+}
+
+declare const ResetPasswordDto_base: nestjs_zod_dto.ZodDto<{
+    email: string;
+    newPassword: string;
+    confirmPassword: string;
+}, z.ZodEffectsDef<z.ZodObject<{
+    email: z.ZodString;
+    newPassword: z.ZodString;
+    confirmPassword: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    email: string;
+    newPassword: string;
+    confirmPassword: string;
+}, {
+    email: string;
+    newPassword: string;
+    confirmPassword: string;
+}>>, {
+    email: string;
+    newPassword: string;
+    confirmPassword: string;
+}>;
+declare class ResetPasswordDto extends ResetPasswordDto_base {
+}
+
+declare const createBlogSchema: z.ZodObject<{
+    title: z.ZodString;
+    content: z.ZodString;
+    summary: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    featuredImage: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    tags: z.ZodDefault<z.ZodOptional<z.ZodArray<z.ZodString, "many">>>;
+    categories: z.ZodDefault<z.ZodOptional<z.ZodArray<z.ZodString, "many">>>;
+    status: z.ZodDefault<z.ZodOptional<z.ZodEnum<["draft", "published"]>>>;
+    publishedAt: z.ZodNullable<z.ZodOptional<z.ZodDate>>;
+    authorName: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    authorBio: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    authorImage: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    metaTitle: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    metaDescription: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+}, "strip", z.ZodTypeAny, {
+    status: "draft" | "published";
+    title: string;
+    content: string;
+    tags: string[];
+    categories: string[];
+    summary?: string | null | undefined;
+    featuredImage?: string | null | undefined;
+    publishedAt?: Date | null | undefined;
+    authorName?: string | null | undefined;
+    authorBio?: string | null | undefined;
+    authorImage?: string | null | undefined;
+    metaTitle?: string | null | undefined;
+    metaDescription?: string | null | undefined;
+}, {
+    title: string;
+    content: string;
+    status?: "draft" | "published" | undefined;
+    summary?: string | null | undefined;
+    featuredImage?: string | null | undefined;
+    tags?: string[] | undefined;
+    categories?: string[] | undefined;
+    publishedAt?: Date | null | undefined;
+    authorName?: string | null | undefined;
+    authorBio?: string | null | undefined;
+    authorImage?: string | null | undefined;
+    metaTitle?: string | null | undefined;
+    metaDescription?: string | null | undefined;
+}>;
+declare const CreateBlogDto_base: nestjs_zod_dto.ZodDto<{
+    status: "draft" | "published";
+    title: string;
+    content: string;
+    tags: string[];
+    categories: string[];
+    summary?: string | null | undefined;
+    featuredImage?: string | null | undefined;
+    publishedAt?: Date | null | undefined;
+    authorName?: string | null | undefined;
+    authorBio?: string | null | undefined;
+    authorImage?: string | null | undefined;
+    metaTitle?: string | null | undefined;
+    metaDescription?: string | null | undefined;
+}, z.ZodObjectDef<{
+    title: z.ZodString;
+    content: z.ZodString;
+    summary: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    featuredImage: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    tags: z.ZodDefault<z.ZodOptional<z.ZodArray<z.ZodString, "many">>>;
+    categories: z.ZodDefault<z.ZodOptional<z.ZodArray<z.ZodString, "many">>>;
+    status: z.ZodDefault<z.ZodOptional<z.ZodEnum<["draft", "published"]>>>;
+    publishedAt: z.ZodNullable<z.ZodOptional<z.ZodDate>>;
+    authorName: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    authorBio: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    authorImage: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    metaTitle: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    metaDescription: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+}, "strip", z.ZodTypeAny>, {
+    title: string;
+    content: string;
+    status?: "draft" | "published" | undefined;
+    summary?: string | null | undefined;
+    featuredImage?: string | null | undefined;
+    tags?: string[] | undefined;
+    categories?: string[] | undefined;
+    publishedAt?: Date | null | undefined;
+    authorName?: string | null | undefined;
+    authorBio?: string | null | undefined;
+    authorImage?: string | null | undefined;
+    metaTitle?: string | null | undefined;
+    metaDescription?: string | null | undefined;
+}>;
+declare class CreateBlogDto extends CreateBlogDto_base {
+}
+
+declare const updateBlogSchema: z.ZodObject<{
+    title: z.ZodOptional<z.ZodString>;
+    content: z.ZodOptional<z.ZodString>;
+    summary: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    featuredImage: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    tags: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+    categories: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+    status: z.ZodOptional<z.ZodEnum<["draft", "published"]>>;
+    publishedAt: z.ZodNullable<z.ZodOptional<z.ZodDate>>;
+    authorName: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    authorBio: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    authorImage: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    metaTitle: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    metaDescription: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+}, "strip", z.ZodTypeAny, {
+    status?: "draft" | "published" | undefined;
+    summary?: string | null | undefined;
+    title?: string | undefined;
+    content?: string | undefined;
+    featuredImage?: string | null | undefined;
+    tags?: string[] | undefined;
+    categories?: string[] | undefined;
+    publishedAt?: Date | null | undefined;
+    authorName?: string | null | undefined;
+    authorBio?: string | null | undefined;
+    authorImage?: string | null | undefined;
+    metaTitle?: string | null | undefined;
+    metaDescription?: string | null | undefined;
+}, {
+    status?: "draft" | "published" | undefined;
+    summary?: string | null | undefined;
+    title?: string | undefined;
+    content?: string | undefined;
+    featuredImage?: string | null | undefined;
+    tags?: string[] | undefined;
+    categories?: string[] | undefined;
+    publishedAt?: Date | null | undefined;
+    authorName?: string | null | undefined;
+    authorBio?: string | null | undefined;
+    authorImage?: string | null | undefined;
+    metaTitle?: string | null | undefined;
+    metaDescription?: string | null | undefined;
+}>;
+declare const UpdateBlogDto_base: nestjs_zod_dto.ZodDto<{
+    status?: "draft" | "published" | undefined;
+    summary?: string | null | undefined;
+    title?: string | undefined;
+    content?: string | undefined;
+    featuredImage?: string | null | undefined;
+    tags?: string[] | undefined;
+    categories?: string[] | undefined;
+    publishedAt?: Date | null | undefined;
+    authorName?: string | null | undefined;
+    authorBio?: string | null | undefined;
+    authorImage?: string | null | undefined;
+    metaTitle?: string | null | undefined;
+    metaDescription?: string | null | undefined;
+}, z.ZodObjectDef<{
+    title: z.ZodOptional<z.ZodString>;
+    content: z.ZodOptional<z.ZodString>;
+    summary: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    featuredImage: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    tags: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+    categories: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+    status: z.ZodOptional<z.ZodEnum<["draft", "published"]>>;
+    publishedAt: z.ZodNullable<z.ZodOptional<z.ZodDate>>;
+    authorName: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    authorBio: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    authorImage: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    metaTitle: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+    metaDescription: z.ZodNullable<z.ZodOptional<z.ZodString>>;
+}, "strip", z.ZodTypeAny>, {
+    status?: "draft" | "published" | undefined;
+    summary?: string | null | undefined;
+    title?: string | undefined;
+    content?: string | undefined;
+    featuredImage?: string | null | undefined;
+    tags?: string[] | undefined;
+    categories?: string[] | undefined;
+    publishedAt?: Date | null | undefined;
+    authorName?: string | null | undefined;
+    authorBio?: string | null | undefined;
+    authorImage?: string | null | undefined;
+    metaTitle?: string | null | undefined;
+    metaDescription?: string | null | undefined;
+}>;
+declare class UpdateBlogDto extends UpdateBlogDto_base {
+}
+
+declare const contributorSchema: z.ZodObject<{
+    id: z.ZodNumber;
+    name: z.ZodString;
+    url: z.ZodString;
+    avatar: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    id: number;
+    name: string;
+    url: string;
+    avatar: string;
+}, {
+    id: number;
+    name: string;
+    url: string;
+    avatar: string;
+}>;
+declare const ContributorDto_base: nestjs_zod_dto.ZodDto<{
+    id: number;
+    name: string;
+    url: string;
+    avatar: string;
+}, z.ZodObjectDef<{
+    id: z.ZodNumber;
+    name: z.ZodString;
+    url: z.ZodString;
+    avatar: z.ZodString;
+}, "strip", z.ZodTypeAny>, {
+    id: number;
+    name: string;
+    url: string;
+    avatar: string;
+}>;
+declare class ContributorDto extends ContributorDto_base {
+}
+
+declare const contactFormSchema: z.ZodObject<{
+    firstName: z.ZodString;
+    lastName: z.ZodString;
+    phone: z.ZodString;
+    email: z.ZodString;
+    message: z.ZodString;
+    privacyAgreed: z.ZodDefault<z.ZodBoolean>;
+}, "strip", z.ZodTypeAny, {
+    email: string;
+    message: string;
+    phone: string;
+    firstName: string;
+    lastName: string;
+    privacyAgreed: boolean;
+}, {
+    email: string;
+    message: string;
+    phone: string;
+    firstName: string;
+    lastName: string;
+    privacyAgreed?: boolean | undefined;
+}>;
+declare const ContactFormDto_base: nestjs_zod_dto.ZodDto<{
+    email: string;
+    message: string;
+    phone: string;
+    firstName: string;
+    lastName: string;
+    privacyAgreed: boolean;
+}, z.ZodObjectDef<{
+    firstName: z.ZodString;
+    lastName: z.ZodString;
+    phone: z.ZodString;
+    email: z.ZodString;
+    message: z.ZodString;
+    privacyAgreed: z.ZodDefault<z.ZodBoolean>;
+}, "strip", z.ZodTypeAny>, {
+    email: string;
+    message: string;
+    phone: string;
+    firstName: string;
+    lastName: string;
+    privacyAgreed?: boolean | undefined;
+}>;
+declare class ContactFormDto extends ContactFormDto_base {
+}
+
+declare const createCoverLetterSchema: z.ZodObject<{
+    jobMatchingId: z.ZodString;
+    resumeId: z.ZodString;
+    content: z.ZodString;
+    tone: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+}, "strip", z.ZodTypeAny, {
+    content: string;
+    jobMatchingId: string;
+    resumeId: string;
+    tone?: string | null | undefined;
+}, {
+    content: string;
+    jobMatchingId: string;
+    resumeId: string;
+    tone?: string | null | undefined;
+}>;
+declare const CreateCoverLetterDto_base: nestjs_zod_dto.ZodDto<{
+    content: string;
+    jobMatchingId: string;
+    resumeId: string;
+    tone?: string | null | undefined;
+}, z.ZodObjectDef<{
+    jobMatchingId: z.ZodString;
+    resumeId: z.ZodString;
+    content: z.ZodString;
+    tone: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+}, "strip", z.ZodTypeAny>, {
+    content: string;
+    jobMatchingId: string;
+    resumeId: string;
+    tone?: string | null | undefined;
+}>;
+declare class CreateCoverLetterDto extends CreateCoverLetterDto_base {
+}
+
+declare const updateCoverLetterSchema: z.ZodObject<{
+    content: z.ZodOptional<z.ZodString>;
+    tone: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+}, "strip", z.ZodTypeAny, {
+    content?: string | undefined;
+    tone?: string | null | undefined;
+}, {
+    content?: string | undefined;
+    tone?: string | null | undefined;
+}>;
+declare const UpdateCoverLetterDto_base: nestjs_zod_dto.ZodDto<{
+    content?: string | undefined;
+    tone?: string | null | undefined;
+}, z.ZodObjectDef<{
+    content: z.ZodOptional<z.ZodString>;
+    tone: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+}, "strip", z.ZodTypeAny>, {
+    content?: string | undefined;
+    tone?: string | null | undefined;
+}>;
+declare class UpdateCoverLetterDto extends UpdateCoverLetterDto_base {
+}
+
+declare const generateCoverLetterSchema: z.ZodObject<{
+    jobMatchingId: z.ZodString;
+    resumeId: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    jobMatchingId: string;
+    resumeId: string;
+}, {
+    jobMatchingId: string;
+    resumeId: string;
+}>;
+declare const GenerateCoverLetterDto_base: nestjs_zod_dto.ZodDto<{
+    jobMatchingId: string;
+    resumeId: string;
+}, z.ZodObjectDef<{
+    jobMatchingId: z.ZodString;
+    resumeId: z.ZodString;
+}, "strip", z.ZodTypeAny>, {
+    jobMatchingId: string;
+    resumeId: string;
+}>;
+declare class GenerateCoverLetterDto extends GenerateCoverLetterDto_base {
+}
+
+declare const featureSchema: z.ZodObject<{
+    isSignupsDisabled: z.ZodDefault<z.ZodBoolean>;
+    isEmailAuthDisabled: z.ZodDefault<z.ZodBoolean>;
+}, "strip", z.ZodTypeAny, {
+    isSignupsDisabled: boolean;
+    isEmailAuthDisabled: boolean;
+}, {
+    isSignupsDisabled?: boolean | undefined;
+    isEmailAuthDisabled?: boolean | undefined;
+}>;
+declare const FeatureDto_base: nestjs_zod_dto.ZodDto<{
+    isSignupsDisabled: boolean;
+    isEmailAuthDisabled: boolean;
+}, z.ZodObjectDef<{
+    isSignupsDisabled: z.ZodDefault<z.ZodBoolean>;
+    isEmailAuthDisabled: z.ZodDefault<z.ZodBoolean>;
+}, "strip", z.ZodTypeAny>, {
+    isSignupsDisabled?: boolean | undefined;
+    isEmailAuthDisabled?: boolean | undefined;
+}>;
+declare class FeatureDto extends FeatureDto_base {
+}
+
+declare const createJobMatchingSchema: z.ZodObject<{
+    title: z.ZodString;
+    company: z.ZodString;
+    jobDescription: z.ZodString;
+    resumeId: z.ZodString;
+    jobType: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    averageSalary: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    matchScore: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+    keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+}, "strip", z.ZodTypeAny, {
+    title: string;
+    company: string;
+    resumeId: string;
+    jobDescription: string;
+    keywords?: string[] | undefined;
+    jobType?: string | null | undefined;
+    averageSalary?: string | null | undefined;
+    matchScore?: number | null | undefined;
+}, {
+    title: string;
+    company: string;
+    resumeId: string;
+    jobDescription: string;
+    keywords?: string[] | undefined;
+    jobType?: string | null | undefined;
+    averageSalary?: string | null | undefined;
+    matchScore?: number | null | undefined;
+}>;
+declare const CreateJobMatchingDto_base: nestjs_zod_dto.ZodDto<{
+    title: string;
+    company: string;
+    resumeId: string;
+    jobDescription: string;
+    keywords?: string[] | undefined;
+    jobType?: string | null | undefined;
+    averageSalary?: string | null | undefined;
+    matchScore?: number | null | undefined;
+}, z.ZodObjectDef<{
+    title: z.ZodString;
+    company: z.ZodString;
+    jobDescription: z.ZodString;
+    resumeId: z.ZodString;
+    jobType: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    averageSalary: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    matchScore: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+    keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+}, "strip", z.ZodTypeAny>, {
+    title: string;
+    company: string;
+    resumeId: string;
+    jobDescription: string;
+    keywords?: string[] | undefined;
+    jobType?: string | null | undefined;
+    averageSalary?: string | null | undefined;
+    matchScore?: number | null | undefined;
+}>;
+declare class CreateJobMatchingDto extends CreateJobMatchingDto_base {
+}
+
+declare const updateJobMatchingSchema: z.ZodObject<{
+    title: z.ZodOptional<z.ZodString>;
+    company: z.ZodOptional<z.ZodString>;
+    jobDescription: z.ZodOptional<z.ZodString>;
+    jobType: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    averageSalary: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    matchScore: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+    note: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+}, "strip", z.ZodTypeAny, {
+    title?: string | undefined;
+    keywords?: string[] | undefined;
+    company?: string | undefined;
+    jobDescription?: string | undefined;
+    jobType?: string | null | undefined;
+    averageSalary?: string | null | undefined;
+    matchScore?: number | null | undefined;
+    note?: string | null | undefined;
+}, {
+    title?: string | undefined;
+    keywords?: string[] | undefined;
+    company?: string | undefined;
+    jobDescription?: string | undefined;
+    jobType?: string | null | undefined;
+    averageSalary?: string | null | undefined;
+    matchScore?: number | null | undefined;
+    note?: string | null | undefined;
+}>;
+declare const UpdateJobMatchingDto_base: nestjs_zod_dto.ZodDto<{
+    title?: string | undefined;
+    keywords?: string[] | undefined;
+    company?: string | undefined;
+    jobDescription?: string | undefined;
+    jobType?: string | null | undefined;
+    averageSalary?: string | null | undefined;
+    matchScore?: number | null | undefined;
+    note?: string | null | undefined;
+}, z.ZodObjectDef<{
+    title: z.ZodOptional<z.ZodString>;
+    company: z.ZodOptional<z.ZodString>;
+    jobDescription: z.ZodOptional<z.ZodString>;
+    jobType: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    averageSalary: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    matchScore: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
+    note: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    keywords: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
+}, "strip", z.ZodTypeAny>, {
+    title?: string | undefined;
+    keywords?: string[] | undefined;
+    company?: string | undefined;
+    jobDescription?: string | undefined;
+    jobType?: string | null | undefined;
+    averageSalary?: string | null | undefined;
+    matchScore?: number | null | undefined;
+    note?: string | null | undefined;
+}>;
+declare class UpdateJobMatchingDto extends UpdateJobMatchingDto_base {
+}
+
+declare const updateNoteSchema: z.ZodObject<{
+    note: z.ZodOptional<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    note?: string | undefined;
+}, {
+    note?: string | undefined;
+}>;
+declare const UpdateNoteDto_base: nestjs_zod_dto.ZodDto<{
+    note?: string | undefined;
+}, z.ZodObjectDef<{
+    note: z.ZodOptional<z.ZodString>;
+}, "strip", z.ZodTypeAny>, {
+    note?: string | undefined;
+}>;
+declare class UpdateNoteDto extends UpdateNoteDto_base {
+}
+
+declare const jobMatchingSchema: z.ZodObject<{
+    id: z.ZodString;
+    title: z.ZodString;
+    company: z.ZodString;
+    jobDescription: z.ZodString;
+    jobType: z.ZodNullable<z.ZodString>;
+    averageSalary: z.ZodNullable<z.ZodString>;
+    matchScore: z.ZodNullable<z.ZodNumber>;
+    trackerIndex: z.ZodNumber;
+    note: z.ZodNullable<z.ZodString>;
+    active: z.ZodBoolean;
+    createdAt: z.ZodDate;
+    updatedAt: z.ZodDate;
+    resumeId: z.ZodString;
+    userId: z.ZodString;
+    keywords: z.ZodArray<z.ZodString, "many">;
+}, "strip", z.ZodTypeAny, {
+    id: string;
+    title: string;
+    keywords: string[];
+    company: string;
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    resumeId: string;
+    jobDescription: string;
+    jobType: string | null;
+    averageSalary: string | null;
+    matchScore: number | null;
+    note: string | null;
+    trackerIndex: number;
+    active: boolean;
+}, {
+    id: string;
+    title: string;
+    keywords: string[];
+    company: string;
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    resumeId: string;
+    jobDescription: string;
+    jobType: string | null;
+    averageSalary: string | null;
+    matchScore: number | null;
+    note: string | null;
+    trackerIndex: number;
+    active: boolean;
+}>;
+declare const JobMatchingDto_base: nestjs_zod_dto.ZodDto<{
+    id: string;
+    title: string;
+    keywords: string[];
+    company: string;
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    resumeId: string;
+    jobDescription: string;
+    jobType: string | null;
+    averageSalary: string | null;
+    matchScore: number | null;
+    note: string | null;
+    trackerIndex: number;
+    active: boolean;
+}, z.ZodObjectDef<{
+    id: z.ZodString;
+    title: z.ZodString;
+    company: z.ZodString;
+    jobDescription: z.ZodString;
+    jobType: z.ZodNullable<z.ZodString>;
+    averageSalary: z.ZodNullable<z.ZodString>;
+    matchScore: z.ZodNullable<z.ZodNumber>;
+    trackerIndex: z.ZodNumber;
+    note: z.ZodNullable<z.ZodString>;
+    active: z.ZodBoolean;
+    createdAt: z.ZodDate;
+    updatedAt: z.ZodDate;
+    resumeId: z.ZodString;
+    userId: z.ZodString;
+    keywords: z.ZodArray<z.ZodString, "many">;
+}, "strip", z.ZodTypeAny>, {
+    id: string;
+    title: string;
+    keywords: string[];
+    company: string;
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    resumeId: string;
+    jobDescription: string;
+    jobType: string | null;
+    averageSalary: string | null;
+    matchScore: number | null;
+    note: string | null;
+    trackerIndex: number;
+    active: boolean;
+}>;
+declare class JobMatchingDto extends JobMatchingDto_base {
+}
+
+declare const subscribeNewsletterSchema: z.ZodObject<{
+    email: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    email: string;
+}, {
+    email: string;
+}>;
+declare const SubscribeNewsletterDto_base: nestjs_zod_dto.ZodDto<{
+    email: string;
+}, z.ZodObjectDef<{
+    email: z.ZodString;
+}, "strip", z.ZodTypeAny>, {
+    email: string;
+}>;
+declare class SubscribeNewsletterDto extends SubscribeNewsletterDto_base {
+}
+
+declare const createResumeSchema: z.ZodObject<{
+    title: z.ZodString;
+    slug: z.ZodOptional<z.ZodEffects<z.ZodString, string, string>>;
+    templateId: z.ZodString;
+    visibility: z.ZodDefault<z.ZodEnum<["public", "private"]>>;
+    organization: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+}, "strip", z.ZodTypeAny, {
+    title: string;
+    templateId: string;
+    visibility: "public" | "private";
+    organization?: string | null | undefined;
+    slug?: string | undefined;
+}, {
+    title: string;
+    templateId: string;
+    organization?: string | null | undefined;
+    slug?: string | undefined;
+    visibility?: "public" | "private" | undefined;
+}>;
+declare const CreateResumeDto_base: nestjs_zod_dto.ZodDto<{
+    title: string;
+    templateId: string;
+    visibility: "public" | "private";
+    organization?: string | null | undefined;
+    slug?: string | undefined;
+}, z.ZodObjectDef<{
+    title: z.ZodString;
+    slug: z.ZodOptional<z.ZodEffects<z.ZodString, string, string>>;
+    templateId: z.ZodString;
+    visibility: z.ZodDefault<z.ZodEnum<["public", "private"]>>;
+    organization: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+}, "strip", z.ZodTypeAny>, {
+    title: string;
+    templateId: string;
+    organization?: string | null | undefined;
+    slug?: string | undefined;
+    visibility?: "public" | "private" | undefined;
+}>;
+declare class CreateResumeDto extends CreateResumeDto_base {
+}
+
+declare const deleteResumeSchema: z.ZodObject<{
+    id: z.ZodDefault<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    id: string;
+}, {
+    id?: string | undefined;
+}>;
+declare const DeleteResumeDto_base: nestjs_zod_dto.ZodDto<{
+    id: string;
+}, z.ZodObjectDef<{
+    id: z.ZodDefault<z.ZodString>;
+}, "strip", z.ZodTypeAny>, {
+    id?: string | undefined;
+}>;
+declare class DeleteResumeDto extends DeleteResumeDto_base {
+}
+
+declare const importResumeSchema: z.ZodObject<{
+    title: z.ZodOptional<z.ZodString>;
+    slug: z.ZodOptional<z.ZodEffects<z.ZodString, string, string>>;
+    visibility: z.ZodOptional<z.ZodDefault<z.ZodEnum<["public", "private"]>>>;
+    templateId: z.ZodOptional<z.ZodDefault<z.ZodString>>;
+    data: z.ZodObject<{
+        basics: z.ZodObject<{
+            name: z.ZodString;
+            headline: z.ZodString;
+            email: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+            phone: z.ZodString;
+            location: z.ZodString;
+            url: z.ZodObject<{
+                label: z.ZodString;
+                href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+            }, "strip", z.ZodTypeAny, {
+                label: string;
+                href: string;
+            }, {
+                label: string;
+                href: string;
+            }>;
+            customFields: z.ZodArray<z.ZodObject<{
+                id: z.ZodString;
+                icon: z.ZodString;
+                name: z.ZodString;
+                value: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }, {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }>, "many">;
+            picture: z.ZodObject<{
+                url: z.ZodString;
+                size: z.ZodDefault<z.ZodNumber>;
+                aspectRatio: z.ZodDefault<z.ZodNumber>;
+                borderRadius: z.ZodDefault<z.ZodNumber>;
+                effects: z.ZodObject<{
+                    hidden: z.ZodDefault<z.ZodBoolean>;
+                    border: z.ZodDefault<z.ZodBoolean>;
+                    grayscale: z.ZodDefault<z.ZodBoolean>;
+                }, "strip", z.ZodTypeAny, {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                }, {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            }, {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            }>;
+        }, "strip", z.ZodTypeAny, {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        }, {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        }>;
+        sections: z.ZodObject<{
+            summary: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"summary">;
+                content: z.ZodDefault<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            }, {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            }>;
+            awards: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"awards">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    title: z.ZodString;
+                    awarder: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            }, {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            certifications: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"certifications">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    issuer: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            }, {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            education: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"education">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    institution: z.ZodString;
+                    studyType: z.ZodString;
+                    area: z.ZodString;
+                    score: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            }, {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            experience: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"experience">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    company: z.ZodString;
+                    position: z.ZodString;
+                    location: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            }, {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            volunteer: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"volunteer">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    organization: z.ZodString;
+                    position: z.ZodString;
+                    location: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            }, {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            interests: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"interests">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }, {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            }, {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            languages: z.ZodObject<{
+                name: z.ZodString;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"languages">;
+                columns: z.ZodDefault<z.ZodNumber>;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    level: z.ZodDefault<z.ZodNumber>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            }, {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            profiles: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"profiles">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    network: z.ZodString;
+                    username: z.ZodString;
+                    icon: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }, {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            }, {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            projects: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"projects">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }, {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            publications: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"publications">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    publisher: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            }, {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            references: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"references">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            }, {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            skills: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"skills">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    level: z.ZodDefault<z.ZodNumber>;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            }, {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            custom: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodDefault<z.ZodString>;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    date: z.ZodString;
+                    location: z.ZodString;
+                    summary: z.ZodString;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>>>;
+        }, "strip", z.ZodTypeAny, {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        }, {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        }>;
+        metadata: z.ZodObject<{
+            template: z.ZodDefault<z.ZodString>;
+            layout: z.ZodDefault<z.ZodArray<z.ZodArray<z.ZodArray<z.ZodString, "many">, "many">, "many">>;
+            css: z.ZodObject<{
+                value: z.ZodDefault<z.ZodString>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+            }, "strip", z.ZodTypeAny, {
+                value: string;
+                visible: boolean;
+            }, {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            }>;
+            page: z.ZodObject<{
+                margin: z.ZodDefault<z.ZodNumber>;
+                format: z.ZodDefault<z.ZodEnum<["a4", "letter"]>>;
+                options: z.ZodObject<{
+                    breakLine: z.ZodDefault<z.ZodBoolean>;
+                    pageNumbers: z.ZodDefault<z.ZodBoolean>;
+                }, "strip", z.ZodTypeAny, {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                }, {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            }, {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            }>;
+            theme: z.ZodObject<{
+                background: z.ZodDefault<z.ZodString>;
+                text: z.ZodDefault<z.ZodString>;
+                primary: z.ZodDefault<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                background: string;
+                text: string;
+                primary: string;
+            }, {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            }>;
+            typography: z.ZodObject<{
+                font: z.ZodObject<{
+                    family: z.ZodDefault<z.ZodString>;
+                    subset: z.ZodDefault<z.ZodString>;
+                    variants: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                    size: z.ZodDefault<z.ZodNumber>;
+                }, "strip", z.ZodTypeAny, {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                }, {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                }>;
+                lineHeight: z.ZodDefault<z.ZodNumber>;
+                hideIcons: z.ZodDefault<z.ZodBoolean>;
+                underlineLinks: z.ZodDefault<z.ZodBoolean>;
+            }, "strip", z.ZodTypeAny, {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            }, {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            }>;
+            notes: z.ZodDefault<z.ZodString>;
+        }, "strip", z.ZodTypeAny, {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        }, {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        }>;
+    }, "strip", z.ZodTypeAny, {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        };
+        sections: {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        };
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+    }, {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        };
+        sections: {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        };
+        metadata: {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        };
+    }>;
+}, "strip", z.ZodTypeAny, {
+    data: {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        };
+        sections: {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        };
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+    };
+    title?: string | undefined;
+    slug?: string | undefined;
+    templateId?: string | undefined;
+    visibility?: "public" | "private" | undefined;
+}, {
+    data: {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        };
+        sections: {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        };
+        metadata: {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        };
+    };
+    title?: string | undefined;
+    slug?: string | undefined;
+    templateId?: string | undefined;
+    visibility?: "public" | "private" | undefined;
+}>;
+declare const ImportResumeDto_base: nestjs_zod_dto.ZodDto<{
+    data: {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        };
+        sections: {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        };
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+    };
+    title?: string | undefined;
+    slug?: string | undefined;
+    templateId?: string | undefined;
+    visibility?: "public" | "private" | undefined;
+}, z.ZodObjectDef<{
+    title: z.ZodOptional<z.ZodString>;
+    slug: z.ZodOptional<z.ZodEffects<z.ZodString, string, string>>;
+    visibility: z.ZodOptional<z.ZodDefault<z.ZodEnum<["public", "private"]>>>;
+    templateId: z.ZodOptional<z.ZodDefault<z.ZodString>>;
+    data: z.ZodObject<{
+        basics: z.ZodObject<{
+            name: z.ZodString;
+            headline: z.ZodString;
+            email: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+            phone: z.ZodString;
+            location: z.ZodString;
+            url: z.ZodObject<{
+                label: z.ZodString;
+                href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+            }, "strip", z.ZodTypeAny, {
+                label: string;
+                href: string;
+            }, {
+                label: string;
+                href: string;
+            }>;
+            customFields: z.ZodArray<z.ZodObject<{
+                id: z.ZodString;
+                icon: z.ZodString;
+                name: z.ZodString;
+                value: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }, {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }>, "many">;
+            picture: z.ZodObject<{
+                url: z.ZodString;
+                size: z.ZodDefault<z.ZodNumber>;
+                aspectRatio: z.ZodDefault<z.ZodNumber>;
+                borderRadius: z.ZodDefault<z.ZodNumber>;
+                effects: z.ZodObject<{
+                    hidden: z.ZodDefault<z.ZodBoolean>;
+                    border: z.ZodDefault<z.ZodBoolean>;
+                    grayscale: z.ZodDefault<z.ZodBoolean>;
+                }, "strip", z.ZodTypeAny, {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                }, {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            }, {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            }>;
+        }, "strip", z.ZodTypeAny, {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        }, {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        }>;
+        sections: z.ZodObject<{
+            summary: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"summary">;
+                content: z.ZodDefault<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            }, {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            }>;
+            awards: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"awards">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    title: z.ZodString;
+                    awarder: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            }, {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            certifications: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"certifications">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    issuer: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            }, {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            education: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"education">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    institution: z.ZodString;
+                    studyType: z.ZodString;
+                    area: z.ZodString;
+                    score: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            }, {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            experience: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"experience">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    company: z.ZodString;
+                    position: z.ZodString;
+                    location: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            }, {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            volunteer: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"volunteer">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    organization: z.ZodString;
+                    position: z.ZodString;
+                    location: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            }, {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            interests: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"interests">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }, {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            }, {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            languages: z.ZodObject<{
+                name: z.ZodString;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"languages">;
+                columns: z.ZodDefault<z.ZodNumber>;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    level: z.ZodDefault<z.ZodNumber>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            }, {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            profiles: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"profiles">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    network: z.ZodString;
+                    username: z.ZodString;
+                    icon: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }, {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            }, {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            projects: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"projects">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }, {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            publications: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"publications">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    publisher: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            }, {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            references: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"references">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            }, {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            skills: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"skills">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    level: z.ZodDefault<z.ZodNumber>;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            }, {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            custom: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodDefault<z.ZodString>;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    date: z.ZodString;
+                    location: z.ZodString;
+                    summary: z.ZodString;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>>>;
+        }, "strip", z.ZodTypeAny, {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        }, {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        }>;
+        metadata: z.ZodObject<{
+            template: z.ZodDefault<z.ZodString>;
+            layout: z.ZodDefault<z.ZodArray<z.ZodArray<z.ZodArray<z.ZodString, "many">, "many">, "many">>;
+            css: z.ZodObject<{
+                value: z.ZodDefault<z.ZodString>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+            }, "strip", z.ZodTypeAny, {
+                value: string;
+                visible: boolean;
+            }, {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            }>;
+            page: z.ZodObject<{
+                margin: z.ZodDefault<z.ZodNumber>;
+                format: z.ZodDefault<z.ZodEnum<["a4", "letter"]>>;
+                options: z.ZodObject<{
+                    breakLine: z.ZodDefault<z.ZodBoolean>;
+                    pageNumbers: z.ZodDefault<z.ZodBoolean>;
+                }, "strip", z.ZodTypeAny, {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                }, {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            }, {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            }>;
+            theme: z.ZodObject<{
+                background: z.ZodDefault<z.ZodString>;
+                text: z.ZodDefault<z.ZodString>;
+                primary: z.ZodDefault<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                background: string;
+                text: string;
+                primary: string;
+            }, {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            }>;
+            typography: z.ZodObject<{
+                font: z.ZodObject<{
+                    family: z.ZodDefault<z.ZodString>;
+                    subset: z.ZodDefault<z.ZodString>;
+                    variants: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                    size: z.ZodDefault<z.ZodNumber>;
+                }, "strip", z.ZodTypeAny, {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                }, {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                }>;
+                lineHeight: z.ZodDefault<z.ZodNumber>;
+                hideIcons: z.ZodDefault<z.ZodBoolean>;
+                underlineLinks: z.ZodDefault<z.ZodBoolean>;
+            }, "strip", z.ZodTypeAny, {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            }, {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            }>;
+            notes: z.ZodDefault<z.ZodString>;
+        }, "strip", z.ZodTypeAny, {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        }, {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        }>;
+    }, "strip", z.ZodTypeAny, {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        };
+        sections: {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        };
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+    }, {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        };
+        sections: {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        };
+        metadata: {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        };
+    }>;
+}, "strip", z.ZodTypeAny>, {
+    data: {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        };
+        sections: {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        };
+        metadata: {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        };
+    };
+    title?: string | undefined;
+    slug?: string | undefined;
+    templateId?: string | undefined;
+    visibility?: "public" | "private" | undefined;
+}>;
+declare class ImportResumeDto extends ImportResumeDto_base {
+}
+
+declare const resumeSchema: z.ZodObject<{
+    id: z.ZodDefault<z.ZodString>;
+    title: z.ZodString;
+    slug: z.ZodString;
+    templateId: z.ZodDefault<z.ZodString>;
+    template: z.ZodOptional<z.ZodObject<{
+        id: z.ZodDefault<z.ZodString>;
+        name: z.ZodString;
+        slug: z.ZodString;
+        description: z.ZodNullable<z.ZodString>;
+        preview: z.ZodNullable<z.ZodString>;
+        metadata: z.ZodObject<{
+            template: z.ZodString;
+            layout: z.ZodArray<z.ZodArray<z.ZodArray<z.ZodString, "many">, "many">, "many">;
+            theme: z.ZodObject<{
+                background: z.ZodString;
+                text: z.ZodString;
+                primary: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                background: string;
+                text: string;
+                primary: string;
+            }, {
+                background: string;
+                text: string;
+                primary: string;
+            }>;
+            typography: z.ZodObject<{
+                font: z.ZodObject<{
+                    family: z.ZodString;
+                    size: z.ZodNumber;
+                    variants: z.ZodArray<z.ZodString, "many">;
+                    subset: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                }, {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                }>;
+                lineHeight: z.ZodNumber;
+                hideIcons: z.ZodBoolean;
+                underlineLinks: z.ZodBoolean;
+            }, "strip", z.ZodTypeAny, {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            }, {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            }>;
+            css: z.ZodObject<{
+                value: z.ZodString;
+                visible: z.ZodBoolean;
+            }, "strip", z.ZodTypeAny, {
+                value: string;
+                visible: boolean;
+            }, {
+                value: string;
+                visible: boolean;
+            }>;
+            page: z.ZodObject<{
+                margin: z.ZodNumber;
+                format: z.ZodString;
+                options: z.ZodObject<{
+                    breakLine: z.ZodBoolean;
+                    pageNumbers: z.ZodBoolean;
+                }, "strip", z.ZodTypeAny, {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                }, {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            }, {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            }>;
+            notes: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        }, {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        }>;
+        createdBy: z.ZodDefault<z.ZodString>;
+        isActive: z.ZodBoolean;
+        isPremium: z.ZodBoolean;
+        version: z.ZodNumber;
+        createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+        updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    }, "strip", z.ZodTypeAny, {
+        id: string;
+        name: string;
+        description: string | null;
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        slug: string;
+        preview: string | null;
+        isActive: boolean;
+        isPremium: boolean;
+        createdBy: string;
+        version: number;
+    }, {
+        name: string;
+        description: string | null;
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        slug: string;
+        preview: string | null;
+        isActive: boolean;
+        isPremium: boolean;
+        version: number;
+        id?: string | undefined;
+        createdBy?: string | undefined;
+    }>>;
+    data: z.ZodDefault<z.ZodObject<{
+        basics: z.ZodObject<{
+            name: z.ZodString;
+            headline: z.ZodString;
+            email: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+            phone: z.ZodString;
+            location: z.ZodString;
+            url: z.ZodObject<{
+                label: z.ZodString;
+                href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+            }, "strip", z.ZodTypeAny, {
+                label: string;
+                href: string;
+            }, {
+                label: string;
+                href: string;
+            }>;
+            customFields: z.ZodArray<z.ZodObject<{
+                id: z.ZodString;
+                icon: z.ZodString;
+                name: z.ZodString;
+                value: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }, {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }>, "many">;
+            picture: z.ZodObject<{
+                url: z.ZodString;
+                size: z.ZodDefault<z.ZodNumber>;
+                aspectRatio: z.ZodDefault<z.ZodNumber>;
+                borderRadius: z.ZodDefault<z.ZodNumber>;
+                effects: z.ZodObject<{
+                    hidden: z.ZodDefault<z.ZodBoolean>;
+                    border: z.ZodDefault<z.ZodBoolean>;
+                    grayscale: z.ZodDefault<z.ZodBoolean>;
+                }, "strip", z.ZodTypeAny, {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                }, {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            }, {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            }>;
+        }, "strip", z.ZodTypeAny, {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        }, {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        }>;
+        sections: z.ZodObject<{
+            summary: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"summary">;
+                content: z.ZodDefault<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            }, {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            }>;
+            awards: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"awards">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    title: z.ZodString;
+                    awarder: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            }, {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            certifications: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"certifications">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    issuer: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            }, {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            education: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"education">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    institution: z.ZodString;
+                    studyType: z.ZodString;
+                    area: z.ZodString;
+                    score: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            }, {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            experience: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"experience">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    company: z.ZodString;
+                    position: z.ZodString;
+                    location: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            }, {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            volunteer: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"volunteer">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    organization: z.ZodString;
+                    position: z.ZodString;
+                    location: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            }, {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            interests: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"interests">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }, {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            }, {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            languages: z.ZodObject<{
+                name: z.ZodString;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"languages">;
+                columns: z.ZodDefault<z.ZodNumber>;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    level: z.ZodDefault<z.ZodNumber>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            }, {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            profiles: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"profiles">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    network: z.ZodString;
+                    username: z.ZodString;
+                    icon: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }, {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            }, {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            projects: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"projects">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }, {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            publications: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"publications">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    publisher: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            }, {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            references: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"references">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            }, {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            skills: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"skills">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    level: z.ZodDefault<z.ZodNumber>;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            }, {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            custom: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodDefault<z.ZodString>;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    date: z.ZodString;
+                    location: z.ZodString;
+                    summary: z.ZodString;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>>>;
+        }, "strip", z.ZodTypeAny, {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        }, {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        }>;
+        metadata: z.ZodObject<{
+            template: z.ZodDefault<z.ZodString>;
+            layout: z.ZodDefault<z.ZodArray<z.ZodArray<z.ZodArray<z.ZodString, "many">, "many">, "many">>;
+            css: z.ZodObject<{
+                value: z.ZodDefault<z.ZodString>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+            }, "strip", z.ZodTypeAny, {
+                value: string;
+                visible: boolean;
+            }, {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            }>;
+            page: z.ZodObject<{
+                margin: z.ZodDefault<z.ZodNumber>;
+                format: z.ZodDefault<z.ZodEnum<["a4", "letter"]>>;
+                options: z.ZodObject<{
+                    breakLine: z.ZodDefault<z.ZodBoolean>;
+                    pageNumbers: z.ZodDefault<z.ZodBoolean>;
+                }, "strip", z.ZodTypeAny, {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                }, {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            }, {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            }>;
+            theme: z.ZodObject<{
+                background: z.ZodDefault<z.ZodString>;
+                text: z.ZodDefault<z.ZodString>;
+                primary: z.ZodDefault<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                background: string;
+                text: string;
+                primary: string;
+            }, {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            }>;
+            typography: z.ZodObject<{
+                font: z.ZodObject<{
+                    family: z.ZodDefault<z.ZodString>;
+                    subset: z.ZodDefault<z.ZodString>;
+                    variants: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                    size: z.ZodDefault<z.ZodNumber>;
+                }, "strip", z.ZodTypeAny, {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                }, {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                }>;
+                lineHeight: z.ZodDefault<z.ZodNumber>;
+                hideIcons: z.ZodDefault<z.ZodBoolean>;
+                underlineLinks: z.ZodDefault<z.ZodBoolean>;
+            }, "strip", z.ZodTypeAny, {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            }, {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            }>;
+            notes: z.ZodDefault<z.ZodString>;
+        }, "strip", z.ZodTypeAny, {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        }, {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        }>;
+    }, "strip", z.ZodTypeAny, {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        };
+        sections: {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        };
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+    }, {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        };
+        sections: {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        };
+        metadata: {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        };
+    }>>;
+    visibility: z.ZodDefault<z.ZodEnum<["private", "public"]>>;
+    locked: z.ZodDefault<z.ZodBoolean>;
+    organization: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    userId: z.ZodDefault<z.ZodString>;
+    user: z.ZodOptional<z.ZodObject<{
+        id: z.ZodDefault<z.ZodString>;
+        name: z.ZodString;
+        picture: z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"">, z.ZodNull]>, z.ZodString]>;
+        username: z.ZodString;
+        email: z.ZodString;
+        locale: z.ZodDefault<z.ZodString>;
+        emailVerified: z.ZodDefault<z.ZodBoolean>;
+        twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
+        provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+        shortName: z.ZodOptional<z.ZodString>;
+        status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
+        verificationToken: z.ZodOptional<z.ZodString>;
+        verificationExpires: z.ZodOptional<z.ZodUnion<[z.ZodDate, z.ZodDateString]>>;
+        tempData: z.ZodOptional<z.ZodAny>;
+        thumb: z.ZodOptional<z.ZodString>;
+        role: z.ZodDefault<z.ZodEnum<["USER", "ADMIN", "ACCOUNT_DEPARTMENT", "PUBLISHER_DEPARTMENT"]>>;
+        number: z.ZodOptional<z.ZodString>;
+        createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+        updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    }, "strip", z.ZodTypeAny, {
+        email: string;
+        status: "ACTIVE" | "INACTIVE";
+        id: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        locale: string;
+        emailVerified: boolean;
+        twoFactorEnabled: boolean;
+        provider: "email" | "github" | "google";
+        role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        verificationToken?: string | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+    }, {
+        email: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        status?: "ACTIVE" | "INACTIVE" | undefined;
+        id?: string | undefined;
+        verificationToken?: string | undefined;
+        locale?: string | undefined;
+        emailVerified?: boolean | undefined;
+        twoFactorEnabled?: boolean | undefined;
+        provider?: "email" | "github" | "google" | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+        role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+    }>>;
+    createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+}, "strip", z.ZodTypeAny, {
+    id: string;
+    title: string;
+    userId: string;
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    slug: string;
+    templateId: string;
+    visibility: "public" | "private";
+    data: {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        };
+        sections: {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        };
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+    };
+    locked: boolean;
+    template?: {
+        id: string;
+        name: string;
+        description: string | null;
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        slug: string;
+        preview: string | null;
+        isActive: boolean;
+        isPremium: boolean;
+        createdBy: string;
+        version: number;
+    } | undefined;
+    organization?: string | null | undefined;
+    user?: {
+        email: string;
+        status: "ACTIVE" | "INACTIVE";
+        id: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        locale: string;
+        emailVerified: boolean;
+        twoFactorEnabled: boolean;
+        provider: "email" | "github" | "google";
+        role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        verificationToken?: string | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+    } | undefined;
+}, {
+    title: string;
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    slug: string;
+    id?: string | undefined;
+    template?: {
+        name: string;
+        description: string | null;
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        slug: string;
+        preview: string | null;
+        isActive: boolean;
+        isPremium: boolean;
+        version: number;
+        id?: string | undefined;
+        createdBy?: string | undefined;
+    } | undefined;
+    organization?: string | null | undefined;
+    userId?: string | undefined;
+    user?: {
+        email: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        status?: "ACTIVE" | "INACTIVE" | undefined;
+        id?: string | undefined;
+        verificationToken?: string | undefined;
+        locale?: string | undefined;
+        emailVerified?: boolean | undefined;
+        twoFactorEnabled?: boolean | undefined;
+        provider?: "email" | "github" | "google" | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+        role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+    } | undefined;
+    templateId?: string | undefined;
+    visibility?: "public" | "private" | undefined;
+    data?: {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        };
+        sections: {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        };
+        metadata: {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        };
+    } | undefined;
+    locked?: boolean | undefined;
+}>;
+declare const ResumeDto_base: nestjs_zod_dto.ZodDto<{
+    id: string;
+    title: string;
+    userId: string;
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    slug: string;
+    templateId: string;
+    visibility: "public" | "private";
+    data: {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        };
+        sections: {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        };
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+    };
+    locked: boolean;
+    template?: {
+        id: string;
+        name: string;
+        description: string | null;
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        slug: string;
+        preview: string | null;
+        isActive: boolean;
+        isPremium: boolean;
+        createdBy: string;
+        version: number;
+    } | undefined;
+    organization?: string | null | undefined;
+    user?: {
+        email: string;
+        status: "ACTIVE" | "INACTIVE";
+        id: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        locale: string;
+        emailVerified: boolean;
+        twoFactorEnabled: boolean;
+        provider: "email" | "github" | "google";
+        role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        verificationToken?: string | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+    } | undefined;
+}, z.ZodObjectDef<{
+    id: z.ZodDefault<z.ZodString>;
+    title: z.ZodString;
+    slug: z.ZodString;
+    templateId: z.ZodDefault<z.ZodString>;
+    template: z.ZodOptional<z.ZodObject<{
+        id: z.ZodDefault<z.ZodString>;
+        name: z.ZodString;
+        slug: z.ZodString;
+        description: z.ZodNullable<z.ZodString>;
+        preview: z.ZodNullable<z.ZodString>;
+        metadata: z.ZodObject<{
+            template: z.ZodString;
+            layout: z.ZodArray<z.ZodArray<z.ZodArray<z.ZodString, "many">, "many">, "many">;
+            theme: z.ZodObject<{
+                background: z.ZodString;
+                text: z.ZodString;
+                primary: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                background: string;
+                text: string;
+                primary: string;
+            }, {
+                background: string;
+                text: string;
+                primary: string;
+            }>;
+            typography: z.ZodObject<{
+                font: z.ZodObject<{
+                    family: z.ZodString;
+                    size: z.ZodNumber;
+                    variants: z.ZodArray<z.ZodString, "many">;
+                    subset: z.ZodString;
+                }, "strip", z.ZodTypeAny, {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                }, {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                }>;
+                lineHeight: z.ZodNumber;
+                hideIcons: z.ZodBoolean;
+                underlineLinks: z.ZodBoolean;
+            }, "strip", z.ZodTypeAny, {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            }, {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            }>;
+            css: z.ZodObject<{
+                value: z.ZodString;
+                visible: z.ZodBoolean;
+            }, "strip", z.ZodTypeAny, {
+                value: string;
+                visible: boolean;
+            }, {
+                value: string;
+                visible: boolean;
+            }>;
+            page: z.ZodObject<{
+                margin: z.ZodNumber;
+                format: z.ZodString;
+                options: z.ZodObject<{
+                    breakLine: z.ZodBoolean;
+                    pageNumbers: z.ZodBoolean;
+                }, "strip", z.ZodTypeAny, {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                }, {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            }, {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            }>;
+            notes: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        }, {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        }>;
+        createdBy: z.ZodDefault<z.ZodString>;
+        isActive: z.ZodBoolean;
+        isPremium: z.ZodBoolean;
+        version: z.ZodNumber;
+        createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+        updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    }, "strip", z.ZodTypeAny, {
+        id: string;
+        name: string;
+        description: string | null;
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        slug: string;
+        preview: string | null;
+        isActive: boolean;
+        isPremium: boolean;
+        createdBy: string;
+        version: number;
+    }, {
+        name: string;
+        description: string | null;
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        slug: string;
+        preview: string | null;
+        isActive: boolean;
+        isPremium: boolean;
+        version: number;
+        id?: string | undefined;
+        createdBy?: string | undefined;
+    }>>;
+    data: z.ZodDefault<z.ZodObject<{
+        basics: z.ZodObject<{
+            name: z.ZodString;
+            headline: z.ZodString;
+            email: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+            phone: z.ZodString;
+            location: z.ZodString;
+            url: z.ZodObject<{
+                label: z.ZodString;
+                href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+            }, "strip", z.ZodTypeAny, {
+                label: string;
+                href: string;
+            }, {
+                label: string;
+                href: string;
+            }>;
+            customFields: z.ZodArray<z.ZodObject<{
+                id: z.ZodString;
+                icon: z.ZodString;
+                name: z.ZodString;
+                value: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }, {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }>, "many">;
+            picture: z.ZodObject<{
+                url: z.ZodString;
+                size: z.ZodDefault<z.ZodNumber>;
+                aspectRatio: z.ZodDefault<z.ZodNumber>;
+                borderRadius: z.ZodDefault<z.ZodNumber>;
+                effects: z.ZodObject<{
+                    hidden: z.ZodDefault<z.ZodBoolean>;
+                    border: z.ZodDefault<z.ZodBoolean>;
+                    grayscale: z.ZodDefault<z.ZodBoolean>;
+                }, "strip", z.ZodTypeAny, {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                }, {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            }, {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            }>;
+        }, "strip", z.ZodTypeAny, {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        }, {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        }>;
+        sections: z.ZodObject<{
+            summary: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"summary">;
+                content: z.ZodDefault<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            }, {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            }>;
+            awards: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"awards">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    title: z.ZodString;
+                    awarder: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            }, {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            certifications: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"certifications">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    issuer: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            }, {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            education: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"education">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    institution: z.ZodString;
+                    studyType: z.ZodString;
+                    area: z.ZodString;
+                    score: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            }, {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            experience: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"experience">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    company: z.ZodString;
+                    position: z.ZodString;
+                    location: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            }, {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            volunteer: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"volunteer">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    organization: z.ZodString;
+                    position: z.ZodString;
+                    location: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            }, {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            interests: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"interests">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }, {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            }, {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            languages: z.ZodObject<{
+                name: z.ZodString;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"languages">;
+                columns: z.ZodDefault<z.ZodNumber>;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    level: z.ZodDefault<z.ZodNumber>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            }, {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            profiles: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"profiles">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    network: z.ZodString;
+                    username: z.ZodString;
+                    icon: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }, {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            }, {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            projects: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"projects">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }, {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            publications: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"publications">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    publisher: z.ZodString;
+                    date: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            }, {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            references: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"references">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    summary: z.ZodString;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            }, {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            skills: z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodLiteral<"skills">;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    level: z.ZodDefault<z.ZodNumber>;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                }, "strip", z.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            }, {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            custom: z.ZodDefault<z.ZodRecord<z.ZodString, z.ZodObject<{
+                name: z.ZodString;
+                columns: z.ZodDefault<z.ZodNumber>;
+                separateLinks: z.ZodDefault<z.ZodBoolean>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+                layoutSystem: z.ZodDefault<z.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: z.ZodDefault<z.ZodObject<{
+                    visibleType: z.ZodDefault<z.ZodEnum<["default", "list"]>>;
+                }, "strip", z.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: z.ZodDefault<z.ZodString>;
+                items: z.ZodArray<z.ZodObject<{
+                    id: z.ZodDefault<z.ZodString>;
+                    visible: z.ZodBoolean;
+                } & {
+                    name: z.ZodString;
+                    description: z.ZodString;
+                    date: z.ZodString;
+                    location: z.ZodString;
+                    summary: z.ZodString;
+                    keywords: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                    url: z.ZodObject<{
+                        label: z.ZodString;
+                        href: z.ZodUnion<[z.ZodLiteral<"">, z.ZodString]>;
+                    }, "strip", z.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", z.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", z.ZodTypeAny, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>>>;
+        }, "strip", z.ZodTypeAny, {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        }, {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        }>;
+        metadata: z.ZodObject<{
+            template: z.ZodDefault<z.ZodString>;
+            layout: z.ZodDefault<z.ZodArray<z.ZodArray<z.ZodArray<z.ZodString, "many">, "many">, "many">>;
+            css: z.ZodObject<{
+                value: z.ZodDefault<z.ZodString>;
+                visible: z.ZodDefault<z.ZodBoolean>;
+            }, "strip", z.ZodTypeAny, {
+                value: string;
+                visible: boolean;
+            }, {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            }>;
+            page: z.ZodObject<{
+                margin: z.ZodDefault<z.ZodNumber>;
+                format: z.ZodDefault<z.ZodEnum<["a4", "letter"]>>;
+                options: z.ZodObject<{
+                    breakLine: z.ZodDefault<z.ZodBoolean>;
+                    pageNumbers: z.ZodDefault<z.ZodBoolean>;
+                }, "strip", z.ZodTypeAny, {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                }, {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                }>;
+            }, "strip", z.ZodTypeAny, {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            }, {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            }>;
+            theme: z.ZodObject<{
+                background: z.ZodDefault<z.ZodString>;
+                text: z.ZodDefault<z.ZodString>;
+                primary: z.ZodDefault<z.ZodString>;
+            }, "strip", z.ZodTypeAny, {
+                background: string;
+                text: string;
+                primary: string;
+            }, {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            }>;
+            typography: z.ZodObject<{
+                font: z.ZodObject<{
+                    family: z.ZodDefault<z.ZodString>;
+                    subset: z.ZodDefault<z.ZodString>;
+                    variants: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+                    size: z.ZodDefault<z.ZodNumber>;
+                }, "strip", z.ZodTypeAny, {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                }, {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                }>;
+                lineHeight: z.ZodDefault<z.ZodNumber>;
+                hideIcons: z.ZodDefault<z.ZodBoolean>;
+                underlineLinks: z.ZodDefault<z.ZodBoolean>;
+            }, "strip", z.ZodTypeAny, {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            }, {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            }>;
+            notes: z.ZodDefault<z.ZodString>;
+        }, "strip", z.ZodTypeAny, {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        }, {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        }>;
+    }, "strip", z.ZodTypeAny, {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        };
+        sections: {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        };
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+    }, {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        };
+        sections: {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        };
+        metadata: {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        };
+    }>>;
+    visibility: z.ZodDefault<z.ZodEnum<["private", "public"]>>;
+    locked: z.ZodDefault<z.ZodBoolean>;
+    organization: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    userId: z.ZodDefault<z.ZodString>;
+    user: z.ZodOptional<z.ZodObject<{
+        id: z.ZodDefault<z.ZodString>;
+        name: z.ZodString;
+        picture: z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"">, z.ZodNull]>, z.ZodString]>;
+        username: z.ZodString;
+        email: z.ZodString;
+        locale: z.ZodDefault<z.ZodString>;
+        emailVerified: z.ZodDefault<z.ZodBoolean>;
+        twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
+        provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+        shortName: z.ZodOptional<z.ZodString>;
+        status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
+        verificationToken: z.ZodOptional<z.ZodString>;
+        verificationExpires: z.ZodOptional<z.ZodUnion<[z.ZodDate, z.ZodDateString]>>;
+        tempData: z.ZodOptional<z.ZodAny>;
+        thumb: z.ZodOptional<z.ZodString>;
+        role: z.ZodDefault<z.ZodEnum<["USER", "ADMIN", "ACCOUNT_DEPARTMENT", "PUBLISHER_DEPARTMENT"]>>;
+        number: z.ZodOptional<z.ZodString>;
+        createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+        updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    }, "strip", z.ZodTypeAny, {
+        email: string;
+        status: "ACTIVE" | "INACTIVE";
+        id: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        locale: string;
+        emailVerified: boolean;
+        twoFactorEnabled: boolean;
+        provider: "email" | "github" | "google";
+        role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        verificationToken?: string | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+    }, {
+        email: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        status?: "ACTIVE" | "INACTIVE" | undefined;
+        id?: string | undefined;
+        verificationToken?: string | undefined;
+        locale?: string | undefined;
+        emailVerified?: boolean | undefined;
+        twoFactorEnabled?: boolean | undefined;
+        provider?: "email" | "github" | "google" | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+        role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+    }>>;
+    createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+}, "strip", z.ZodTypeAny>, {
+    title: string;
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    slug: string;
+    id?: string | undefined;
+    template?: {
+        name: string;
+        description: string | null;
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        slug: string;
+        preview: string | null;
+        isActive: boolean;
+        isPremium: boolean;
+        version: number;
+        id?: string | undefined;
+        createdBy?: string | undefined;
+    } | undefined;
+    organization?: string | null | undefined;
+    userId?: string | undefined;
+    user?: {
+        email: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        status?: "ACTIVE" | "INACTIVE" | undefined;
+        id?: string | undefined;
+        verificationToken?: string | undefined;
+        locale?: string | undefined;
+        emailVerified?: boolean | undefined;
+        twoFactorEnabled?: boolean | undefined;
+        provider?: "email" | "github" | "google" | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+        role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+    } | undefined;
+    templateId?: string | undefined;
+    visibility?: "public" | "private" | undefined;
+    data?: {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        };
+        sections: {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        };
+        metadata: {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        };
+    } | undefined;
+    locked?: boolean | undefined;
+}>;
+declare class ResumeDto extends ResumeDto_base {
+}
+
+declare const updateResumeSchema: zod.ZodObject<Omit<{
+    id: zod.ZodOptional<zod.ZodDefault<zod.ZodString>>;
+    title: zod.ZodOptional<zod.ZodString>;
+    slug: zod.ZodOptional<zod.ZodString>;
+    templateId: zod.ZodOptional<zod.ZodDefault<zod.ZodString>>;
+    template: zod.ZodOptional<zod.ZodOptional<zod.ZodObject<{
+        id: zod.ZodDefault<zod.ZodString>;
+        name: zod.ZodString;
+        slug: zod.ZodString;
+        description: zod.ZodNullable<zod.ZodString>;
+        preview: zod.ZodNullable<zod.ZodString>;
+        metadata: zod.ZodObject<{
+            template: zod.ZodString;
+            layout: zod.ZodArray<zod.ZodArray<zod.ZodArray<zod.ZodString, "many">, "many">, "many">;
+            theme: zod.ZodObject<{
+                background: zod.ZodString;
+                text: zod.ZodString;
+                primary: zod.ZodString;
+            }, "strip", zod.ZodTypeAny, {
+                background: string;
+                text: string;
+                primary: string;
+            }, {
+                background: string;
+                text: string;
+                primary: string;
+            }>;
+            typography: zod.ZodObject<{
+                font: zod.ZodObject<{
+                    family: zod.ZodString;
+                    size: zod.ZodNumber;
+                    variants: zod.ZodArray<zod.ZodString, "many">;
+                    subset: zod.ZodString;
+                }, "strip", zod.ZodTypeAny, {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                }, {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                }>;
+                lineHeight: zod.ZodNumber;
+                hideIcons: zod.ZodBoolean;
+                underlineLinks: zod.ZodBoolean;
+            }, "strip", zod.ZodTypeAny, {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            }, {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            }>;
+            css: zod.ZodObject<{
+                value: zod.ZodString;
+                visible: zod.ZodBoolean;
+            }, "strip", zod.ZodTypeAny, {
+                value: string;
+                visible: boolean;
+            }, {
+                value: string;
+                visible: boolean;
+            }>;
+            page: zod.ZodObject<{
+                margin: zod.ZodNumber;
+                format: zod.ZodString;
+                options: zod.ZodObject<{
+                    breakLine: zod.ZodBoolean;
+                    pageNumbers: zod.ZodBoolean;
+                }, "strip", zod.ZodTypeAny, {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                }, {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                }>;
+            }, "strip", zod.ZodTypeAny, {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            }, {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            }>;
+            notes: zod.ZodString;
+        }, "strip", zod.ZodTypeAny, {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        }, {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        }>;
+        createdBy: zod.ZodDefault<zod.ZodString>;
+        isActive: zod.ZodBoolean;
+        isPremium: zod.ZodBoolean;
+        version: zod.ZodNumber;
+        createdAt: zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>;
+        updatedAt: zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>;
+    }, "strip", zod.ZodTypeAny, {
+        id: string;
+        name: string;
+        description: string | null;
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        slug: string;
+        preview: string | null;
+        isActive: boolean;
+        isPremium: boolean;
+        createdBy: string;
+        version: number;
+    }, {
+        name: string;
+        description: string | null;
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        slug: string;
+        preview: string | null;
+        isActive: boolean;
+        isPremium: boolean;
+        version: number;
+        id?: string | undefined;
+        createdBy?: string | undefined;
+    }>>>;
+    data: zod.ZodOptional<zod.ZodDefault<zod.ZodObject<{
+        basics: zod.ZodObject<{
+            name: zod.ZodString;
+            headline: zod.ZodString;
+            email: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+            phone: zod.ZodString;
+            location: zod.ZodString;
+            url: zod.ZodObject<{
+                label: zod.ZodString;
+                href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+            }, "strip", zod.ZodTypeAny, {
+                label: string;
+                href: string;
+            }, {
+                label: string;
+                href: string;
+            }>;
+            customFields: zod.ZodArray<zod.ZodObject<{
+                id: zod.ZodString;
+                icon: zod.ZodString;
+                name: zod.ZodString;
+                value: zod.ZodString;
+            }, "strip", zod.ZodTypeAny, {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }, {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }>, "many">;
+            picture: zod.ZodObject<{
+                url: zod.ZodString;
+                size: zod.ZodDefault<zod.ZodNumber>;
+                aspectRatio: zod.ZodDefault<zod.ZodNumber>;
+                borderRadius: zod.ZodDefault<zod.ZodNumber>;
+                effects: zod.ZodObject<{
+                    hidden: zod.ZodDefault<zod.ZodBoolean>;
+                    border: zod.ZodDefault<zod.ZodBoolean>;
+                    grayscale: zod.ZodDefault<zod.ZodBoolean>;
+                }, "strip", zod.ZodTypeAny, {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                }, {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                }>;
+            }, "strip", zod.ZodTypeAny, {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            }, {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            }>;
+        }, "strip", zod.ZodTypeAny, {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        }, {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        }>;
+        sections: zod.ZodObject<{
+            summary: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"summary">;
+                content: zod.ZodDefault<zod.ZodString>;
+            }, "strip", zod.ZodTypeAny, {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            }, {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            }>;
+            awards: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"awards">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    title: zod.ZodString;
+                    awarder: zod.ZodString;
+                    date: zod.ZodString;
+                    summary: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            }, {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            certifications: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"certifications">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    issuer: zod.ZodString;
+                    date: zod.ZodString;
+                    summary: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            }, {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            education: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"education">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    institution: zod.ZodString;
+                    studyType: zod.ZodString;
+                    area: zod.ZodString;
+                    score: zod.ZodString;
+                    date: zod.ZodString;
+                    summary: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            }, {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            experience: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"experience">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    company: zod.ZodString;
+                    position: zod.ZodString;
+                    location: zod.ZodString;
+                    date: zod.ZodString;
+                    summary: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            }, {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            volunteer: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"volunteer">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    organization: zod.ZodString;
+                    position: zod.ZodString;
+                    location: zod.ZodString;
+                    date: zod.ZodString;
+                    summary: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            }, {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            interests: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"interests">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    keywords: zod.ZodDefault<zod.ZodArray<zod.ZodString, "many">>;
+                }, "strip", zod.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }, {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            }, {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            languages: zod.ZodObject<{
+                name: zod.ZodString;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"languages">;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    description: zod.ZodString;
+                    level: zod.ZodDefault<zod.ZodNumber>;
+                }, "strip", zod.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            }, {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            profiles: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"profiles">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    network: zod.ZodString;
+                    username: zod.ZodString;
+                    icon: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }, {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            }, {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            projects: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"projects">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    description: zod.ZodString;
+                    date: zod.ZodString;
+                    summary: zod.ZodString;
+                    keywords: zod.ZodDefault<zod.ZodArray<zod.ZodString, "many">>;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }, {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            publications: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"publications">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    publisher: zod.ZodString;
+                    date: zod.ZodString;
+                    summary: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            }, {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            references: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"references">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    description: zod.ZodString;
+                    summary: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            }, {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            skills: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"skills">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    description: zod.ZodString;
+                    level: zod.ZodDefault<zod.ZodNumber>;
+                    keywords: zod.ZodDefault<zod.ZodArray<zod.ZodString, "many">>;
+                }, "strip", zod.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            }, {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            custom: zod.ZodDefault<zod.ZodRecord<zod.ZodString, zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodDefault<zod.ZodString>;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    description: zod.ZodString;
+                    date: zod.ZodString;
+                    location: zod.ZodString;
+                    summary: zod.ZodString;
+                    keywords: zod.ZodDefault<zod.ZodArray<zod.ZodString, "many">>;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>>>;
+        }, "strip", zod.ZodTypeAny, {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        }, {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        }>;
+        metadata: zod.ZodObject<{
+            template: zod.ZodDefault<zod.ZodString>;
+            layout: zod.ZodDefault<zod.ZodArray<zod.ZodArray<zod.ZodArray<zod.ZodString, "many">, "many">, "many">>;
+            css: zod.ZodObject<{
+                value: zod.ZodDefault<zod.ZodString>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+            }, "strip", zod.ZodTypeAny, {
+                value: string;
+                visible: boolean;
+            }, {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            }>;
+            page: zod.ZodObject<{
+                margin: zod.ZodDefault<zod.ZodNumber>;
+                format: zod.ZodDefault<zod.ZodEnum<["a4", "letter"]>>;
+                options: zod.ZodObject<{
+                    breakLine: zod.ZodDefault<zod.ZodBoolean>;
+                    pageNumbers: zod.ZodDefault<zod.ZodBoolean>;
+                }, "strip", zod.ZodTypeAny, {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                }, {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                }>;
+            }, "strip", zod.ZodTypeAny, {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            }, {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            }>;
+            theme: zod.ZodObject<{
+                background: zod.ZodDefault<zod.ZodString>;
+                text: zod.ZodDefault<zod.ZodString>;
+                primary: zod.ZodDefault<zod.ZodString>;
+            }, "strip", zod.ZodTypeAny, {
+                background: string;
+                text: string;
+                primary: string;
+            }, {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            }>;
+            typography: zod.ZodObject<{
+                font: zod.ZodObject<{
+                    family: zod.ZodDefault<zod.ZodString>;
+                    subset: zod.ZodDefault<zod.ZodString>;
+                    variants: zod.ZodDefault<zod.ZodArray<zod.ZodString, "many">>;
+                    size: zod.ZodDefault<zod.ZodNumber>;
+                }, "strip", zod.ZodTypeAny, {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                }, {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                }>;
+                lineHeight: zod.ZodDefault<zod.ZodNumber>;
+                hideIcons: zod.ZodDefault<zod.ZodBoolean>;
+                underlineLinks: zod.ZodDefault<zod.ZodBoolean>;
+            }, "strip", zod.ZodTypeAny, {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            }, {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            }>;
+            notes: zod.ZodDefault<zod.ZodString>;
+        }, "strip", zod.ZodTypeAny, {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        }, {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        }>;
+    }, "strip", zod.ZodTypeAny, {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        };
+        sections: {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        };
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+    }, {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        };
+        sections: {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        };
+        metadata: {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        };
+    }>>>;
+    visibility: zod.ZodOptional<zod.ZodDefault<zod.ZodEnum<["private", "public"]>>>;
+    locked: zod.ZodOptional<zod.ZodDefault<zod.ZodBoolean>>;
+    organization: zod.ZodOptional<zod.ZodOptional<zod.ZodNullable<zod.ZodString>>>;
+    userId: zod.ZodOptional<zod.ZodDefault<zod.ZodString>>;
+    user: zod.ZodOptional<zod.ZodOptional<zod.ZodObject<{
+        id: zod.ZodDefault<zod.ZodString>;
+        name: zod.ZodString;
+        picture: zod.ZodUnion<[zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodNull]>, zod.ZodString]>;
+        username: zod.ZodString;
+        email: zod.ZodString;
+        locale: zod.ZodDefault<zod.ZodString>;
+        emailVerified: zod.ZodDefault<zod.ZodBoolean>;
+        twoFactorEnabled: zod.ZodDefault<zod.ZodBoolean>;
+        provider: zod.ZodDefault<zod.ZodEnum<["email", "github", "google"]>>;
+        shortName: zod.ZodOptional<zod.ZodString>;
+        status: zod.ZodDefault<zod.ZodEnum<["ACTIVE", "INACTIVE"]>>;
+        verificationToken: zod.ZodOptional<zod.ZodString>;
+        verificationExpires: zod.ZodOptional<zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>>;
+        tempData: zod.ZodOptional<zod.ZodAny>;
+        thumb: zod.ZodOptional<zod.ZodString>;
+        role: zod.ZodDefault<zod.ZodEnum<["USER", "ADMIN", "ACCOUNT_DEPARTMENT", "PUBLISHER_DEPARTMENT"]>>;
+        number: zod.ZodOptional<zod.ZodString>;
+        createdAt: zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>;
+        updatedAt: zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>;
+    }, "strip", zod.ZodTypeAny, {
+        email: string;
+        status: "ACTIVE" | "INACTIVE";
+        id: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        locale: string;
+        emailVerified: boolean;
+        twoFactorEnabled: boolean;
+        provider: "email" | "github" | "google";
+        role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        verificationToken?: string | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+    }, {
+        email: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        status?: "ACTIVE" | "INACTIVE" | undefined;
+        id?: string | undefined;
+        verificationToken?: string | undefined;
+        locale?: string | undefined;
+        emailVerified?: boolean | undefined;
+        twoFactorEnabled?: boolean | undefined;
+        provider?: "email" | "github" | "google" | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+        role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+    }>>>;
+    createdAt: zod.ZodOptional<zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>>;
+    updatedAt: zod.ZodOptional<zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>>;
+}, "template" | "templateId">, "strip", zod.ZodTypeAny, {
+    id?: string | undefined;
+    title?: string | undefined;
+    organization?: string | null | undefined;
+    userId?: string | undefined;
+    createdAt?: string | Date | undefined;
+    updatedAt?: string | Date | undefined;
+    user?: {
+        email: string;
+        status: "ACTIVE" | "INACTIVE";
+        id: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        locale: string;
+        emailVerified: boolean;
+        twoFactorEnabled: boolean;
+        provider: "email" | "github" | "google";
+        role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        verificationToken?: string | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+    } | undefined;
+    slug?: string | undefined;
+    visibility?: "public" | "private" | undefined;
+    data?: {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        };
+        sections: {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        };
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+    } | undefined;
+    locked?: boolean | undefined;
+}, {
+    id?: string | undefined;
+    title?: string | undefined;
+    organization?: string | null | undefined;
+    userId?: string | undefined;
+    createdAt?: string | Date | undefined;
+    updatedAt?: string | Date | undefined;
+    user?: {
+        email: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        status?: "ACTIVE" | "INACTIVE" | undefined;
+        id?: string | undefined;
+        verificationToken?: string | undefined;
+        locale?: string | undefined;
+        emailVerified?: boolean | undefined;
+        twoFactorEnabled?: boolean | undefined;
+        provider?: "email" | "github" | "google" | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+        role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+    } | undefined;
+    slug?: string | undefined;
+    visibility?: "public" | "private" | undefined;
+    data?: {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        };
+        sections: {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        };
+        metadata: {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        };
+    } | undefined;
+    locked?: boolean | undefined;
+}>;
+declare const UpdateResumeDto_base: nestjs_zod_dto.ZodDto<{
+    id?: string | undefined;
+    title?: string | undefined;
+    organization?: string | null | undefined;
+    userId?: string | undefined;
+    createdAt?: string | Date | undefined;
+    updatedAt?: string | Date | undefined;
+    user?: {
+        email: string;
+        status: "ACTIVE" | "INACTIVE";
+        id: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        locale: string;
+        emailVerified: boolean;
+        twoFactorEnabled: boolean;
+        provider: "email" | "github" | "google";
+        role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        verificationToken?: string | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+    } | undefined;
+    slug?: string | undefined;
+    visibility?: "public" | "private" | undefined;
+    data?: {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        };
+        sections: {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        };
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+    } | undefined;
+    locked?: boolean | undefined;
+}, zod.ZodObjectDef<Omit<{
+    id: zod.ZodOptional<zod.ZodDefault<zod.ZodString>>;
+    title: zod.ZodOptional<zod.ZodString>;
+    slug: zod.ZodOptional<zod.ZodString>;
+    templateId: zod.ZodOptional<zod.ZodDefault<zod.ZodString>>;
+    template: zod.ZodOptional<zod.ZodOptional<zod.ZodObject<{
+        id: zod.ZodDefault<zod.ZodString>;
+        name: zod.ZodString;
+        slug: zod.ZodString;
+        description: zod.ZodNullable<zod.ZodString>;
+        preview: zod.ZodNullable<zod.ZodString>;
+        metadata: zod.ZodObject<{
+            template: zod.ZodString;
+            layout: zod.ZodArray<zod.ZodArray<zod.ZodArray<zod.ZodString, "many">, "many">, "many">;
+            theme: zod.ZodObject<{
+                background: zod.ZodString;
+                text: zod.ZodString;
+                primary: zod.ZodString;
+            }, "strip", zod.ZodTypeAny, {
+                background: string;
+                text: string;
+                primary: string;
+            }, {
+                background: string;
+                text: string;
+                primary: string;
+            }>;
+            typography: zod.ZodObject<{
+                font: zod.ZodObject<{
+                    family: zod.ZodString;
+                    size: zod.ZodNumber;
+                    variants: zod.ZodArray<zod.ZodString, "many">;
+                    subset: zod.ZodString;
+                }, "strip", zod.ZodTypeAny, {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                }, {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                }>;
+                lineHeight: zod.ZodNumber;
+                hideIcons: zod.ZodBoolean;
+                underlineLinks: zod.ZodBoolean;
+            }, "strip", zod.ZodTypeAny, {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            }, {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            }>;
+            css: zod.ZodObject<{
+                value: zod.ZodString;
+                visible: zod.ZodBoolean;
+            }, "strip", zod.ZodTypeAny, {
+                value: string;
+                visible: boolean;
+            }, {
+                value: string;
+                visible: boolean;
+            }>;
+            page: zod.ZodObject<{
+                margin: zod.ZodNumber;
+                format: zod.ZodString;
+                options: zod.ZodObject<{
+                    breakLine: zod.ZodBoolean;
+                    pageNumbers: zod.ZodBoolean;
+                }, "strip", zod.ZodTypeAny, {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                }, {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                }>;
+            }, "strip", zod.ZodTypeAny, {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            }, {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            }>;
+            notes: zod.ZodString;
+        }, "strip", zod.ZodTypeAny, {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        }, {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        }>;
+        createdBy: zod.ZodDefault<zod.ZodString>;
+        isActive: zod.ZodBoolean;
+        isPremium: zod.ZodBoolean;
+        version: zod.ZodNumber;
+        createdAt: zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>;
+        updatedAt: zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>;
+    }, "strip", zod.ZodTypeAny, {
+        id: string;
+        name: string;
+        description: string | null;
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        slug: string;
+        preview: string | null;
+        isActive: boolean;
+        isPremium: boolean;
+        createdBy: string;
+        version: number;
+    }, {
+        name: string;
+        description: string | null;
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: string;
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        slug: string;
+        preview: string | null;
+        isActive: boolean;
+        isPremium: boolean;
+        version: number;
+        id?: string | undefined;
+        createdBy?: string | undefined;
+    }>>>;
+    data: zod.ZodOptional<zod.ZodDefault<zod.ZodObject<{
+        basics: zod.ZodObject<{
+            name: zod.ZodString;
+            headline: zod.ZodString;
+            email: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+            phone: zod.ZodString;
+            location: zod.ZodString;
+            url: zod.ZodObject<{
+                label: zod.ZodString;
+                href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+            }, "strip", zod.ZodTypeAny, {
+                label: string;
+                href: string;
+            }, {
+                label: string;
+                href: string;
+            }>;
+            customFields: zod.ZodArray<zod.ZodObject<{
+                id: zod.ZodString;
+                icon: zod.ZodString;
+                name: zod.ZodString;
+                value: zod.ZodString;
+            }, "strip", zod.ZodTypeAny, {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }, {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }>, "many">;
+            picture: zod.ZodObject<{
+                url: zod.ZodString;
+                size: zod.ZodDefault<zod.ZodNumber>;
+                aspectRatio: zod.ZodDefault<zod.ZodNumber>;
+                borderRadius: zod.ZodDefault<zod.ZodNumber>;
+                effects: zod.ZodObject<{
+                    hidden: zod.ZodDefault<zod.ZodBoolean>;
+                    border: zod.ZodDefault<zod.ZodBoolean>;
+                    grayscale: zod.ZodDefault<zod.ZodBoolean>;
+                }, "strip", zod.ZodTypeAny, {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                }, {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                }>;
+            }, "strip", zod.ZodTypeAny, {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            }, {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            }>;
+        }, "strip", zod.ZodTypeAny, {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        }, {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        }>;
+        sections: zod.ZodObject<{
+            summary: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"summary">;
+                content: zod.ZodDefault<zod.ZodString>;
+            }, "strip", zod.ZodTypeAny, {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            }, {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            }>;
+            awards: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"awards">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    title: zod.ZodString;
+                    awarder: zod.ZodString;
+                    date: zod.ZodString;
+                    summary: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            }, {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            certifications: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"certifications">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    issuer: zod.ZodString;
+                    date: zod.ZodString;
+                    summary: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            }, {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            education: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"education">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    institution: zod.ZodString;
+                    studyType: zod.ZodString;
+                    area: zod.ZodString;
+                    score: zod.ZodString;
+                    date: zod.ZodString;
+                    summary: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            }, {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            experience: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"experience">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    company: zod.ZodString;
+                    position: zod.ZodString;
+                    location: zod.ZodString;
+                    date: zod.ZodString;
+                    summary: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            }, {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            volunteer: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"volunteer">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    organization: zod.ZodString;
+                    position: zod.ZodString;
+                    location: zod.ZodString;
+                    date: zod.ZodString;
+                    summary: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            }, {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            interests: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"interests">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    keywords: zod.ZodDefault<zod.ZodArray<zod.ZodString, "many">>;
+                }, "strip", zod.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }, {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            }, {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            languages: zod.ZodObject<{
+                name: zod.ZodString;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"languages">;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    description: zod.ZodString;
+                    level: zod.ZodDefault<zod.ZodNumber>;
+                }, "strip", zod.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            }, {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            profiles: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"profiles">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    network: zod.ZodString;
+                    username: zod.ZodString;
+                    icon: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }, {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            }, {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            projects: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"projects">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    description: zod.ZodString;
+                    date: zod.ZodString;
+                    summary: zod.ZodString;
+                    keywords: zod.ZodDefault<zod.ZodArray<zod.ZodString, "many">>;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }, {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            publications: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"publications">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    publisher: zod.ZodString;
+                    date: zod.ZodString;
+                    summary: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            }, {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            references: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"references">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    description: zod.ZodString;
+                    summary: zod.ZodString;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            }, {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            skills: zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodLiteral<"skills">;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    description: zod.ZodString;
+                    level: zod.ZodDefault<zod.ZodNumber>;
+                    keywords: zod.ZodDefault<zod.ZodArray<zod.ZodString, "many">>;
+                }, "strip", zod.ZodTypeAny, {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }, {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            }, {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>;
+            custom: zod.ZodDefault<zod.ZodRecord<zod.ZodString, zod.ZodObject<{
+                name: zod.ZodString;
+                columns: zod.ZodDefault<zod.ZodNumber>;
+                separateLinks: zod.ZodDefault<zod.ZodBoolean>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+                layoutSystem: zod.ZodDefault<zod.ZodEnum<["grid", "flex"]>>;
+                layoutSetting: zod.ZodDefault<zod.ZodObject<{
+                    visibleType: zod.ZodDefault<zod.ZodEnum<["default", "list"]>>;
+                }, "strip", zod.ZodTypeAny, {
+                    visibleType: "default" | "list";
+                }, {
+                    visibleType?: "default" | "list" | undefined;
+                }>>;
+            } & {
+                id: zod.ZodDefault<zod.ZodString>;
+                items: zod.ZodArray<zod.ZodObject<{
+                    id: zod.ZodDefault<zod.ZodString>;
+                    visible: zod.ZodBoolean;
+                } & {
+                    name: zod.ZodString;
+                    description: zod.ZodString;
+                    date: zod.ZodString;
+                    location: zod.ZodString;
+                    summary: zod.ZodString;
+                    keywords: zod.ZodDefault<zod.ZodArray<zod.ZodString, "many">>;
+                    url: zod.ZodObject<{
+                        label: zod.ZodString;
+                        href: zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodString]>;
+                    }, "strip", zod.ZodTypeAny, {
+                        label: string;
+                        href: string;
+                    }, {
+                        label: string;
+                        href: string;
+                    }>;
+                }, "strip", zod.ZodTypeAny, {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }, {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }>, "many">;
+            }, "strip", zod.ZodTypeAny, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }>>>;
+        }, "strip", zod.ZodTypeAny, {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        }, {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        }>;
+        metadata: zod.ZodObject<{
+            template: zod.ZodDefault<zod.ZodString>;
+            layout: zod.ZodDefault<zod.ZodArray<zod.ZodArray<zod.ZodArray<zod.ZodString, "many">, "many">, "many">>;
+            css: zod.ZodObject<{
+                value: zod.ZodDefault<zod.ZodString>;
+                visible: zod.ZodDefault<zod.ZodBoolean>;
+            }, "strip", zod.ZodTypeAny, {
+                value: string;
+                visible: boolean;
+            }, {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            }>;
+            page: zod.ZodObject<{
+                margin: zod.ZodDefault<zod.ZodNumber>;
+                format: zod.ZodDefault<zod.ZodEnum<["a4", "letter"]>>;
+                options: zod.ZodObject<{
+                    breakLine: zod.ZodDefault<zod.ZodBoolean>;
+                    pageNumbers: zod.ZodDefault<zod.ZodBoolean>;
+                }, "strip", zod.ZodTypeAny, {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                }, {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                }>;
+            }, "strip", zod.ZodTypeAny, {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            }, {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            }>;
+            theme: zod.ZodObject<{
+                background: zod.ZodDefault<zod.ZodString>;
+                text: zod.ZodDefault<zod.ZodString>;
+                primary: zod.ZodDefault<zod.ZodString>;
+            }, "strip", zod.ZodTypeAny, {
+                background: string;
+                text: string;
+                primary: string;
+            }, {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            }>;
+            typography: zod.ZodObject<{
+                font: zod.ZodObject<{
+                    family: zod.ZodDefault<zod.ZodString>;
+                    subset: zod.ZodDefault<zod.ZodString>;
+                    variants: zod.ZodDefault<zod.ZodArray<zod.ZodString, "many">>;
+                    size: zod.ZodDefault<zod.ZodNumber>;
+                }, "strip", zod.ZodTypeAny, {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                }, {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                }>;
+                lineHeight: zod.ZodDefault<zod.ZodNumber>;
+                hideIcons: zod.ZodDefault<zod.ZodBoolean>;
+                underlineLinks: zod.ZodDefault<zod.ZodBoolean>;
+            }, "strip", zod.ZodTypeAny, {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            }, {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            }>;
+            notes: zod.ZodDefault<zod.ZodString>;
+        }, "strip", zod.ZodTypeAny, {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        }, {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        }>;
+    }, "strip", zod.ZodTypeAny, {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                size: number;
+                aspectRatio: number;
+                borderRadius: number;
+                effects: {
+                    hidden: boolean;
+                    border: boolean;
+                    grayscale: boolean;
+                };
+            };
+        };
+        sections: {
+            custom: Record<string, {
+                id: string;
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            }>;
+            profiles: {
+                id: "profiles";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                }[];
+            };
+            summary: {
+                id: "summary";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                content: string;
+            };
+            experience: {
+                id: "experience";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                }[];
+            };
+            education: {
+                id: "education";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                }[];
+            };
+            projects: {
+                id: "projects";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    keywords: string[];
+                }[];
+            };
+            volunteer: {
+                id: "volunteer";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                }[];
+            };
+            references: {
+                id: "references";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                }[];
+            };
+            skills: {
+                id: "skills";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    keywords: string[];
+                    level: number;
+                }[];
+            };
+            interests: {
+                id: "interests";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    keywords: string[];
+                }[];
+            };
+            certifications: {
+                id: "certifications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                }[];
+            };
+            awards: {
+                id: "awards";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                }[];
+            };
+            publications: {
+                id: "publications";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    date: string;
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                }[];
+            };
+            languages: {
+                id: "languages";
+                visible: boolean;
+                name: string;
+                columns: number;
+                separateLinks: boolean;
+                layoutSystem: "grid" | "flex";
+                layoutSetting: {
+                    visibleType: "default" | "list";
+                };
+                items: {
+                    id: string;
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    level: number;
+                }[];
+            };
+        };
+        metadata: {
+            template: string;
+            layout: string[][][];
+            css: {
+                value: string;
+                visible: boolean;
+            };
+            page: {
+                options: {
+                    breakLine: boolean;
+                    pageNumbers: boolean;
+                };
+                margin: number;
+                format: "a4" | "letter";
+            };
+            theme: {
+                background: string;
+                text: string;
+                primary: string;
+            };
+            typography: {
+                font: {
+                    size: number;
+                    family: string;
+                    subset: string;
+                    variants: string[];
+                };
+                lineHeight: number;
+                hideIcons: boolean;
+                underlineLinks: boolean;
+            };
+            notes: string;
+        };
+    }, {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        };
+        sections: {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        };
+        metadata: {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        };
+    }>>>;
+    visibility: zod.ZodOptional<zod.ZodDefault<zod.ZodEnum<["private", "public"]>>>;
+    locked: zod.ZodOptional<zod.ZodDefault<zod.ZodBoolean>>;
+    organization: zod.ZodOptional<zod.ZodOptional<zod.ZodNullable<zod.ZodString>>>;
+    userId: zod.ZodOptional<zod.ZodDefault<zod.ZodString>>;
+    user: zod.ZodOptional<zod.ZodOptional<zod.ZodObject<{
+        id: zod.ZodDefault<zod.ZodString>;
+        name: zod.ZodString;
+        picture: zod.ZodUnion<[zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodNull]>, zod.ZodString]>;
+        username: zod.ZodString;
+        email: zod.ZodString;
+        locale: zod.ZodDefault<zod.ZodString>;
+        emailVerified: zod.ZodDefault<zod.ZodBoolean>;
+        twoFactorEnabled: zod.ZodDefault<zod.ZodBoolean>;
+        provider: zod.ZodDefault<zod.ZodEnum<["email", "github", "google"]>>;
+        shortName: zod.ZodOptional<zod.ZodString>;
+        status: zod.ZodDefault<zod.ZodEnum<["ACTIVE", "INACTIVE"]>>;
+        verificationToken: zod.ZodOptional<zod.ZodString>;
+        verificationExpires: zod.ZodOptional<zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>>;
+        tempData: zod.ZodOptional<zod.ZodAny>;
+        thumb: zod.ZodOptional<zod.ZodString>;
+        role: zod.ZodDefault<zod.ZodEnum<["USER", "ADMIN", "ACCOUNT_DEPARTMENT", "PUBLISHER_DEPARTMENT"]>>;
+        number: zod.ZodOptional<zod.ZodString>;
+        createdAt: zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>;
+        updatedAt: zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>;
+    }, "strip", zod.ZodTypeAny, {
+        email: string;
+        status: "ACTIVE" | "INACTIVE";
+        id: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        locale: string;
+        emailVerified: boolean;
+        twoFactorEnabled: boolean;
+        provider: "email" | "github" | "google";
+        role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        verificationToken?: string | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+    }, {
+        email: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        status?: "ACTIVE" | "INACTIVE" | undefined;
+        id?: string | undefined;
+        verificationToken?: string | undefined;
+        locale?: string | undefined;
+        emailVerified?: boolean | undefined;
+        twoFactorEnabled?: boolean | undefined;
+        provider?: "email" | "github" | "google" | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+        role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+    }>>>;
+    createdAt: zod.ZodOptional<zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>>;
+    updatedAt: zod.ZodOptional<zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>>;
+}, "template" | "templateId">, "strip", zod.ZodTypeAny>, {
+    id?: string | undefined;
+    title?: string | undefined;
+    organization?: string | null | undefined;
+    userId?: string | undefined;
+    createdAt?: string | Date | undefined;
+    updatedAt?: string | Date | undefined;
+    user?: {
+        email: string;
+        name: string;
+        picture: string | null;
+        username: string;
+        createdAt: string | Date;
+        updatedAt: string | Date;
+        number?: string | undefined;
+        status?: "ACTIVE" | "INACTIVE" | undefined;
+        id?: string | undefined;
+        verificationToken?: string | undefined;
+        locale?: string | undefined;
+        emailVerified?: boolean | undefined;
+        twoFactorEnabled?: boolean | undefined;
+        provider?: "email" | "github" | "google" | undefined;
+        shortName?: string | undefined;
+        verificationExpires?: string | Date | undefined;
+        tempData?: any;
+        thumb?: string | undefined;
+        role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+    } | undefined;
+    slug?: string | undefined;
+    visibility?: "public" | "private" | undefined;
+    data?: {
+        basics: {
+            email: string;
+            name: string;
+            headline: string;
+            phone: string;
+            location: string;
+            url: {
+                label: string;
+                href: string;
+            };
+            customFields: {
+                value: string;
+                id: string;
+                icon: string;
+                name: string;
+            }[];
+            picture: {
+                url: string;
+                effects: {
+                    hidden?: boolean | undefined;
+                    border?: boolean | undefined;
+                    grayscale?: boolean | undefined;
+                };
+                size?: number | undefined;
+                aspectRatio?: number | undefined;
+                borderRadius?: number | undefined;
+            };
+        };
+        sections: {
+            profiles: {
+                id: "profiles";
+                name: string;
+                items: {
+                    visible: boolean;
+                    icon: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    network: string;
+                    username: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            summary: {
+                id: "summary";
+                name: string;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+                content?: string | undefined;
+            };
+            experience: {
+                id: "experience";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    company: string;
+                    position: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            education: {
+                id: "education";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    institution: string;
+                    studyType: string;
+                    area: string;
+                    score: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            projects: {
+                id: "projects";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            volunteer: {
+                id: "volunteer";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    position: string;
+                    organization: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            references: {
+                id: "references";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            skills: {
+                id: "skills";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            interests: {
+                id: "interests";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            certifications: {
+                id: "certifications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    issuer: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            awards: {
+                id: "awards";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    title: string;
+                    awarder: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            publications: {
+                id: "publications";
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    publisher: string;
+                    id?: string | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            languages: {
+                id: "languages";
+                name: string;
+                items: {
+                    visible: boolean;
+                    name: string;
+                    description: string;
+                    id?: string | undefined;
+                    level?: number | undefined;
+                }[];
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            };
+            custom?: Record<string, {
+                name: string;
+                items: {
+                    date: string;
+                    visible: boolean;
+                    name: string;
+                    location: string;
+                    url: {
+                        label: string;
+                        href: string;
+                    };
+                    summary: string;
+                    description: string;
+                    id?: string | undefined;
+                    keywords?: string[] | undefined;
+                }[];
+                id?: string | undefined;
+                visible?: boolean | undefined;
+                columns?: number | undefined;
+                separateLinks?: boolean | undefined;
+                layoutSystem?: "grid" | "flex" | undefined;
+                layoutSetting?: {
+                    visibleType?: "default" | "list" | undefined;
+                } | undefined;
+            }> | undefined;
+        };
+        metadata: {
+            css: {
+                value?: string | undefined;
+                visible?: boolean | undefined;
+            };
+            page: {
+                options: {
+                    breakLine?: boolean | undefined;
+                    pageNumbers?: boolean | undefined;
+                };
+                margin?: number | undefined;
+                format?: "a4" | "letter" | undefined;
+            };
+            theme: {
+                background?: string | undefined;
+                text?: string | undefined;
+                primary?: string | undefined;
+            };
+            typography: {
+                font: {
+                    size?: number | undefined;
+                    family?: string | undefined;
+                    subset?: string | undefined;
+                    variants?: string[] | undefined;
+                };
+                lineHeight?: number | undefined;
+                hideIcons?: boolean | undefined;
+                underlineLinks?: boolean | undefined;
+            };
+            template?: string | undefined;
+            layout?: string[][][] | undefined;
+            notes?: string | undefined;
+        };
+    } | undefined;
+    locked?: boolean | undefined;
+}>;
+declare class UpdateResumeDto extends UpdateResumeDto_base {
+}
+
+declare const urlSchema: z.ZodObject<{
+    url: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    url: string;
+}, {
+    url: string;
+}>;
+declare const UrlDto_base: nestjs_zod_dto.ZodDto<{
+    url: string;
+}, z.ZodObjectDef<{
+    url: z.ZodString;
+}, "strip", z.ZodTypeAny>, {
+    url: string;
+}>;
+declare class UrlDto extends UrlDto_base {
+}
+
+declare const createResumeAnalysisSchema: z.ZodObject<{
+    resumeId: z.ZodString;
+    overallScore: z.ZodNumber;
+    status: z.ZodDefault<z.ZodEnum<["processing", "completed", "failed"]>>;
+    version: z.ZodDefault<z.ZodNumber>;
+    results: z.ZodRecord<z.ZodString, z.ZodAny>;
+    jobMatchingId: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    coverLetterId: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+}, "strip", z.ZodTypeAny, {
+    status: "processing" | "completed" | "failed";
+    resumeId: string;
+    version: number;
+    overallScore: number;
+    results: Record<string, any>;
+    jobMatchingId?: string | null | undefined;
+    coverLetterId?: string | null | undefined;
+}, {
+    resumeId: string;
+    overallScore: number;
+    results: Record<string, any>;
+    status?: "processing" | "completed" | "failed" | undefined;
+    jobMatchingId?: string | null | undefined;
+    version?: number | undefined;
+    coverLetterId?: string | null | undefined;
+}>;
+declare const CreateResumeAnalysisDto_base: nestjs_zod_dto.ZodDto<{
+    status: "processing" | "completed" | "failed";
+    resumeId: string;
+    version: number;
+    overallScore: number;
+    results: Record<string, any>;
+    jobMatchingId?: string | null | undefined;
+    coverLetterId?: string | null | undefined;
+}, z.ZodObjectDef<{
+    resumeId: z.ZodString;
+    overallScore: z.ZodNumber;
+    status: z.ZodDefault<z.ZodEnum<["processing", "completed", "failed"]>>;
+    version: z.ZodDefault<z.ZodNumber>;
+    results: z.ZodRecord<z.ZodString, z.ZodAny>;
+    jobMatchingId: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    coverLetterId: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+}, "strip", z.ZodTypeAny>, {
+    resumeId: string;
+    overallScore: number;
+    results: Record<string, any>;
+    status?: "processing" | "completed" | "failed" | undefined;
+    jobMatchingId?: string | null | undefined;
+    version?: number | undefined;
+    coverLetterId?: string | null | undefined;
+}>;
+declare class CreateResumeAnalysisDto extends CreateResumeAnalysisDto_base {
+}
+
+declare const resumeAnalysisSchema: z.ZodObject<{
+    id: z.ZodString;
+    overallScore: z.ZodNumber;
+    status: z.ZodEnum<["processing", "completed", "failed"]>;
+    version: z.ZodNumber;
+    trackerIndex: z.ZodNumber;
+    active: z.ZodBoolean;
+    results: z.ZodRecord<z.ZodString, z.ZodAny>;
+    createdAt: z.ZodDate;
+    updatedAt: z.ZodDate;
+    resumeId: z.ZodString;
+    userId: z.ZodString;
+    jobMatchingId: z.ZodNullable<z.ZodString>;
+    coverLetterId: z.ZodNullable<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    status: "processing" | "completed" | "failed";
+    id: string;
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    jobMatchingId: string | null;
+    resumeId: string;
+    trackerIndex: number;
+    active: boolean;
+    version: number;
+    overallScore: number;
+    results: Record<string, any>;
+    coverLetterId: string | null;
+}, {
+    status: "processing" | "completed" | "failed";
+    id: string;
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    jobMatchingId: string | null;
+    resumeId: string;
+    trackerIndex: number;
+    active: boolean;
+    version: number;
+    overallScore: number;
+    results: Record<string, any>;
+    coverLetterId: string | null;
+}>;
+declare const ResumeAnalysisDto_base: nestjs_zod_dto.ZodDto<{
+    status: "processing" | "completed" | "failed";
+    id: string;
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    jobMatchingId: string | null;
+    resumeId: string;
+    trackerIndex: number;
+    active: boolean;
+    version: number;
+    overallScore: number;
+    results: Record<string, any>;
+    coverLetterId: string | null;
+}, z.ZodObjectDef<{
+    id: z.ZodString;
+    overallScore: z.ZodNumber;
+    status: z.ZodEnum<["processing", "completed", "failed"]>;
+    version: z.ZodNumber;
+    trackerIndex: z.ZodNumber;
+    active: z.ZodBoolean;
+    results: z.ZodRecord<z.ZodString, z.ZodAny>;
+    createdAt: z.ZodDate;
+    updatedAt: z.ZodDate;
+    resumeId: z.ZodString;
+    userId: z.ZodString;
+    jobMatchingId: z.ZodNullable<z.ZodString>;
+    coverLetterId: z.ZodNullable<z.ZodString>;
+}, "strip", z.ZodTypeAny>, {
+    status: "processing" | "completed" | "failed";
+    id: string;
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    jobMatchingId: string | null;
+    resumeId: string;
+    trackerIndex: number;
+    active: boolean;
+    version: number;
+    overallScore: number;
+    results: Record<string, any>;
+    coverLetterId: string | null;
+}>;
+declare class ResumeAnalysisDto extends ResumeAnalysisDto_base {
+}
+
+declare const createResumeGuidanceSchema: z.ZodObject<{
+    resumeAnalysisId: z.ZodString;
+    resumeId: z.ZodString;
+    guidanceItems: z.ZodArray<z.ZodObject<{
+        category: z.ZodString;
+        suggestion: z.ZodString;
+        approach: z.ZodArray<z.ZodString, "many">;
+        notes: z.ZodOptional<z.ZodString>;
+        priority: z.ZodEnum<["critical", "major", "minor"]>;
+    }, "strip", z.ZodTypeAny, {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }, {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }>, "many">;
+    notes: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+}, "strip", z.ZodTypeAny, {
+    resumeId: string;
+    resumeAnalysisId: string;
+    guidanceItems: {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }[];
+    notes?: string | null | undefined;
+}, {
+    resumeId: string;
+    resumeAnalysisId: string;
+    guidanceItems: {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }[];
+    notes?: string | null | undefined;
+}>;
+declare const CreateResumeGuidanceDto_base: nestjs_zod_dto.ZodDto<{
+    resumeId: string;
+    resumeAnalysisId: string;
+    guidanceItems: {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }[];
+    notes?: string | null | undefined;
+}, z.ZodObjectDef<{
+    resumeAnalysisId: z.ZodString;
+    resumeId: z.ZodString;
+    guidanceItems: z.ZodArray<z.ZodObject<{
+        category: z.ZodString;
+        suggestion: z.ZodString;
+        approach: z.ZodArray<z.ZodString, "many">;
+        notes: z.ZodOptional<z.ZodString>;
+        priority: z.ZodEnum<["critical", "major", "minor"]>;
+    }, "strip", z.ZodTypeAny, {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }, {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }>, "many">;
+    notes: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+}, "strip", z.ZodTypeAny>, {
+    resumeId: string;
+    resumeAnalysisId: string;
+    guidanceItems: {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }[];
+    notes?: string | null | undefined;
+}>;
+declare class CreateResumeGuidanceDto extends CreateResumeGuidanceDto_base {
+}
+
+declare const resumeGuidanceSchema: z.ZodObject<{
+    id: z.ZodString;
+    guidanceItems: z.ZodArray<z.ZodObject<{
+        category: z.ZodString;
+        suggestion: z.ZodString;
+        approach: z.ZodArray<z.ZodString, "many">;
+        notes: z.ZodOptional<z.ZodString>;
+        priority: z.ZodEnum<["critical", "major", "minor"]>;
+    }, "strip", z.ZodTypeAny, {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }, {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }>, "many">;
+    notes: z.ZodNullable<z.ZodString>;
+    trackerIndex: z.ZodNumber;
+    active: z.ZodBoolean;
+    createdAt: z.ZodDate;
+    updatedAt: z.ZodDate;
+    resumeAnalysisId: z.ZodString;
+    resumeId: z.ZodString;
+    userId: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    id: string;
+    notes: string | null;
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    resumeId: string;
+    trackerIndex: number;
+    active: boolean;
+    resumeAnalysisId: string;
+    guidanceItems: {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }[];
+}, {
+    id: string;
+    notes: string | null;
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    resumeId: string;
+    trackerIndex: number;
+    active: boolean;
+    resumeAnalysisId: string;
+    guidanceItems: {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }[];
+}>;
+declare const ResumeGuidanceDto_base: nestjs_zod_dto.ZodDto<{
+    id: string;
+    notes: string | null;
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    resumeId: string;
+    trackerIndex: number;
+    active: boolean;
+    resumeAnalysisId: string;
+    guidanceItems: {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }[];
+}, z.ZodObjectDef<{
+    id: z.ZodString;
+    guidanceItems: z.ZodArray<z.ZodObject<{
+        category: z.ZodString;
+        suggestion: z.ZodString;
+        approach: z.ZodArray<z.ZodString, "many">;
+        notes: z.ZodOptional<z.ZodString>;
+        priority: z.ZodEnum<["critical", "major", "minor"]>;
+    }, "strip", z.ZodTypeAny, {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }, {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }>, "many">;
+    notes: z.ZodNullable<z.ZodString>;
+    trackerIndex: z.ZodNumber;
+    active: z.ZodBoolean;
+    createdAt: z.ZodDate;
+    updatedAt: z.ZodDate;
+    resumeAnalysisId: z.ZodString;
+    resumeId: z.ZodString;
+    userId: z.ZodString;
+}, "strip", z.ZodTypeAny>, {
+    id: string;
+    notes: string | null;
+    userId: string;
+    createdAt: Date;
+    updatedAt: Date;
+    resumeId: string;
+    trackerIndex: number;
+    active: boolean;
+    resumeAnalysisId: string;
+    guidanceItems: {
+        category: string;
+        suggestion: string;
+        approach: string[];
+        priority: "critical" | "major" | "minor";
+        notes?: string | undefined;
+    }[];
+}>;
+declare class ResumeGuidanceDto extends ResumeGuidanceDto_base {
+}
+
+declare const updateNotesSchema: z.ZodObject<{
+    notes: z.ZodNullable<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    notes: string | null;
+}, {
+    notes: string | null;
+}>;
+declare const UpdateNotesDto_base: nestjs_zod_dto.ZodDto<{
+    notes: string | null;
+}, z.ZodObjectDef<{
+    notes: z.ZodNullable<z.ZodString>;
+}, "strip", z.ZodTypeAny>, {
+    notes: string | null;
+}>;
+declare class UpdateNotesDto extends UpdateNotesDto_base {
+}
+
+declare const secretsSchema: z.ZodObject<{
+    id: z.ZodDefault<z.ZodString>;
+    password: z.ZodNullable<z.ZodString>;
+    lastSignedIn: z.ZodNullable<z.ZodDate>;
+    verificationToken: z.ZodNullable<z.ZodString>;
+    twoFactorSecret: z.ZodNullable<z.ZodString>;
+    twoFactorBackupCodes: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+    refreshToken: z.ZodNullable<z.ZodString>;
+    resetToken: z.ZodNullable<z.ZodString>;
+    userId: z.ZodDefault<z.ZodString>;
+}, "strip", z.ZodTypeAny, {
+    id: string;
+    password: string | null;
+    lastSignedIn: Date | null;
+    verificationToken: string | null;
+    twoFactorSecret: string | null;
+    twoFactorBackupCodes: string[];
+    refreshToken: string | null;
+    resetToken: string | null;
+    userId: string;
+}, {
+    password: string | null;
+    lastSignedIn: Date | null;
+    verificationToken: string | null;
+    twoFactorSecret: string | null;
+    refreshToken: string | null;
+    resetToken: string | null;
+    id?: string | undefined;
+    twoFactorBackupCodes?: string[] | undefined;
+    userId?: string | undefined;
+}>;
+
+declare const statisticsSchema: z.ZodObject<{
+    views: z.ZodDefault<z.ZodNumber>;
+    downloads: z.ZodDefault<z.ZodNumber>;
+}, "strip", z.ZodTypeAny, {
+    views: number;
+    downloads: number;
+}, {
+    views?: number | undefined;
+    downloads?: number | undefined;
+}>;
+declare const StatisticsDto_base: nestjs_zod_dto.ZodDto<{
+    views: number;
+    downloads: number;
+}, z.ZodObjectDef<{
+    views: z.ZodDefault<z.ZodNumber>;
+    downloads: z.ZodDefault<z.ZodNumber>;
+}, "strip", z.ZodTypeAny>, {
+    views?: number | undefined;
+    downloads?: number | undefined;
+}>;
+declare class StatisticsDto extends StatisticsDto_base {
+}
+
+declare const createTemplateSchema: z.ZodObject<{
+    name: z.ZodString;
+    slug: z.ZodString;
+    description: z.ZodOptional<z.ZodString>;
+    preview: z.ZodOptional<z.ZodString>;
+    metadata: z.ZodObject<{
+        template: z.ZodString;
+        layout: z.ZodArray<z.ZodArray<z.ZodArray<z.ZodString, "many">, "many">, "many">;
+        theme: z.ZodObject<{
+            background: z.ZodString;
+            text: z.ZodString;
+            primary: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            background: string;
+            text: string;
+            primary: string;
+        }, {
+            background: string;
+            text: string;
+            primary: string;
+        }>;
+        typography: z.ZodObject<{
+            font: z.ZodObject<{
+                family: z.ZodString;
+                size: z.ZodNumber;
+                variants: z.ZodArray<z.ZodString, "many">;
+                subset: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            }, {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            }>;
+            lineHeight: z.ZodNumber;
+            hideIcons: z.ZodBoolean;
+            underlineLinks: z.ZodBoolean;
+        }, "strip", z.ZodTypeAny, {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        }, {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        }>;
+        css: z.ZodObject<{
+            value: z.ZodString;
+            visible: z.ZodBoolean;
+        }, "strip", z.ZodTypeAny, {
+            value: string;
+            visible: boolean;
+        }, {
+            value: string;
+            visible: boolean;
+        }>;
+        page: z.ZodObject<{
+            margin: z.ZodNumber;
+            format: z.ZodString;
+            options: z.ZodObject<{
+                breakLine: z.ZodBoolean;
+                pageNumbers: z.ZodBoolean;
+            }, "strip", z.ZodTypeAny, {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            }, {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            }>;
+        }, "strip", z.ZodTypeAny, {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        }, {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        }>;
+        notes: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    }, {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    }>;
+    isActive: z.ZodDefault<z.ZodBoolean>;
+    isPremium: z.ZodDefault<z.ZodBoolean>;
+}, "strip", z.ZodTypeAny, {
+    name: string;
+    metadata: {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    };
+    slug: string;
+    isActive: boolean;
+    isPremium: boolean;
+    description?: string | undefined;
+    preview?: string | undefined;
+}, {
+    name: string;
+    metadata: {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    };
+    slug: string;
+    description?: string | undefined;
+    preview?: string | undefined;
+    isActive?: boolean | undefined;
+    isPremium?: boolean | undefined;
+}>;
+declare const updateTemplateSchema: z.ZodObject<{
+    name: z.ZodOptional<z.ZodString>;
+    slug: z.ZodOptional<z.ZodString>;
+    description: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    preview: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    metadata: z.ZodOptional<z.ZodObject<{
+        template: z.ZodString;
+        layout: z.ZodArray<z.ZodArray<z.ZodArray<z.ZodString, "many">, "many">, "many">;
+        theme: z.ZodObject<{
+            background: z.ZodString;
+            text: z.ZodString;
+            primary: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            background: string;
+            text: string;
+            primary: string;
+        }, {
+            background: string;
+            text: string;
+            primary: string;
+        }>;
+        typography: z.ZodObject<{
+            font: z.ZodObject<{
+                family: z.ZodString;
+                size: z.ZodNumber;
+                variants: z.ZodArray<z.ZodString, "many">;
+                subset: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            }, {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            }>;
+            lineHeight: z.ZodNumber;
+            hideIcons: z.ZodBoolean;
+            underlineLinks: z.ZodBoolean;
+        }, "strip", z.ZodTypeAny, {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        }, {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        }>;
+        css: z.ZodObject<{
+            value: z.ZodString;
+            visible: z.ZodBoolean;
+        }, "strip", z.ZodTypeAny, {
+            value: string;
+            visible: boolean;
+        }, {
+            value: string;
+            visible: boolean;
+        }>;
+        page: z.ZodObject<{
+            margin: z.ZodNumber;
+            format: z.ZodString;
+            options: z.ZodObject<{
+                breakLine: z.ZodBoolean;
+                pageNumbers: z.ZodBoolean;
+            }, "strip", z.ZodTypeAny, {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            }, {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            }>;
+        }, "strip", z.ZodTypeAny, {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        }, {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        }>;
+        notes: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    }, {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    }>>;
+    isActive: z.ZodOptional<z.ZodDefault<z.ZodBoolean>>;
+    isPremium: z.ZodOptional<z.ZodDefault<z.ZodBoolean>>;
+}, "strip", z.ZodTypeAny, {
+    name?: string | undefined;
+    description?: string | undefined;
+    metadata?: {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    } | undefined;
+    slug?: string | undefined;
+    preview?: string | undefined;
+    isActive?: boolean | undefined;
+    isPremium?: boolean | undefined;
+}, {
+    name?: string | undefined;
+    description?: string | undefined;
+    metadata?: {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    } | undefined;
+    slug?: string | undefined;
+    preview?: string | undefined;
+    isActive?: boolean | undefined;
+    isPremium?: boolean | undefined;
+}>;
+declare const templateSchema: z.ZodObject<{
+    id: z.ZodDefault<z.ZodString>;
+    name: z.ZodString;
+    slug: z.ZodString;
+    description: z.ZodNullable<z.ZodString>;
+    preview: z.ZodNullable<z.ZodString>;
+    metadata: z.ZodObject<{
+        template: z.ZodString;
+        layout: z.ZodArray<z.ZodArray<z.ZodArray<z.ZodString, "many">, "many">, "many">;
+        theme: z.ZodObject<{
+            background: z.ZodString;
+            text: z.ZodString;
+            primary: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            background: string;
+            text: string;
+            primary: string;
+        }, {
+            background: string;
+            text: string;
+            primary: string;
+        }>;
+        typography: z.ZodObject<{
+            font: z.ZodObject<{
+                family: z.ZodString;
+                size: z.ZodNumber;
+                variants: z.ZodArray<z.ZodString, "many">;
+                subset: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            }, {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            }>;
+            lineHeight: z.ZodNumber;
+            hideIcons: z.ZodBoolean;
+            underlineLinks: z.ZodBoolean;
+        }, "strip", z.ZodTypeAny, {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        }, {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        }>;
+        css: z.ZodObject<{
+            value: z.ZodString;
+            visible: z.ZodBoolean;
+        }, "strip", z.ZodTypeAny, {
+            value: string;
+            visible: boolean;
+        }, {
+            value: string;
+            visible: boolean;
+        }>;
+        page: z.ZodObject<{
+            margin: z.ZodNumber;
+            format: z.ZodString;
+            options: z.ZodObject<{
+                breakLine: z.ZodBoolean;
+                pageNumbers: z.ZodBoolean;
+            }, "strip", z.ZodTypeAny, {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            }, {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            }>;
+        }, "strip", z.ZodTypeAny, {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        }, {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        }>;
+        notes: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    }, {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    }>;
+    createdBy: z.ZodDefault<z.ZodString>;
+    isActive: z.ZodBoolean;
+    isPremium: z.ZodBoolean;
+    version: z.ZodNumber;
+    createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+}, "strip", z.ZodTypeAny, {
+    id: string;
+    name: string;
+    description: string | null;
+    metadata: {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    };
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    slug: string;
+    preview: string | null;
+    isActive: boolean;
+    isPremium: boolean;
+    createdBy: string;
+    version: number;
+}, {
+    name: string;
+    description: string | null;
+    metadata: {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    };
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    slug: string;
+    preview: string | null;
+    isActive: boolean;
+    isPremium: boolean;
+    version: number;
+    id?: string | undefined;
+    createdBy?: string | undefined;
+}>;
+declare const CreateTemplateDto_base: nestjs_zod_dto.ZodDto<{
+    name: string;
+    metadata: {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    };
+    slug: string;
+    isActive: boolean;
+    isPremium: boolean;
+    description?: string | undefined;
+    preview?: string | undefined;
+}, z.ZodObjectDef<{
+    name: z.ZodString;
+    slug: z.ZodString;
+    description: z.ZodOptional<z.ZodString>;
+    preview: z.ZodOptional<z.ZodString>;
+    metadata: z.ZodObject<{
+        template: z.ZodString;
+        layout: z.ZodArray<z.ZodArray<z.ZodArray<z.ZodString, "many">, "many">, "many">;
+        theme: z.ZodObject<{
+            background: z.ZodString;
+            text: z.ZodString;
+            primary: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            background: string;
+            text: string;
+            primary: string;
+        }, {
+            background: string;
+            text: string;
+            primary: string;
+        }>;
+        typography: z.ZodObject<{
+            font: z.ZodObject<{
+                family: z.ZodString;
+                size: z.ZodNumber;
+                variants: z.ZodArray<z.ZodString, "many">;
+                subset: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            }, {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            }>;
+            lineHeight: z.ZodNumber;
+            hideIcons: z.ZodBoolean;
+            underlineLinks: z.ZodBoolean;
+        }, "strip", z.ZodTypeAny, {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        }, {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        }>;
+        css: z.ZodObject<{
+            value: z.ZodString;
+            visible: z.ZodBoolean;
+        }, "strip", z.ZodTypeAny, {
+            value: string;
+            visible: boolean;
+        }, {
+            value: string;
+            visible: boolean;
+        }>;
+        page: z.ZodObject<{
+            margin: z.ZodNumber;
+            format: z.ZodString;
+            options: z.ZodObject<{
+                breakLine: z.ZodBoolean;
+                pageNumbers: z.ZodBoolean;
+            }, "strip", z.ZodTypeAny, {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            }, {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            }>;
+        }, "strip", z.ZodTypeAny, {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        }, {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        }>;
+        notes: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    }, {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    }>;
+    isActive: z.ZodDefault<z.ZodBoolean>;
+    isPremium: z.ZodDefault<z.ZodBoolean>;
+}, "strip", z.ZodTypeAny>, {
+    name: string;
+    metadata: {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    };
+    slug: string;
+    description?: string | undefined;
+    preview?: string | undefined;
+    isActive?: boolean | undefined;
+    isPremium?: boolean | undefined;
+}>;
+declare class CreateTemplateDto extends CreateTemplateDto_base {
+}
+declare const UpdateTemplateDto_base: nestjs_zod_dto.ZodDto<{
+    name?: string | undefined;
+    description?: string | undefined;
+    metadata?: {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    } | undefined;
+    slug?: string | undefined;
+    preview?: string | undefined;
+    isActive?: boolean | undefined;
+    isPremium?: boolean | undefined;
+}, z.ZodObjectDef<{
+    name: z.ZodOptional<z.ZodString>;
+    slug: z.ZodOptional<z.ZodString>;
+    description: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    preview: z.ZodOptional<z.ZodOptional<z.ZodString>>;
+    metadata: z.ZodOptional<z.ZodObject<{
+        template: z.ZodString;
+        layout: z.ZodArray<z.ZodArray<z.ZodArray<z.ZodString, "many">, "many">, "many">;
+        theme: z.ZodObject<{
+            background: z.ZodString;
+            text: z.ZodString;
+            primary: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            background: string;
+            text: string;
+            primary: string;
+        }, {
+            background: string;
+            text: string;
+            primary: string;
+        }>;
+        typography: z.ZodObject<{
+            font: z.ZodObject<{
+                family: z.ZodString;
+                size: z.ZodNumber;
+                variants: z.ZodArray<z.ZodString, "many">;
+                subset: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            }, {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            }>;
+            lineHeight: z.ZodNumber;
+            hideIcons: z.ZodBoolean;
+            underlineLinks: z.ZodBoolean;
+        }, "strip", z.ZodTypeAny, {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        }, {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        }>;
+        css: z.ZodObject<{
+            value: z.ZodString;
+            visible: z.ZodBoolean;
+        }, "strip", z.ZodTypeAny, {
+            value: string;
+            visible: boolean;
+        }, {
+            value: string;
+            visible: boolean;
+        }>;
+        page: z.ZodObject<{
+            margin: z.ZodNumber;
+            format: z.ZodString;
+            options: z.ZodObject<{
+                breakLine: z.ZodBoolean;
+                pageNumbers: z.ZodBoolean;
+            }, "strip", z.ZodTypeAny, {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            }, {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            }>;
+        }, "strip", z.ZodTypeAny, {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        }, {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        }>;
+        notes: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    }, {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    }>>;
+    isActive: z.ZodOptional<z.ZodDefault<z.ZodBoolean>>;
+    isPremium: z.ZodOptional<z.ZodDefault<z.ZodBoolean>>;
+}, "strip", z.ZodTypeAny>, {
+    name?: string | undefined;
+    description?: string | undefined;
+    metadata?: {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    } | undefined;
+    slug?: string | undefined;
+    preview?: string | undefined;
+    isActive?: boolean | undefined;
+    isPremium?: boolean | undefined;
+}>;
+declare class UpdateTemplateDto extends UpdateTemplateDto_base {
+}
+declare const TemplateDto_base: nestjs_zod_dto.ZodDto<{
+    id: string;
+    name: string;
+    description: string | null;
+    metadata: {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    };
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    slug: string;
+    preview: string | null;
+    isActive: boolean;
+    isPremium: boolean;
+    createdBy: string;
+    version: number;
+}, z.ZodObjectDef<{
+    id: z.ZodDefault<z.ZodString>;
+    name: z.ZodString;
+    slug: z.ZodString;
+    description: z.ZodNullable<z.ZodString>;
+    preview: z.ZodNullable<z.ZodString>;
+    metadata: z.ZodObject<{
+        template: z.ZodString;
+        layout: z.ZodArray<z.ZodArray<z.ZodArray<z.ZodString, "many">, "many">, "many">;
+        theme: z.ZodObject<{
+            background: z.ZodString;
+            text: z.ZodString;
+            primary: z.ZodString;
+        }, "strip", z.ZodTypeAny, {
+            background: string;
+            text: string;
+            primary: string;
+        }, {
+            background: string;
+            text: string;
+            primary: string;
+        }>;
+        typography: z.ZodObject<{
+            font: z.ZodObject<{
+                family: z.ZodString;
+                size: z.ZodNumber;
+                variants: z.ZodArray<z.ZodString, "many">;
+                subset: z.ZodString;
+            }, "strip", z.ZodTypeAny, {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            }, {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            }>;
+            lineHeight: z.ZodNumber;
+            hideIcons: z.ZodBoolean;
+            underlineLinks: z.ZodBoolean;
+        }, "strip", z.ZodTypeAny, {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        }, {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        }>;
+        css: z.ZodObject<{
+            value: z.ZodString;
+            visible: z.ZodBoolean;
+        }, "strip", z.ZodTypeAny, {
+            value: string;
+            visible: boolean;
+        }, {
+            value: string;
+            visible: boolean;
+        }>;
+        page: z.ZodObject<{
+            margin: z.ZodNumber;
+            format: z.ZodString;
+            options: z.ZodObject<{
+                breakLine: z.ZodBoolean;
+                pageNumbers: z.ZodBoolean;
+            }, "strip", z.ZodTypeAny, {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            }, {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            }>;
+        }, "strip", z.ZodTypeAny, {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        }, {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        }>;
+        notes: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    }, {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    }>;
+    createdBy: z.ZodDefault<z.ZodString>;
+    isActive: z.ZodBoolean;
+    isPremium: z.ZodBoolean;
+    version: z.ZodNumber;
+    createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+}, "strip", z.ZodTypeAny>, {
+    name: string;
+    description: string | null;
+    metadata: {
+        template: string;
+        layout: string[][][];
+        css: {
+            value: string;
+            visible: boolean;
+        };
+        page: {
+            options: {
+                breakLine: boolean;
+                pageNumbers: boolean;
+            };
+            margin: number;
+            format: string;
+        };
+        theme: {
+            background: string;
+            text: string;
+            primary: string;
+        };
+        typography: {
+            font: {
+                size: number;
+                family: string;
+                subset: string;
+                variants: string[];
+            };
+            lineHeight: number;
+            hideIcons: boolean;
+            underlineLinks: boolean;
+        };
+        notes: string;
+    };
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    slug: string;
+    preview: string | null;
+    isActive: boolean;
+    isPremium: boolean;
+    version: number;
+    id?: string | undefined;
+    createdBy?: string | undefined;
+}>;
+declare class TemplateDto extends TemplateDto_base {
+}
+
+declare const updateTrackingSettingsSchema: z.ZodObject<{
+    tagManagerId: z.ZodEffects<z.ZodNullable<z.ZodOptional<z.ZodString>>, string | null | undefined, string | null | undefined>;
+    pixelId: z.ZodEffects<z.ZodNullable<z.ZodOptional<z.ZodString>>, string | null | undefined, string | null | undefined>;
+}, "strip", z.ZodTypeAny, {
+    tagManagerId?: string | null | undefined;
+    pixelId?: string | null | undefined;
+}, {
+    tagManagerId?: string | null | undefined;
+    pixelId?: string | null | undefined;
+}>;
+declare const UpdateTrackingSettingsDto_base: nestjs_zod_dto.ZodDto<{
+    tagManagerId?: string | null | undefined;
+    pixelId?: string | null | undefined;
+}, z.ZodObjectDef<{
+    tagManagerId: z.ZodEffects<z.ZodNullable<z.ZodOptional<z.ZodString>>, string | null | undefined, string | null | undefined>;
+    pixelId: z.ZodEffects<z.ZodNullable<z.ZodOptional<z.ZodString>>, string | null | undefined, string | null | undefined>;
+}, "strip", z.ZodTypeAny>, {
+    tagManagerId?: string | null | undefined;
+    pixelId?: string | null | undefined;
+}>;
+declare class UpdateTrackingSettingsDto extends UpdateTrackingSettingsDto_base {
+}
+
+declare const updateUserSchema: zod.ZodObject<Pick<{
+    id: zod.ZodOptional<zod.ZodDefault<zod.ZodString>>;
+    name: zod.ZodOptional<zod.ZodString>;
+    picture: zod.ZodOptional<zod.ZodUnion<[zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodNull]>, zod.ZodString]>>;
+    username: zod.ZodOptional<zod.ZodString>;
+    email: zod.ZodOptional<zod.ZodString>;
+    locale: zod.ZodOptional<zod.ZodDefault<zod.ZodString>>;
+    emailVerified: zod.ZodOptional<zod.ZodDefault<zod.ZodBoolean>>;
+    twoFactorEnabled: zod.ZodOptional<zod.ZodDefault<zod.ZodBoolean>>;
+    provider: zod.ZodOptional<zod.ZodDefault<zod.ZodEnum<["email", "github", "google"]>>>;
+    shortName: zod.ZodOptional<zod.ZodOptional<zod.ZodString>>;
+    status: zod.ZodOptional<zod.ZodDefault<zod.ZodEnum<["ACTIVE", "INACTIVE"]>>>;
+    verificationToken: zod.ZodOptional<zod.ZodOptional<zod.ZodString>>;
+    verificationExpires: zod.ZodOptional<zod.ZodOptional<zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>>>;
+    tempData: zod.ZodOptional<zod.ZodOptional<zod.ZodAny>>;
+    thumb: zod.ZodOptional<zod.ZodOptional<zod.ZodString>>;
+    role: zod.ZodOptional<zod.ZodDefault<zod.ZodEnum<["USER", "ADMIN", "ACCOUNT_DEPARTMENT", "PUBLISHER_DEPARTMENT"]>>>;
+    number: zod.ZodOptional<zod.ZodOptional<zod.ZodString>>;
+    createdAt: zod.ZodOptional<zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>>;
+    updatedAt: zod.ZodOptional<zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>>;
+}, "number" | "email" | "name" | "picture" | "username" | "locale">, "strip", zod.ZodTypeAny, {
+    number?: string | undefined;
+    email?: string | undefined;
+    name?: string | undefined;
+    picture?: string | null | undefined;
+    username?: string | undefined;
+    locale?: string | undefined;
+}, {
+    number?: string | undefined;
+    email?: string | undefined;
+    name?: string | undefined;
+    picture?: string | null | undefined;
+    username?: string | undefined;
+    locale?: string | undefined;
+}>;
+declare const UpdateUserDto_base: nestjs_zod_dto.ZodDto<{
+    number?: string | undefined;
+    email?: string | undefined;
+    name?: string | undefined;
+    picture?: string | null | undefined;
+    username?: string | undefined;
+    locale?: string | undefined;
+}, zod.ZodObjectDef<Pick<{
+    id: zod.ZodOptional<zod.ZodDefault<zod.ZodString>>;
+    name: zod.ZodOptional<zod.ZodString>;
+    picture: zod.ZodOptional<zod.ZodUnion<[zod.ZodUnion<[zod.ZodLiteral<"">, zod.ZodNull]>, zod.ZodString]>>;
+    username: zod.ZodOptional<zod.ZodString>;
+    email: zod.ZodOptional<zod.ZodString>;
+    locale: zod.ZodOptional<zod.ZodDefault<zod.ZodString>>;
+    emailVerified: zod.ZodOptional<zod.ZodDefault<zod.ZodBoolean>>;
+    twoFactorEnabled: zod.ZodOptional<zod.ZodDefault<zod.ZodBoolean>>;
+    provider: zod.ZodOptional<zod.ZodDefault<zod.ZodEnum<["email", "github", "google"]>>>;
+    shortName: zod.ZodOptional<zod.ZodOptional<zod.ZodString>>;
+    status: zod.ZodOptional<zod.ZodDefault<zod.ZodEnum<["ACTIVE", "INACTIVE"]>>>;
+    verificationToken: zod.ZodOptional<zod.ZodOptional<zod.ZodString>>;
+    verificationExpires: zod.ZodOptional<zod.ZodOptional<zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>>>;
+    tempData: zod.ZodOptional<zod.ZodOptional<zod.ZodAny>>;
+    thumb: zod.ZodOptional<zod.ZodOptional<zod.ZodString>>;
+    role: zod.ZodOptional<zod.ZodDefault<zod.ZodEnum<["USER", "ADMIN", "ACCOUNT_DEPARTMENT", "PUBLISHER_DEPARTMENT"]>>>;
+    number: zod.ZodOptional<zod.ZodOptional<zod.ZodString>>;
+    createdAt: zod.ZodOptional<zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>>;
+    updatedAt: zod.ZodOptional<zod.ZodUnion<[zod.ZodDate, nestjs_zod_z.ZodDateString]>>;
+}, "number" | "email" | "name" | "picture" | "username" | "locale">, "strip", zod.ZodTypeAny>, {
+    number?: string | undefined;
+    email?: string | undefined;
+    name?: string | undefined;
+    picture?: string | null | undefined;
+    username?: string | undefined;
+    locale?: string | undefined;
+}>;
+declare class UpdateUserDto extends UpdateUserDto_base {
+}
+
+declare const usernameSchema: z.ZodString;
+declare const userSchema: z.ZodObject<{
+    id: z.ZodDefault<z.ZodString>;
+    name: z.ZodString;
+    picture: z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"">, z.ZodNull]>, z.ZodString]>;
+    username: z.ZodString;
+    email: z.ZodString;
+    locale: z.ZodDefault<z.ZodString>;
+    emailVerified: z.ZodDefault<z.ZodBoolean>;
+    twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
+    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+    shortName: z.ZodOptional<z.ZodString>;
+    status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
+    verificationToken: z.ZodOptional<z.ZodString>;
+    verificationExpires: z.ZodOptional<z.ZodUnion<[z.ZodDate, z.ZodDateString]>>;
+    tempData: z.ZodOptional<z.ZodAny>;
+    thumb: z.ZodOptional<z.ZodString>;
+    role: z.ZodDefault<z.ZodEnum<["USER", "ADMIN", "ACCOUNT_DEPARTMENT", "PUBLISHER_DEPARTMENT"]>>;
+    number: z.ZodOptional<z.ZodString>;
+    createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+}, "strip", z.ZodTypeAny, {
+    email: string;
+    status: "ACTIVE" | "INACTIVE";
+    id: string;
+    name: string;
+    picture: string | null;
+    username: string;
+    locale: string;
+    emailVerified: boolean;
+    twoFactorEnabled: boolean;
+    provider: "email" | "github" | "google";
+    role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    number?: string | undefined;
+    verificationToken?: string | undefined;
+    shortName?: string | undefined;
+    verificationExpires?: string | Date | undefined;
+    tempData?: any;
+    thumb?: string | undefined;
+}, {
+    email: string;
+    name: string;
+    picture: string | null;
+    username: string;
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    number?: string | undefined;
+    status?: "ACTIVE" | "INACTIVE" | undefined;
+    id?: string | undefined;
+    verificationToken?: string | undefined;
+    locale?: string | undefined;
+    emailVerified?: boolean | undefined;
+    twoFactorEnabled?: boolean | undefined;
+    provider?: "email" | "github" | "google" | undefined;
+    shortName?: string | undefined;
+    verificationExpires?: string | Date | undefined;
+    tempData?: any;
+    thumb?: string | undefined;
+    role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+}>;
+declare const UserDto_base: nestjs_zod_dto.ZodDto<{
+    email: string;
+    status: "ACTIVE" | "INACTIVE";
+    id: string;
+    name: string;
+    picture: string | null;
+    username: string;
+    locale: string;
+    emailVerified: boolean;
+    twoFactorEnabled: boolean;
+    provider: "email" | "github" | "google";
+    role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    number?: string | undefined;
+    verificationToken?: string | undefined;
+    shortName?: string | undefined;
+    verificationExpires?: string | Date | undefined;
+    tempData?: any;
+    thumb?: string | undefined;
+}, z.ZodObjectDef<{
+    id: z.ZodDefault<z.ZodString>;
+    name: z.ZodString;
+    picture: z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"">, z.ZodNull]>, z.ZodString]>;
+    username: z.ZodString;
+    email: z.ZodString;
+    locale: z.ZodDefault<z.ZodString>;
+    emailVerified: z.ZodDefault<z.ZodBoolean>;
+    twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
+    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+    shortName: z.ZodOptional<z.ZodString>;
+    status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
+    verificationToken: z.ZodOptional<z.ZodString>;
+    verificationExpires: z.ZodOptional<z.ZodUnion<[z.ZodDate, z.ZodDateString]>>;
+    tempData: z.ZodOptional<z.ZodAny>;
+    thumb: z.ZodOptional<z.ZodString>;
+    role: z.ZodDefault<z.ZodEnum<["USER", "ADMIN", "ACCOUNT_DEPARTMENT", "PUBLISHER_DEPARTMENT"]>>;
+    number: z.ZodOptional<z.ZodString>;
+    createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+}, "strip", z.ZodTypeAny>, {
+    email: string;
+    name: string;
+    picture: string | null;
+    username: string;
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    number?: string | undefined;
+    status?: "ACTIVE" | "INACTIVE" | undefined;
+    id?: string | undefined;
+    verificationToken?: string | undefined;
+    locale?: string | undefined;
+    emailVerified?: boolean | undefined;
+    twoFactorEnabled?: boolean | undefined;
+    provider?: "email" | "github" | "google" | undefined;
+    shortName?: string | undefined;
+    verificationExpires?: string | Date | undefined;
+    tempData?: any;
+    thumb?: string | undefined;
+    role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+}>;
+declare class UserDto extends UserDto_base {
+}
+declare const userWithSecretsSchema: z.ZodObject<{
+    id: z.ZodDefault<z.ZodString>;
+    name: z.ZodString;
+    picture: z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"">, z.ZodNull]>, z.ZodString]>;
+    username: z.ZodString;
+    email: z.ZodString;
+    locale: z.ZodDefault<z.ZodString>;
+    emailVerified: z.ZodDefault<z.ZodBoolean>;
+    twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
+    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+    shortName: z.ZodOptional<z.ZodString>;
+    status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
+    verificationToken: z.ZodOptional<z.ZodString>;
+    verificationExpires: z.ZodOptional<z.ZodUnion<[z.ZodDate, z.ZodDateString]>>;
+    tempData: z.ZodOptional<z.ZodAny>;
+    thumb: z.ZodOptional<z.ZodString>;
+    role: z.ZodDefault<z.ZodEnum<["USER", "ADMIN", "ACCOUNT_DEPARTMENT", "PUBLISHER_DEPARTMENT"]>>;
+    number: z.ZodOptional<z.ZodString>;
+    createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+} & {
+    secrets: z.ZodObject<{
+        id: z.ZodDefault<z.ZodString>;
+        password: z.ZodNullable<z.ZodString>;
+        lastSignedIn: z.ZodNullable<z.ZodDate>;
+        verificationToken: z.ZodNullable<z.ZodString>;
+        twoFactorSecret: z.ZodNullable<z.ZodString>;
+        twoFactorBackupCodes: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+        refreshToken: z.ZodNullable<z.ZodString>;
+        resetToken: z.ZodNullable<z.ZodString>;
+        userId: z.ZodDefault<z.ZodString>;
+    }, "strip", z.ZodTypeAny, {
+        id: string;
+        password: string | null;
+        lastSignedIn: Date | null;
+        verificationToken: string | null;
+        twoFactorSecret: string | null;
+        twoFactorBackupCodes: string[];
+        refreshToken: string | null;
+        resetToken: string | null;
+        userId: string;
+    }, {
+        password: string | null;
+        lastSignedIn: Date | null;
+        verificationToken: string | null;
+        twoFactorSecret: string | null;
+        refreshToken: string | null;
+        resetToken: string | null;
+        id?: string | undefined;
+        twoFactorBackupCodes?: string[] | undefined;
+        userId?: string | undefined;
+    }>;
+}, "strip", z.ZodTypeAny, {
+    email: string;
+    status: "ACTIVE" | "INACTIVE";
+    id: string;
+    name: string;
+    picture: string | null;
+    username: string;
+    locale: string;
+    emailVerified: boolean;
+    twoFactorEnabled: boolean;
+    provider: "email" | "github" | "google";
+    role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    secrets: {
+        id: string;
+        password: string | null;
+        lastSignedIn: Date | null;
+        verificationToken: string | null;
+        twoFactorSecret: string | null;
+        twoFactorBackupCodes: string[];
+        refreshToken: string | null;
+        resetToken: string | null;
+        userId: string;
+    };
+    number?: string | undefined;
+    verificationToken?: string | undefined;
+    shortName?: string | undefined;
+    verificationExpires?: string | Date | undefined;
+    tempData?: any;
+    thumb?: string | undefined;
+}, {
+    email: string;
+    name: string;
+    picture: string | null;
+    username: string;
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    secrets: {
+        password: string | null;
+        lastSignedIn: Date | null;
+        verificationToken: string | null;
+        twoFactorSecret: string | null;
+        refreshToken: string | null;
+        resetToken: string | null;
+        id?: string | undefined;
+        twoFactorBackupCodes?: string[] | undefined;
+        userId?: string | undefined;
+    };
+    number?: string | undefined;
+    status?: "ACTIVE" | "INACTIVE" | undefined;
+    id?: string | undefined;
+    verificationToken?: string | undefined;
+    locale?: string | undefined;
+    emailVerified?: boolean | undefined;
+    twoFactorEnabled?: boolean | undefined;
+    provider?: "email" | "github" | "google" | undefined;
+    shortName?: string | undefined;
+    verificationExpires?: string | Date | undefined;
+    tempData?: any;
+    thumb?: string | undefined;
+    role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+}>;
+declare const UserWithSecrets_base: nestjs_zod_dto.ZodDto<{
+    email: string;
+    status: "ACTIVE" | "INACTIVE";
+    id: string;
+    name: string;
+    picture: string | null;
+    username: string;
+    locale: string;
+    emailVerified: boolean;
+    twoFactorEnabled: boolean;
+    provider: "email" | "github" | "google";
+    role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    secrets: {
+        id: string;
+        password: string | null;
+        lastSignedIn: Date | null;
+        verificationToken: string | null;
+        twoFactorSecret: string | null;
+        twoFactorBackupCodes: string[];
+        refreshToken: string | null;
+        resetToken: string | null;
+        userId: string;
+    };
+    number?: string | undefined;
+    verificationToken?: string | undefined;
+    shortName?: string | undefined;
+    verificationExpires?: string | Date | undefined;
+    tempData?: any;
+    thumb?: string | undefined;
+}, z.ZodObjectDef<{
+    id: z.ZodDefault<z.ZodString>;
+    name: z.ZodString;
+    picture: z.ZodUnion<[z.ZodUnion<[z.ZodLiteral<"">, z.ZodNull]>, z.ZodString]>;
+    username: z.ZodString;
+    email: z.ZodString;
+    locale: z.ZodDefault<z.ZodString>;
+    emailVerified: z.ZodDefault<z.ZodBoolean>;
+    twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
+    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+    shortName: z.ZodOptional<z.ZodString>;
+    status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
+    verificationToken: z.ZodOptional<z.ZodString>;
+    verificationExpires: z.ZodOptional<z.ZodUnion<[z.ZodDate, z.ZodDateString]>>;
+    tempData: z.ZodOptional<z.ZodAny>;
+    thumb: z.ZodOptional<z.ZodString>;
+    role: z.ZodDefault<z.ZodEnum<["USER", "ADMIN", "ACCOUNT_DEPARTMENT", "PUBLISHER_DEPARTMENT"]>>;
+    number: z.ZodOptional<z.ZodString>;
+    createdAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+    updatedAt: z.ZodUnion<[z.ZodDate, z.ZodDateString]>;
+} & {
+    secrets: z.ZodObject<{
+        id: z.ZodDefault<z.ZodString>;
+        password: z.ZodNullable<z.ZodString>;
+        lastSignedIn: z.ZodNullable<z.ZodDate>;
+        verificationToken: z.ZodNullable<z.ZodString>;
+        twoFactorSecret: z.ZodNullable<z.ZodString>;
+        twoFactorBackupCodes: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+        refreshToken: z.ZodNullable<z.ZodString>;
+        resetToken: z.ZodNullable<z.ZodString>;
+        userId: z.ZodDefault<z.ZodString>;
+    }, "strip", z.ZodTypeAny, {
+        id: string;
+        password: string | null;
+        lastSignedIn: Date | null;
+        verificationToken: string | null;
+        twoFactorSecret: string | null;
+        twoFactorBackupCodes: string[];
+        refreshToken: string | null;
+        resetToken: string | null;
+        userId: string;
+    }, {
+        password: string | null;
+        lastSignedIn: Date | null;
+        verificationToken: string | null;
+        twoFactorSecret: string | null;
+        refreshToken: string | null;
+        resetToken: string | null;
+        id?: string | undefined;
+        twoFactorBackupCodes?: string[] | undefined;
+        userId?: string | undefined;
+    }>;
+}, "strip", z.ZodTypeAny>, {
+    email: string;
+    name: string;
+    picture: string | null;
+    username: string;
+    createdAt: string | Date;
+    updatedAt: string | Date;
+    secrets: {
+        password: string | null;
+        lastSignedIn: Date | null;
+        verificationToken: string | null;
+        twoFactorSecret: string | null;
+        refreshToken: string | null;
+        resetToken: string | null;
+        id?: string | undefined;
+        twoFactorBackupCodes?: string[] | undefined;
+        userId?: string | undefined;
+    };
+    number?: string | undefined;
+    status?: "ACTIVE" | "INACTIVE" | undefined;
+    id?: string | undefined;
+    verificationToken?: string | undefined;
+    locale?: string | undefined;
+    emailVerified?: boolean | undefined;
+    twoFactorEnabled?: boolean | undefined;
+    provider?: "email" | "github" | "google" | undefined;
+    shortName?: string | undefined;
+    verificationExpires?: string | Date | undefined;
+    tempData?: any;
+    thumb?: string | undefined;
+    role?: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT" | undefined;
+}>;
+declare class UserWithSecrets extends UserWithSecrets_base {
+}
+
+export { AuthProvidersDto, AuthResponseDto, BackupCodesDto, ContactFormDto, ContributorDto, CreateBlogDto, CreateCoverLetterDto, CreateJobMatchingDto, CreateResumeAnalysisDto, CreateResumeDto, CreateResumeGuidanceDto, CreateTemplateDto, DeleteResumeDto, FeatureDto, ForgotPasswordDto, GenerateCoverLetterDto, ImportResumeDto, JobMatchingDto, LoginDto, MessageDto, ResetPasswordDto as NewResetPasswordDto, RegisterDto, ResetPasswordDto$1 as ResetPasswordDto, ResumeAnalysisDto, ResumeDto, ResumeGuidanceDto, SignupDto, StatisticsDto, SubscribeNewsletterDto, TemplateDto, TwoFactorBackupDto, TwoFactorDto, UpdateBlogDto, UpdateCoverLetterDto, UpdateJobMatchingDto, UpdateNoteDto, UpdateNotesDto, UpdatePasswordDto, UpdateResumeDto, UpdateTemplateDto, UpdateTrackingSettingsDto, UpdateUserDto, UrlDto, UserDto, UserWithSecrets, VerifyOtpDto, authResponseSchema, backupCodesSchema, contactFormSchema, contributorSchema, createBlogSchema, createCoverLetterSchema, createJobMatchingSchema, createResumeAnalysisSchema, createResumeGuidanceSchema, createResumeSchema, createTemplateSchema, deleteResumeSchema, featureSchema, forgotPasswordSchema, generateCoverLetterSchema, importResumeSchema, jobMatchingSchema, loginSchema, messageSchema, registerSchema, resetPasswordSchema, resumeAnalysisSchema, resumeGuidanceSchema, resumeSchema, secretsSchema, signupSchema, statisticsSchema, subscribeNewsletterSchema, templateSchema, twoFactorBackupSchema, twoFactorSchema, updateBlogSchema, updateCoverLetterSchema, updateJobMatchingSchema, updateNoteSchema, updateNotesSchema, updatePasswordSchema, updateResumeSchema, updateTemplateSchema, updateTrackingSettingsSchema, updateUserSchema, urlSchema, userSchema, userWithSecretsSchema, usernameSchema, verifyOtpSchema };

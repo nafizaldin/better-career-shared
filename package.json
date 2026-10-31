@@ -1,0 +1,100 @@
+{
+  "name": "@better-career/shared",
+  "version": "1.0.0",
+  "description": "Shared DTOs, Zod schemas and utilities for Better Career (backend, web, artboard)",
+  "license": "UNLICENSED",
+  "repository": "github:nafizaldin/better-career-shared",
+  "packageManager": "pnpm@10.28.2",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    "./dto": {
+      "import": {
+        "types": "./dist/dto/index.d.mts",
+        "default": "./dist/dto/index.mjs"
+      },
+      "require": {
+        "types": "./dist/dto/index.d.ts",
+        "default": "./dist/dto/index.js"
+      }
+    },
+    "./schema": {
+      "import": {
+        "types": "./dist/schema/index.d.mts",
+        "default": "./dist/schema/index.mjs"
+      },
+      "require": {
+        "types": "./dist/schema/index.d.ts",
+        "default": "./dist/schema/index.js"
+      }
+    },
+    "./utils": {
+      "import": {
+        "types": "./dist/utils/index.d.mts",
+        "default": "./dist/utils/index.mjs"
+      },
+      "require": {
+        "types": "./dist/utils/index.d.ts",
+        "default": "./dist/utils/index.js"
+      }
+    },
+    "./sanitize": {
+      "import": {
+        "types": "./dist/sanitize/index.d.mts",
+        "default": "./dist/sanitize/index.mjs"
+      },
+      "require": {
+        "types": "./dist/sanitize/index.d.ts",
+        "default": "./dist/sanitize/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "typesVersions": {
+    "*": {
+      "dto": [
+        "dist/dto/index.d.ts"
+      ],
+      "schema": [
+        "dist/schema/index.d.ts"
+      ],
+      "utils": [
+        "dist/utils/index.d.ts"
+      ],
+      "sanitize": [
+        "dist/sanitize/index.d.ts"
+      ]
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && tsup",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "@paralleldrive/cuid2": "^2.2.2",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.11",
+    "papaparse": "^5.4.1",
+    "sanitize-html": "^2.14.0",
+    "tailwind-merge": "^2.3.0",
+    "unique-names-generator": "^4.7.1"
+  },
+  "peerDependencies": {
+    "zod": "^3.23.8",
+    "nestjs-zod": "^3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "nestjs-zod": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@types/papaparse": "^5.3.15",
+    "@types/sanitize-html": "^2.13.0",
+    "nestjs-zod": "^3.0.0",
+    "tsup": "^8.5.1",
+    "typescript": "~5.8.3",
+    "zod": "^3.23.8"
+  }
+}
