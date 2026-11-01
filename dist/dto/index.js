@@ -233,6 +233,17 @@ var defaultLayout = [
     ["skills", "interests", "certifications", "awards", "publications", "languages"]
   ]
 ];
+var roles = (value) => ({
+  body: value(),
+  name: value(),
+  primaryHeading: value(),
+  secondaryHeading: value(),
+  sectionTitle: value(),
+  minor: value()
+});
+var weight = () => import_zod6.z.number().int().min(300).max(800).default(400);
+var scale = () => import_zod6.z.number().min(0.75).max(2).default(1);
+var transform = () => import_zod6.z.enum(["none", "uppercase", "capitalize"]).default("none");
 var metadataSchema = import_zod6.z.object({
   template: import_zod6.z.string().default("onyx"),
   layout: import_zod6.z.array(import_zod6.z.array(import_zod6.z.array(import_zod6.z.string()))).default(defaultLayout),
@@ -240,66 +251,89 @@ var metadataSchema = import_zod6.z.object({
   css: import_zod6.z.object({
     value: import_zod6.z.string().default(".section {\n	outline: 1px solid #000;\n	outline-offset: 4px;\n}"),
     visible: import_zod6.z.boolean().default(false)
-  }),
+  }).default({}),
   page: import_zod6.z.object({
+    /** Top/bottom margin in mm (also the side margins unless marginLeft/Right are set). */
     margin: import_zod6.z.number().default(18),
-    format: import_zod6.z.enum(["a4", "letter"]).default("a4"),
+    /** Side margins in mm. */
+    marginLeft: import_zod6.z.number().min(0).max(50).default(18),
+    marginRight: import_zod6.z.number().min(0).max(50).default(18),
+    format: import_zod6.z.enum(["a4", "letter", "legal"]).default("a4"),
     options: import_zod6.z.object({
       breakLine: import_zod6.z.boolean().default(true),
       pageNumbers: import_zod6.z.boolean().default(true)
-    })
-  }),
+    }).default({})
+  }).default({}),
   theme: import_zod6.z.object({
     background: import_zod6.z.string().default("#ffffff"),
     text: import_zod6.z.string().default("#000000"),
+    /** Accent colour (Design → Presentation). */
     primary: import_zod6.z.string().default("#dc2626")
-  }),
+  }).default({}),
   typography: import_zod6.z.object({
     font: import_zod6.z.object({
+      /** CSS font-family name the artboard can load (Google Fonts or bundled). */
       family: import_zod6.z.string().default("IBM Plex Serif"),
       subset: import_zod6.z.string().default("latin"),
       variants: import_zod6.z.array(import_zod6.z.string()).default(["regular"]),
+      /** Base size in px. */
       size: import_zod6.z.number().default(14)
-    }),
-    lineHeight: import_zod6.z.number().default(1.5),
+    }).default({}),
+    /** Line-height multiplier for paragraphs. */
+    lineHeight: import_zod6.z.number().min(1).max(2.5).default(1.5),
+    /** Line-height multiplier for list items. */
+    listLineHeight: import_zod6.z.number().min(1).max(2.5).default(1.4),
     hideIcons: import_zod6.z.boolean().default(false),
     underlineLinks: import_zod6.z.boolean().default(true)
-  }),
+  }).default({}),
+  /** Design → Presentation */
+  presentation: import_zod6.z.object({
+    dateFormat: import_zod6.z.enum(["mm/yyyy", "mmm yyyy", "month yyyy", "yyyy"]).default("mmm yyyy"),
+    headerAlignment: import_zod6.z.enum(["left", "center", "right"]).default("left"),
+    dateAlignment: import_zod6.z.enum(["left", "right"]).default("right"),
+    locationAlignment: import_zod6.z.enum(["left", "right"]).default("right"),
+    skillsLayout: import_zod6.z.enum(["comma-separated", "comma-separated-list", "columns"]).default("comma-separated"),
+    skillsColumns: import_zod6.z.number().int().min(1).max(5).default(3)
+  }).default({}),
+  /** Design → Settings: what each entry leads with */
+  display: import_zod6.z.object({
+    experience: import_zod6.z.object({
+      primary: import_zod6.z.enum(["company", "position"]).default("company"),
+      location: import_zod6.z.enum(["company", "position", "none"]).default("company"),
+      dates: import_zod6.z.enum(["company", "position", "both"]).default("company")
+    }).default({}),
+    education: import_zod6.z.object({
+      primary: import_zod6.z.enum(["institution", "degree"]).default("institution")
+    }).default({})
+  }).default({}),
+  /** Design → Advanced */
+  advanced: import_zod6.z.object({
+    bullets: import_zod6.z.enum(["circle", "dash", "chevron", "arrow", "comma", "line"]).default("circle"),
+    /** CSS font-weight per role. */
+    fontWeight: import_zod6.z.object(roles(weight)).default({}),
+    /** Font-size multiplier per role, relative to typography.font.size. */
+    fontScale: import_zod6.z.object(roles(scale)).default({}),
+    textTransform: import_zod6.z.object(roles(transform)).default({}),
+    /** Spacing in px. */
+    spacing: import_zod6.z.object({
+      betweenSections: import_zod6.z.number().min(0).max(48).default(16),
+      titleToContent: import_zod6.z.number().min(0).max(48).default(8),
+      headingToSubheading: import_zod6.z.number().min(0).max(48).default(2),
+      betweenBlocks: import_zod6.z.number().min(0).max(48).default(12),
+      betweenListItems: import_zod6.z.number().min(0).max(48).default(4)
+    }).default({}),
+    /** Border widths in px (0 = none). */
+    borders: import_zod6.z.object({
+      aboveHeader: import_zod6.z.number().min(0).max(4).default(0),
+      belowHeader: import_zod6.z.number().min(0).max(4).default(0),
+      sectionTitles: import_zod6.z.number().min(0).max(4).default(0)
+    }).default({})
+  }).default({}),
   notes: import_zod6.z.string().default("")
 });
-var defaultMetadata = {
-  template: "onyx",
-  layout: defaultLayout,
-  css: {
-    value: ".section {\n	outline: 1px solid #000;\n	outline-offset: 4px;\n}",
-    visible: false
-  },
-  page: {
-    margin: 18,
-    format: "a4",
-    options: {
-      breakLine: true,
-      pageNumbers: true
-    }
-  },
-  theme: {
-    background: "#ffffff",
-    text: "#000000",
-    primary: "#dc2626"
-  },
-  typography: {
-    font: {
-      family: "IBM Plex Serif",
-      subset: "latin",
-      variants: ["regular", "italic", "600"],
-      size: 14
-    },
-    lineHeight: 1.5,
-    hideIcons: false,
-    underlineLinks: true
-  },
-  notes: ""
-};
+var defaultMetadata = metadataSchema.parse({
+  typography: { font: { variants: ["regular", "italic", "600"] } }
+});
 
 // src/schema/sections/index.ts
 var import_zod20 = require("zod");
@@ -369,6 +403,8 @@ var educationSchema = itemSchema.extend({
   studyType: import_zod10.z.string(),
   area: import_zod10.z.string(),
   score: import_zod10.z.string(),
+  /** Added in v1.2.0; older items get "" */
+  location: import_zod10.z.string().default(""),
   date: import_zod10.z.string(),
   summary: import_zod10.z.string(),
   url: urlSchema
@@ -380,6 +416,7 @@ var defaultEducation = {
   studyType: "",
   area: "",
   score: "",
+  location: "",
   date: "",
   summary: "",
   url: defaultUrl
@@ -637,6 +674,335 @@ var defaultSections = {
   custom: {}
 };
 
+// src/schema/sample.ts
+var sampleResume = {
+  basics: {
+    name: "John Doe",
+    headline: "Creative and Innovative Web Developer",
+    email: "john.doe@gmail.com",
+    phone: "(555) 123-4567",
+    location: "Pleasantville, CA 94588",
+    url: {
+      label: "",
+      href: "https://johndoe.me/"
+    },
+    customFields: [],
+    picture: {
+      url: "https://i.imgur.com/HgwyOuJ.jpg",
+      size: 120,
+      aspectRatio: 1,
+      borderRadius: 0,
+      effects: {
+        hidden: false,
+        border: false,
+        grayscale: false
+      }
+    }
+  },
+  sections: {
+    summary: {
+      name: "Summary",
+      columns: 1,
+      separateLinks: true,
+      visible: true,
+      id: "summary",
+      layoutSystem: "grid",
+      layoutSetting: { visibleType: "default" },
+      content: "<p>Innovative Web Developer with 5 years of experience in building impactful and user-friendly websites and applications. Specializes in <strong>front-end technologies</strong> and passionate about modern web standards and cutting-edge development techniques. Proven track record of leading successful projects from concept to deployment.</p>"
+    },
+    awards: {
+      name: "Awards",
+      columns: 1,
+      separateLinks: true,
+      visible: true,
+      id: "awards",
+      layoutSystem: "grid",
+      layoutSetting: { visibleType: "default" },
+      items: []
+    },
+    certifications: {
+      name: "Certifications",
+      columns: 1,
+      separateLinks: true,
+      visible: true,
+      id: "certifications",
+      layoutSystem: "grid",
+      layoutSetting: { visibleType: "default" },
+      items: [
+        {
+          id: "spdhh9rrqi1gvj0yqnbqunlo",
+          visible: true,
+          name: "Full-Stack Web Development",
+          issuer: "CodeAcademy",
+          date: "2020",
+          summary: "",
+          url: {
+            label: "",
+            href: ""
+          }
+        },
+        {
+          id: "n838rddyqv47zexn6cxauwqp",
+          visible: true,
+          name: "AWS Certified Developer",
+          issuer: "Amazon Web Services",
+          date: "2019",
+          summary: "",
+          url: {
+            label: "",
+            href: ""
+          }
+        }
+      ]
+    },
+    education: {
+      name: "Education",
+      columns: 1,
+      separateLinks: true,
+      visible: true,
+      id: "education",
+      layoutSystem: "grid",
+      layoutSetting: { visibleType: "default" },
+      items: [
+        {
+          id: "yo3p200zo45c6cdqc6a2vtt3",
+          visible: true,
+          institution: "University of California",
+          studyType: "Bachelor's in Computer Science",
+          area: "Berkeley, CA",
+          score: "",
+          location: "",
+          date: "August 2012 to May 2016",
+          summary: "",
+          url: {
+            label: "",
+            href: ""
+          }
+        }
+      ]
+    },
+    experience: {
+      name: "Experience",
+      columns: 1,
+      separateLinks: true,
+      visible: true,
+      id: "experience",
+      layoutSystem: "grid",
+      layoutSetting: { visibleType: "default" },
+      items: [
+        {
+          id: "lhw25d7gf32wgdfpsktf6e0x",
+          visible: true,
+          company: "Creative Solutions Inc.",
+          position: "Senior Web Developer",
+          location: "San Francisco, CA",
+          date: "January 2019 to Present",
+          summary: "<ul><li><p>Spearheaded the redesign of the main product website, resulting in a 40% increase in user engagement.</p></li><li><p>Developed and implemented a new responsive framework, improving cross-device compatibility.</p></li><li><p>Mentored a team of four junior developers, fostering a culture of technical excellence.</p></li></ul>",
+          url: {
+            label: "",
+            href: "https://creativesolutions.inc/"
+          }
+        },
+        {
+          id: "r6543lil53ntrxmvel53gbtm",
+          visible: true,
+          company: "TechAdvancers",
+          position: "Web Developer",
+          location: "San Jose, CA",
+          date: "June 2016 to December 2018",
+          summary: "<ul><li><p>Collaborated in a team of 10 to develop high-quality web applications using React.js and Node.js.</p></li><li><p>Managed the integration of third-party services such as Stripe for payments and Twilio for SMS services.</p></li><li><p>Optimized application performance, achieving a 30% reduction in load times.</p></li></ul>",
+          url: {
+            label: "",
+            href: "https://techadvancers.com/"
+          }
+        }
+      ]
+    },
+    volunteer: {
+      name: "Volunteering",
+      columns: 1,
+      separateLinks: true,
+      visible: true,
+      id: "volunteer",
+      layoutSystem: "grid",
+      layoutSetting: { visibleType: "default" },
+      items: []
+    },
+    interests: {
+      name: "Interests",
+      columns: 1,
+      separateLinks: true,
+      visible: true,
+      id: "interests",
+      layoutSystem: "grid",
+      layoutSetting: { visibleType: "default" },
+      items: []
+    },
+    languages: {
+      name: "Languages",
+      columns: 1,
+      separateLinks: true,
+      visible: true,
+      id: "languages",
+      layoutSystem: "grid",
+      layoutSetting: { visibleType: "default" },
+      items: []
+    },
+    profiles: {
+      name: "Profiles",
+      columns: 1,
+      separateLinks: true,
+      visible: true,
+      id: "profiles",
+      layoutSystem: "grid",
+      layoutSetting: { visibleType: "default" },
+      items: [
+        {
+          id: "cnbk5f0aeqvhx69ebk7hktwd",
+          visible: true,
+          network: "LinkedIn",
+          username: "johndoe",
+          icon: "linkedin",
+          url: {
+            label: "",
+            href: "https://linkedin.com/in/johndoe"
+          }
+        },
+        {
+          id: "ukl0uecvzkgm27mlye0wazlb",
+          visible: true,
+          network: "GitHub",
+          username: "johndoe",
+          icon: "github",
+          url: {
+            label: "",
+            href: "https://github.com/johndoe"
+          }
+        }
+      ]
+    },
+    projects: {
+      name: "Projects",
+      columns: 1,
+      separateLinks: true,
+      visible: true,
+      id: "projects",
+      layoutSystem: "grid",
+      layoutSetting: { visibleType: "default" },
+      items: [
+        {
+          id: "yw843emozcth8s1ubi1ubvlf",
+          visible: true,
+          name: "E-Commerce Platform",
+          description: "Project Lead",
+          date: "",
+          summary: "<p>Led the development of a full-stack e-commerce platform, improving sales conversion by 25%.</p>",
+          keywords: [],
+          url: {
+            label: "",
+            href: ""
+          }
+        },
+        {
+          id: "ncxgdjjky54gh59iz2t1xi1v",
+          visible: true,
+          name: "Interactive Dashboard",
+          description: "Frontend Developer",
+          date: "",
+          summary: "<p>Created an interactive analytics dashboard for a SaaS application, enhancing data visualization for clients.</p>",
+          keywords: [],
+          url: {
+            label: "",
+            href: ""
+          }
+        }
+      ]
+    },
+    publications: {
+      name: "Publications",
+      columns: 1,
+      separateLinks: true,
+      visible: true,
+      id: "publications",
+      layoutSystem: "grid",
+      layoutSetting: { visibleType: "default" },
+      items: []
+    },
+    references: {
+      name: "References",
+      columns: 1,
+      separateLinks: true,
+      visible: false,
+      id: "references",
+      layoutSystem: "grid",
+      layoutSetting: { visibleType: "default" },
+      items: [
+        {
+          id: "f2sv5z0cce6ztjl87yuk8fak",
+          visible: true,
+          name: "Available upon request",
+          description: "",
+          summary: "",
+          url: {
+            label: "",
+            href: ""
+          }
+        }
+      ]
+    },
+    skills: {
+      name: "Skills",
+      columns: 1,
+      separateLinks: true,
+      visible: true,
+      id: "skills",
+      layoutSystem: "grid",
+      layoutSetting: { visibleType: "default" },
+      items: [
+        {
+          id: "hn0keriukh6c0ojktl9gsgjm",
+          visible: true,
+          name: "Web Technologies",
+          description: "Advanced",
+          level: 0,
+          keywords: ["HTML5", "JavaScript", "PHP", "Python"]
+        },
+        {
+          id: "r8c3y47vykausqrgmzwg5pur",
+          visible: true,
+          name: "Web Frameworks",
+          description: "Intermediate",
+          level: 0,
+          keywords: ["React.js", "Angular", "Vue.js", "Laravel", "Django"]
+        },
+        {
+          id: "b5l75aseexqv17quvqgh73fe",
+          visible: true,
+          name: "Tools",
+          description: "Intermediate",
+          level: 0,
+          keywords: ["Webpack", "Git", "Jenkins", "Docker", "JIRA"]
+        }
+      ]
+    },
+    custom: {}
+  },
+  // Defaults + overrides, so new metadata fields never need listing here
+  metadata: metadataSchema.parse({
+    template: "onyx",
+    layout: [
+      [
+        ["profiles", "summary", "experience", "education", "projects", "volunteer", "references"],
+        ["skills", "languages", "interests", "certifications", "awards"]
+      ]
+    ],
+    css: { value: "", visible: false },
+    page: { options: { pageNumbers: false } },
+    theme: { primary: "#000000" },
+    typography: { font: { family: "Inter", variants: ["regular", "italic", "600", "700"] } }
+  })
+};
+
 // src/schema/index.ts
 var resumeDataSchema = import_zod21.z.object({
   basics: basicsSchema,
@@ -697,6 +1063,7 @@ var minimalResumeData = {
           studyType: "Bachelor",
           area: "Computer Science",
           score: "",
+          location: "",
           date: "Nov 2025 - Present",
           summary: "Relevant coursework, honors, or achievements.",
           url: { label: "", href: "" }

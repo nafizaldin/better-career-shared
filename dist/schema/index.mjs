@@ -90,6 +90,17 @@ var defaultLayout = [
     ["skills", "interests", "certifications", "awards", "publications", "languages"]
   ]
 ];
+var roles = (value) => ({
+  body: value(),
+  name: value(),
+  primaryHeading: value(),
+  secondaryHeading: value(),
+  sectionTitle: value(),
+  minor: value()
+});
+var weight = () => z6.number().int().min(300).max(800).default(400);
+var scale = () => z6.number().min(0.75).max(2).default(1);
+var transform = () => z6.enum(["none", "uppercase", "capitalize"]).default("none");
 var metadataSchema = z6.object({
   template: z6.string().default("onyx"),
   layout: z6.array(z6.array(z6.array(z6.string()))).default(defaultLayout),
@@ -97,66 +108,89 @@ var metadataSchema = z6.object({
   css: z6.object({
     value: z6.string().default(".section {\n	outline: 1px solid #000;\n	outline-offset: 4px;\n}"),
     visible: z6.boolean().default(false)
-  }),
+  }).default({}),
   page: z6.object({
+    /** Top/bottom margin in mm (also the side margins unless marginLeft/Right are set). */
     margin: z6.number().default(18),
-    format: z6.enum(["a4", "letter"]).default("a4"),
+    /** Side margins in mm. */
+    marginLeft: z6.number().min(0).max(50).default(18),
+    marginRight: z6.number().min(0).max(50).default(18),
+    format: z6.enum(["a4", "letter", "legal"]).default("a4"),
     options: z6.object({
       breakLine: z6.boolean().default(true),
       pageNumbers: z6.boolean().default(true)
-    })
-  }),
+    }).default({})
+  }).default({}),
   theme: z6.object({
     background: z6.string().default("#ffffff"),
     text: z6.string().default("#000000"),
+    /** Accent colour (Design → Presentation). */
     primary: z6.string().default("#dc2626")
-  }),
+  }).default({}),
   typography: z6.object({
     font: z6.object({
+      /** CSS font-family name the artboard can load (Google Fonts or bundled). */
       family: z6.string().default("IBM Plex Serif"),
       subset: z6.string().default("latin"),
       variants: z6.array(z6.string()).default(["regular"]),
+      /** Base size in px. */
       size: z6.number().default(14)
-    }),
-    lineHeight: z6.number().default(1.5),
+    }).default({}),
+    /** Line-height multiplier for paragraphs. */
+    lineHeight: z6.number().min(1).max(2.5).default(1.5),
+    /** Line-height multiplier for list items. */
+    listLineHeight: z6.number().min(1).max(2.5).default(1.4),
     hideIcons: z6.boolean().default(false),
     underlineLinks: z6.boolean().default(true)
-  }),
+  }).default({}),
+  /** Design → Presentation */
+  presentation: z6.object({
+    dateFormat: z6.enum(["mm/yyyy", "mmm yyyy", "month yyyy", "yyyy"]).default("mmm yyyy"),
+    headerAlignment: z6.enum(["left", "center", "right"]).default("left"),
+    dateAlignment: z6.enum(["left", "right"]).default("right"),
+    locationAlignment: z6.enum(["left", "right"]).default("right"),
+    skillsLayout: z6.enum(["comma-separated", "comma-separated-list", "columns"]).default("comma-separated"),
+    skillsColumns: z6.number().int().min(1).max(5).default(3)
+  }).default({}),
+  /** Design → Settings: what each entry leads with */
+  display: z6.object({
+    experience: z6.object({
+      primary: z6.enum(["company", "position"]).default("company"),
+      location: z6.enum(["company", "position", "none"]).default("company"),
+      dates: z6.enum(["company", "position", "both"]).default("company")
+    }).default({}),
+    education: z6.object({
+      primary: z6.enum(["institution", "degree"]).default("institution")
+    }).default({})
+  }).default({}),
+  /** Design → Advanced */
+  advanced: z6.object({
+    bullets: z6.enum(["circle", "dash", "chevron", "arrow", "comma", "line"]).default("circle"),
+    /** CSS font-weight per role. */
+    fontWeight: z6.object(roles(weight)).default({}),
+    /** Font-size multiplier per role, relative to typography.font.size. */
+    fontScale: z6.object(roles(scale)).default({}),
+    textTransform: z6.object(roles(transform)).default({}),
+    /** Spacing in px. */
+    spacing: z6.object({
+      betweenSections: z6.number().min(0).max(48).default(16),
+      titleToContent: z6.number().min(0).max(48).default(8),
+      headingToSubheading: z6.number().min(0).max(48).default(2),
+      betweenBlocks: z6.number().min(0).max(48).default(12),
+      betweenListItems: z6.number().min(0).max(48).default(4)
+    }).default({}),
+    /** Border widths in px (0 = none). */
+    borders: z6.object({
+      aboveHeader: z6.number().min(0).max(4).default(0),
+      belowHeader: z6.number().min(0).max(4).default(0),
+      sectionTitles: z6.number().min(0).max(4).default(0)
+    }).default({})
+  }).default({}),
   notes: z6.string().default("")
 });
-var defaultMetadata = {
-  template: "onyx",
-  layout: defaultLayout,
-  css: {
-    value: ".section {\n	outline: 1px solid #000;\n	outline-offset: 4px;\n}",
-    visible: false
-  },
-  page: {
-    margin: 18,
-    format: "a4",
-    options: {
-      breakLine: true,
-      pageNumbers: true
-    }
-  },
-  theme: {
-    background: "#ffffff",
-    text: "#000000",
-    primary: "#dc2626"
-  },
-  typography: {
-    font: {
-      family: "IBM Plex Serif",
-      subset: "latin",
-      variants: ["regular", "italic", "600"],
-      size: 14
-    },
-    lineHeight: 1.5,
-    hideIcons: false,
-    underlineLinks: true
-  },
-  notes: ""
-};
+var defaultMetadata = metadataSchema.parse({
+  typography: { font: { variants: ["regular", "italic", "600"] } }
+});
 
 // src/schema/sections/index.ts
 import { z as z20 } from "zod";
@@ -226,6 +260,8 @@ var educationSchema = itemSchema.extend({
   studyType: z10.string(),
   area: z10.string(),
   score: z10.string(),
+  /** Added in v1.2.0; older items get "" */
+  location: z10.string().default(""),
   date: z10.string(),
   summary: z10.string(),
   url: urlSchema
@@ -237,6 +273,7 @@ var defaultEducation = {
   studyType: "",
   area: "",
   score: "",
+  location: "",
   date: "",
   summary: "",
   url: defaultUrl
@@ -591,6 +628,7 @@ var sampleResume = {
           studyType: "Bachelor's in Computer Science",
           area: "Berkeley, CA",
           score: "",
+          location: "",
           date: "August 2012 to May 2016",
           summary: "",
           url: {
@@ -806,7 +844,8 @@ var sampleResume = {
     },
     custom: {}
   },
-  metadata: {
+  // Defaults + overrides, so new metadata fields never need listing here
+  metadata: metadataSchema.parse({
     template: "onyx",
     layout: [
       [
@@ -814,36 +853,11 @@ var sampleResume = {
         ["skills", "languages", "interests", "certifications", "awards"]
       ]
     ],
-    css: {
-      value: "",
-      visible: false
-    },
-    page: {
-      margin: 18,
-      format: "a4",
-      options: {
-        breakLine: true,
-        pageNumbers: false
-      }
-    },
-    theme: {
-      background: "#ffffff",
-      text: "#000000",
-      primary: "#000000"
-    },
-    typography: {
-      font: {
-        family: "Inter",
-        subset: "latin",
-        variants: ["regular", "italic", "600", "700"],
-        size: 14
-      },
-      lineHeight: 1.5,
-      hideIcons: false,
-      underlineLinks: true
-    },
-    notes: ""
-  }
+    css: { value: "", visible: false },
+    page: { options: { pageNumbers: false } },
+    theme: { primary: "#000000" },
+    typography: { font: { family: "Inter", variants: ["regular", "italic", "600", "700"] } }
+  })
 };
 
 // src/schema/index.ts
@@ -906,6 +920,7 @@ var minimalResumeData = {
           studyType: "Bachelor",
           area: "Computer Science",
           score: "",
+          location: "",
           date: "Nov 2025 - Present",
           summary: "Relevant coursework, honors, or achievements.",
           url: { label: "", href: "" }

@@ -152,7 +152,7 @@ declare const defaultLayout: string[][][];
 declare const metadataSchema: z.ZodObject<{
     template: z.ZodDefault<z.ZodString>;
     layout: z.ZodDefault<z.ZodArray<z.ZodArray<z.ZodArray<z.ZodString, "many">, "many">, "many">>;
-    css: z.ZodObject<{
+    css: z.ZodDefault<z.ZodObject<{
         value: z.ZodDefault<z.ZodString>;
         visible: z.ZodDefault<z.ZodBoolean>;
     }, "strip", z.ZodTypeAny, {
@@ -161,11 +161,15 @@ declare const metadataSchema: z.ZodObject<{
     }, {
         value?: string | undefined;
         visible?: boolean | undefined;
-    }>;
-    page: z.ZodObject<{
+    }>>;
+    page: z.ZodDefault<z.ZodObject<{
+        /** Top/bottom margin in mm (also the side margins unless marginLeft/Right are set). */
         margin: z.ZodDefault<z.ZodNumber>;
-        format: z.ZodDefault<z.ZodEnum<["a4", "letter"]>>;
-        options: z.ZodObject<{
+        /** Side margins in mm. */
+        marginLeft: z.ZodDefault<z.ZodNumber>;
+        marginRight: z.ZodDefault<z.ZodNumber>;
+        format: z.ZodDefault<z.ZodEnum<["a4", "letter", "legal"]>>;
+        options: z.ZodDefault<z.ZodObject<{
             breakLine: z.ZodDefault<z.ZodBoolean>;
             pageNumbers: z.ZodDefault<z.ZodBoolean>;
         }, "strip", z.ZodTypeAny, {
@@ -174,25 +178,30 @@ declare const metadataSchema: z.ZodObject<{
         }, {
             breakLine?: boolean | undefined;
             pageNumbers?: boolean | undefined;
-        }>;
+        }>>;
     }, "strip", z.ZodTypeAny, {
         options: {
             breakLine: boolean;
             pageNumbers: boolean;
         };
         margin: number;
-        format: "a4" | "letter";
+        marginLeft: number;
+        marginRight: number;
+        format: "a4" | "letter" | "legal";
     }, {
-        options: {
+        options?: {
             breakLine?: boolean | undefined;
             pageNumbers?: boolean | undefined;
-        };
+        } | undefined;
         margin?: number | undefined;
-        format?: "a4" | "letter" | undefined;
-    }>;
-    theme: z.ZodObject<{
+        marginLeft?: number | undefined;
+        marginRight?: number | undefined;
+        format?: "a4" | "letter" | "legal" | undefined;
+    }>>;
+    theme: z.ZodDefault<z.ZodObject<{
         background: z.ZodDefault<z.ZodString>;
         text: z.ZodDefault<z.ZodString>;
+        /** Accent colour (Design → Presentation). */
         primary: z.ZodDefault<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
         background: string;
@@ -202,12 +211,14 @@ declare const metadataSchema: z.ZodObject<{
         background?: string | undefined;
         text?: string | undefined;
         primary?: string | undefined;
-    }>;
-    typography: z.ZodObject<{
-        font: z.ZodObject<{
+    }>>;
+    typography: z.ZodDefault<z.ZodObject<{
+        font: z.ZodDefault<z.ZodObject<{
+            /** CSS font-family name the artboard can load (Google Fonts or bundled). */
             family: z.ZodDefault<z.ZodString>;
             subset: z.ZodDefault<z.ZodString>;
             variants: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
+            /** Base size in px. */
             size: z.ZodDefault<z.ZodNumber>;
         }, "strip", z.ZodTypeAny, {
             size: number;
@@ -219,8 +230,11 @@ declare const metadataSchema: z.ZodObject<{
             family?: string | undefined;
             subset?: string | undefined;
             variants?: string[] | undefined;
-        }>;
+        }>>;
+        /** Line-height multiplier for paragraphs. */
         lineHeight: z.ZodDefault<z.ZodNumber>;
+        /** Line-height multiplier for list items. */
+        listLineHeight: z.ZodDefault<z.ZodNumber>;
         hideIcons: z.ZodDefault<z.ZodBoolean>;
         underlineLinks: z.ZodDefault<z.ZodBoolean>;
     }, "strip", z.ZodTypeAny, {
@@ -231,19 +245,267 @@ declare const metadataSchema: z.ZodObject<{
             variants: string[];
         };
         lineHeight: number;
+        listLineHeight: number;
         hideIcons: boolean;
         underlineLinks: boolean;
     }, {
-        font: {
+        font?: {
             size?: number | undefined;
             family?: string | undefined;
             subset?: string | undefined;
             variants?: string[] | undefined;
-        };
+        } | undefined;
         lineHeight?: number | undefined;
+        listLineHeight?: number | undefined;
         hideIcons?: boolean | undefined;
         underlineLinks?: boolean | undefined;
-    }>;
+    }>>;
+    /** Design → Presentation */
+    presentation: z.ZodDefault<z.ZodObject<{
+        dateFormat: z.ZodDefault<z.ZodEnum<["mm/yyyy", "mmm yyyy", "month yyyy", "yyyy"]>>;
+        headerAlignment: z.ZodDefault<z.ZodEnum<["left", "center", "right"]>>;
+        dateAlignment: z.ZodDefault<z.ZodEnum<["left", "right"]>>;
+        locationAlignment: z.ZodDefault<z.ZodEnum<["left", "right"]>>;
+        skillsLayout: z.ZodDefault<z.ZodEnum<["comma-separated", "comma-separated-list", "columns"]>>;
+        skillsColumns: z.ZodDefault<z.ZodNumber>;
+    }, "strip", z.ZodTypeAny, {
+        dateFormat: "mm/yyyy" | "mmm yyyy" | "month yyyy" | "yyyy";
+        headerAlignment: "left" | "center" | "right";
+        dateAlignment: "left" | "right";
+        locationAlignment: "left" | "right";
+        skillsLayout: "comma-separated" | "comma-separated-list" | "columns";
+        skillsColumns: number;
+    }, {
+        dateFormat?: "mm/yyyy" | "mmm yyyy" | "month yyyy" | "yyyy" | undefined;
+        headerAlignment?: "left" | "center" | "right" | undefined;
+        dateAlignment?: "left" | "right" | undefined;
+        locationAlignment?: "left" | "right" | undefined;
+        skillsLayout?: "comma-separated" | "comma-separated-list" | "columns" | undefined;
+        skillsColumns?: number | undefined;
+    }>>;
+    /** Design → Settings: what each entry leads with */
+    display: z.ZodDefault<z.ZodObject<{
+        experience: z.ZodDefault<z.ZodObject<{
+            primary: z.ZodDefault<z.ZodEnum<["company", "position"]>>;
+            location: z.ZodDefault<z.ZodEnum<["company", "position", "none"]>>;
+            dates: z.ZodDefault<z.ZodEnum<["company", "position", "both"]>>;
+        }, "strip", z.ZodTypeAny, {
+            location: "company" | "position" | "none";
+            primary: "company" | "position";
+            dates: "company" | "position" | "both";
+        }, {
+            location?: "company" | "position" | "none" | undefined;
+            primary?: "company" | "position" | undefined;
+            dates?: "company" | "position" | "both" | undefined;
+        }>>;
+        education: z.ZodDefault<z.ZodObject<{
+            primary: z.ZodDefault<z.ZodEnum<["institution", "degree"]>>;
+        }, "strip", z.ZodTypeAny, {
+            primary: "institution" | "degree";
+        }, {
+            primary?: "institution" | "degree" | undefined;
+        }>>;
+    }, "strip", z.ZodTypeAny, {
+        experience: {
+            location: "company" | "position" | "none";
+            primary: "company" | "position";
+            dates: "company" | "position" | "both";
+        };
+        education: {
+            primary: "institution" | "degree";
+        };
+    }, {
+        experience?: {
+            location?: "company" | "position" | "none" | undefined;
+            primary?: "company" | "position" | undefined;
+            dates?: "company" | "position" | "both" | undefined;
+        } | undefined;
+        education?: {
+            primary?: "institution" | "degree" | undefined;
+        } | undefined;
+    }>>;
+    /** Design → Advanced */
+    advanced: z.ZodDefault<z.ZodObject<{
+        bullets: z.ZodDefault<z.ZodEnum<["circle", "dash", "chevron", "arrow", "comma", "line"]>>;
+        /** CSS font-weight per role. */
+        fontWeight: z.ZodDefault<z.ZodObject<{
+            body: z.ZodDefault<z.ZodNumber>;
+            name: z.ZodDefault<z.ZodNumber>;
+            primaryHeading: z.ZodDefault<z.ZodNumber>;
+            secondaryHeading: z.ZodDefault<z.ZodNumber>;
+            sectionTitle: z.ZodDefault<z.ZodNumber>;
+            minor: z.ZodDefault<z.ZodNumber>;
+        }, "strip", z.ZodTypeAny, {
+            name: number;
+            body: number;
+            primaryHeading: number;
+            secondaryHeading: number;
+            sectionTitle: number;
+            minor: number;
+        }, {
+            name?: number | undefined;
+            body?: number | undefined;
+            primaryHeading?: number | undefined;
+            secondaryHeading?: number | undefined;
+            sectionTitle?: number | undefined;
+            minor?: number | undefined;
+        }>>;
+        /** Font-size multiplier per role, relative to typography.font.size. */
+        fontScale: z.ZodDefault<z.ZodObject<{
+            body: z.ZodDefault<z.ZodNumber>;
+            name: z.ZodDefault<z.ZodNumber>;
+            primaryHeading: z.ZodDefault<z.ZodNumber>;
+            secondaryHeading: z.ZodDefault<z.ZodNumber>;
+            sectionTitle: z.ZodDefault<z.ZodNumber>;
+            minor: z.ZodDefault<z.ZodNumber>;
+        }, "strip", z.ZodTypeAny, {
+            name: number;
+            body: number;
+            primaryHeading: number;
+            secondaryHeading: number;
+            sectionTitle: number;
+            minor: number;
+        }, {
+            name?: number | undefined;
+            body?: number | undefined;
+            primaryHeading?: number | undefined;
+            secondaryHeading?: number | undefined;
+            sectionTitle?: number | undefined;
+            minor?: number | undefined;
+        }>>;
+        textTransform: z.ZodDefault<z.ZodObject<{
+            body: z.ZodDefault<z.ZodEnum<["none", "uppercase", "capitalize"]>>;
+            name: z.ZodDefault<z.ZodEnum<["none", "uppercase", "capitalize"]>>;
+            primaryHeading: z.ZodDefault<z.ZodEnum<["none", "uppercase", "capitalize"]>>;
+            secondaryHeading: z.ZodDefault<z.ZodEnum<["none", "uppercase", "capitalize"]>>;
+            sectionTitle: z.ZodDefault<z.ZodEnum<["none", "uppercase", "capitalize"]>>;
+            minor: z.ZodDefault<z.ZodEnum<["none", "uppercase", "capitalize"]>>;
+        }, "strip", z.ZodTypeAny, {
+            name: "none" | "uppercase" | "capitalize";
+            body: "none" | "uppercase" | "capitalize";
+            primaryHeading: "none" | "uppercase" | "capitalize";
+            secondaryHeading: "none" | "uppercase" | "capitalize";
+            sectionTitle: "none" | "uppercase" | "capitalize";
+            minor: "none" | "uppercase" | "capitalize";
+        }, {
+            name?: "none" | "uppercase" | "capitalize" | undefined;
+            body?: "none" | "uppercase" | "capitalize" | undefined;
+            primaryHeading?: "none" | "uppercase" | "capitalize" | undefined;
+            secondaryHeading?: "none" | "uppercase" | "capitalize" | undefined;
+            sectionTitle?: "none" | "uppercase" | "capitalize" | undefined;
+            minor?: "none" | "uppercase" | "capitalize" | undefined;
+        }>>;
+        /** Spacing in px. */
+        spacing: z.ZodDefault<z.ZodObject<{
+            betweenSections: z.ZodDefault<z.ZodNumber>;
+            titleToContent: z.ZodDefault<z.ZodNumber>;
+            headingToSubheading: z.ZodDefault<z.ZodNumber>;
+            betweenBlocks: z.ZodDefault<z.ZodNumber>;
+            betweenListItems: z.ZodDefault<z.ZodNumber>;
+        }, "strip", z.ZodTypeAny, {
+            betweenSections: number;
+            titleToContent: number;
+            headingToSubheading: number;
+            betweenBlocks: number;
+            betweenListItems: number;
+        }, {
+            betweenSections?: number | undefined;
+            titleToContent?: number | undefined;
+            headingToSubheading?: number | undefined;
+            betweenBlocks?: number | undefined;
+            betweenListItems?: number | undefined;
+        }>>;
+        /** Border widths in px (0 = none). */
+        borders: z.ZodDefault<z.ZodObject<{
+            aboveHeader: z.ZodDefault<z.ZodNumber>;
+            belowHeader: z.ZodDefault<z.ZodNumber>;
+            sectionTitles: z.ZodDefault<z.ZodNumber>;
+        }, "strip", z.ZodTypeAny, {
+            aboveHeader: number;
+            belowHeader: number;
+            sectionTitles: number;
+        }, {
+            aboveHeader?: number | undefined;
+            belowHeader?: number | undefined;
+            sectionTitles?: number | undefined;
+        }>>;
+    }, "strip", z.ZodTypeAny, {
+        bullets: "circle" | "dash" | "chevron" | "arrow" | "comma" | "line";
+        fontWeight: {
+            name: number;
+            body: number;
+            primaryHeading: number;
+            secondaryHeading: number;
+            sectionTitle: number;
+            minor: number;
+        };
+        fontScale: {
+            name: number;
+            body: number;
+            primaryHeading: number;
+            secondaryHeading: number;
+            sectionTitle: number;
+            minor: number;
+        };
+        textTransform: {
+            name: "none" | "uppercase" | "capitalize";
+            body: "none" | "uppercase" | "capitalize";
+            primaryHeading: "none" | "uppercase" | "capitalize";
+            secondaryHeading: "none" | "uppercase" | "capitalize";
+            sectionTitle: "none" | "uppercase" | "capitalize";
+            minor: "none" | "uppercase" | "capitalize";
+        };
+        spacing: {
+            betweenSections: number;
+            titleToContent: number;
+            headingToSubheading: number;
+            betweenBlocks: number;
+            betweenListItems: number;
+        };
+        borders: {
+            aboveHeader: number;
+            belowHeader: number;
+            sectionTitles: number;
+        };
+    }, {
+        bullets?: "circle" | "dash" | "chevron" | "arrow" | "comma" | "line" | undefined;
+        fontWeight?: {
+            name?: number | undefined;
+            body?: number | undefined;
+            primaryHeading?: number | undefined;
+            secondaryHeading?: number | undefined;
+            sectionTitle?: number | undefined;
+            minor?: number | undefined;
+        } | undefined;
+        fontScale?: {
+            name?: number | undefined;
+            body?: number | undefined;
+            primaryHeading?: number | undefined;
+            secondaryHeading?: number | undefined;
+            sectionTitle?: number | undefined;
+            minor?: number | undefined;
+        } | undefined;
+        textTransform?: {
+            name?: "none" | "uppercase" | "capitalize" | undefined;
+            body?: "none" | "uppercase" | "capitalize" | undefined;
+            primaryHeading?: "none" | "uppercase" | "capitalize" | undefined;
+            secondaryHeading?: "none" | "uppercase" | "capitalize" | undefined;
+            sectionTitle?: "none" | "uppercase" | "capitalize" | undefined;
+            minor?: "none" | "uppercase" | "capitalize" | undefined;
+        } | undefined;
+        spacing?: {
+            betweenSections?: number | undefined;
+            titleToContent?: number | undefined;
+            headingToSubheading?: number | undefined;
+            betweenBlocks?: number | undefined;
+            betweenListItems?: number | undefined;
+        } | undefined;
+        borders?: {
+            aboveHeader?: number | undefined;
+            belowHeader?: number | undefined;
+            sectionTitles?: number | undefined;
+        } | undefined;
+    }>>;
     notes: z.ZodDefault<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
     template: string;
@@ -258,7 +520,9 @@ declare const metadataSchema: z.ZodObject<{
             pageNumbers: boolean;
         };
         margin: number;
-        format: "a4" | "letter";
+        marginLeft: number;
+        marginRight: number;
+        format: "a4" | "letter" | "legal";
     };
     theme: {
         background: string;
@@ -273,41 +537,159 @@ declare const metadataSchema: z.ZodObject<{
             variants: string[];
         };
         lineHeight: number;
+        listLineHeight: number;
         hideIcons: boolean;
         underlineLinks: boolean;
     };
+    presentation: {
+        dateFormat: "mm/yyyy" | "mmm yyyy" | "month yyyy" | "yyyy";
+        headerAlignment: "left" | "center" | "right";
+        dateAlignment: "left" | "right";
+        locationAlignment: "left" | "right";
+        skillsLayout: "comma-separated" | "comma-separated-list" | "columns";
+        skillsColumns: number;
+    };
+    display: {
+        experience: {
+            location: "company" | "position" | "none";
+            primary: "company" | "position";
+            dates: "company" | "position" | "both";
+        };
+        education: {
+            primary: "institution" | "degree";
+        };
+    };
+    advanced: {
+        bullets: "circle" | "dash" | "chevron" | "arrow" | "comma" | "line";
+        fontWeight: {
+            name: number;
+            body: number;
+            primaryHeading: number;
+            secondaryHeading: number;
+            sectionTitle: number;
+            minor: number;
+        };
+        fontScale: {
+            name: number;
+            body: number;
+            primaryHeading: number;
+            secondaryHeading: number;
+            sectionTitle: number;
+            minor: number;
+        };
+        textTransform: {
+            name: "none" | "uppercase" | "capitalize";
+            body: "none" | "uppercase" | "capitalize";
+            primaryHeading: "none" | "uppercase" | "capitalize";
+            secondaryHeading: "none" | "uppercase" | "capitalize";
+            sectionTitle: "none" | "uppercase" | "capitalize";
+            minor: "none" | "uppercase" | "capitalize";
+        };
+        spacing: {
+            betweenSections: number;
+            titleToContent: number;
+            headingToSubheading: number;
+            betweenBlocks: number;
+            betweenListItems: number;
+        };
+        borders: {
+            aboveHeader: number;
+            belowHeader: number;
+            sectionTitles: number;
+        };
+    };
     notes: string;
 }, {
-    css: {
+    template?: string | undefined;
+    layout?: string[][][] | undefined;
+    css?: {
         value?: string | undefined;
         visible?: boolean | undefined;
-    };
-    page: {
-        options: {
+    } | undefined;
+    page?: {
+        options?: {
             breakLine?: boolean | undefined;
             pageNumbers?: boolean | undefined;
-        };
+        } | undefined;
         margin?: number | undefined;
-        format?: "a4" | "letter" | undefined;
-    };
-    theme: {
+        marginLeft?: number | undefined;
+        marginRight?: number | undefined;
+        format?: "a4" | "letter" | "legal" | undefined;
+    } | undefined;
+    theme?: {
         background?: string | undefined;
         text?: string | undefined;
         primary?: string | undefined;
-    };
-    typography: {
-        font: {
+    } | undefined;
+    typography?: {
+        font?: {
             size?: number | undefined;
             family?: string | undefined;
             subset?: string | undefined;
             variants?: string[] | undefined;
-        };
+        } | undefined;
         lineHeight?: number | undefined;
+        listLineHeight?: number | undefined;
         hideIcons?: boolean | undefined;
         underlineLinks?: boolean | undefined;
-    };
-    template?: string | undefined;
-    layout?: string[][][] | undefined;
+    } | undefined;
+    presentation?: {
+        dateFormat?: "mm/yyyy" | "mmm yyyy" | "month yyyy" | "yyyy" | undefined;
+        headerAlignment?: "left" | "center" | "right" | undefined;
+        dateAlignment?: "left" | "right" | undefined;
+        locationAlignment?: "left" | "right" | undefined;
+        skillsLayout?: "comma-separated" | "comma-separated-list" | "columns" | undefined;
+        skillsColumns?: number | undefined;
+    } | undefined;
+    display?: {
+        experience?: {
+            location?: "company" | "position" | "none" | undefined;
+            primary?: "company" | "position" | undefined;
+            dates?: "company" | "position" | "both" | undefined;
+        } | undefined;
+        education?: {
+            primary?: "institution" | "degree" | undefined;
+        } | undefined;
+    } | undefined;
+    advanced?: {
+        bullets?: "circle" | "dash" | "chevron" | "arrow" | "comma" | "line" | undefined;
+        fontWeight?: {
+            name?: number | undefined;
+            body?: number | undefined;
+            primaryHeading?: number | undefined;
+            secondaryHeading?: number | undefined;
+            sectionTitle?: number | undefined;
+            minor?: number | undefined;
+        } | undefined;
+        fontScale?: {
+            name?: number | undefined;
+            body?: number | undefined;
+            primaryHeading?: number | undefined;
+            secondaryHeading?: number | undefined;
+            sectionTitle?: number | undefined;
+            minor?: number | undefined;
+        } | undefined;
+        textTransform?: {
+            name?: "none" | "uppercase" | "capitalize" | undefined;
+            body?: "none" | "uppercase" | "capitalize" | undefined;
+            primaryHeading?: "none" | "uppercase" | "capitalize" | undefined;
+            secondaryHeading?: "none" | "uppercase" | "capitalize" | undefined;
+            sectionTitle?: "none" | "uppercase" | "capitalize" | undefined;
+            minor?: "none" | "uppercase" | "capitalize" | undefined;
+        } | undefined;
+        spacing?: {
+            betweenSections?: number | undefined;
+            titleToContent?: number | undefined;
+            headingToSubheading?: number | undefined;
+            betweenBlocks?: number | undefined;
+            betweenListItems?: number | undefined;
+        } | undefined;
+        borders?: {
+            aboveHeader?: number | undefined;
+            belowHeader?: number | undefined;
+            sectionTitles?: number | undefined;
+        } | undefined;
+    } | undefined;
     notes?: string | undefined;
 }>;
 type Metadata = z.infer<typeof metadataSchema>;
@@ -461,6 +843,8 @@ declare const educationSchema: z.ZodObject<{
     studyType: z.ZodString;
     area: z.ZodString;
     score: z.ZodString;
+    /** Added in v1.2.0; older items get "" */
+    location: z.ZodDefault<z.ZodString>;
     date: z.ZodString;
     summary: z.ZodString;
     url: z.ZodObject<{
@@ -477,6 +861,7 @@ declare const educationSchema: z.ZodObject<{
     date: string;
     id: string;
     visible: boolean;
+    location: string;
     url: {
         label: string;
         href: string;
@@ -499,6 +884,7 @@ declare const educationSchema: z.ZodObject<{
     area: string;
     score: string;
     id?: string | undefined;
+    location?: string | undefined;
 }>;
 type Education = z.infer<typeof educationSchema>;
 declare const defaultEducation: Education;
@@ -1247,6 +1633,7 @@ declare const sectionsSchema: z.ZodObject<{
             studyType: z.ZodString;
             area: z.ZodString;
             score: z.ZodString;
+            location: z.ZodDefault<z.ZodString>;
             date: z.ZodString;
             summary: z.ZodString;
             url: z.ZodObject<{
@@ -1263,6 +1650,7 @@ declare const sectionsSchema: z.ZodObject<{
             date: string;
             id: string;
             visible: boolean;
+            location: string;
             url: {
                 label: string;
                 href: string;
@@ -1285,6 +1673,7 @@ declare const sectionsSchema: z.ZodObject<{
             area: string;
             score: string;
             id?: string | undefined;
+            location?: string | undefined;
         }>, "many">;
     }, "strip", z.ZodTypeAny, {
         id: "education";
@@ -1300,6 +1689,7 @@ declare const sectionsSchema: z.ZodObject<{
             date: string;
             id: string;
             visible: boolean;
+            location: string;
             url: {
                 label: string;
                 href: string;
@@ -1326,6 +1716,7 @@ declare const sectionsSchema: z.ZodObject<{
             area: string;
             score: string;
             id?: string | undefined;
+            location?: string | undefined;
         }[];
         visible?: boolean | undefined;
         columns?: number | undefined;
@@ -2365,6 +2756,7 @@ declare const sectionsSchema: z.ZodObject<{
             date: string;
             id: string;
             visible: boolean;
+            location: string;
             url: {
                 label: string;
                 href: string;
@@ -2644,6 +3036,7 @@ declare const sectionsSchema: z.ZodObject<{
             area: string;
             score: string;
             id?: string | undefined;
+            location?: string | undefined;
         }[];
         visible?: boolean | undefined;
         columns?: number | undefined;
@@ -3303,6 +3696,7 @@ declare const resumeDataSchema: z.ZodObject<{
                 studyType: z.ZodString;
                 area: z.ZodString;
                 score: z.ZodString;
+                location: z.ZodDefault<z.ZodString>;
                 date: z.ZodString;
                 summary: z.ZodString;
                 url: z.ZodObject<{
@@ -3319,6 +3713,7 @@ declare const resumeDataSchema: z.ZodObject<{
                 date: string;
                 id: string;
                 visible: boolean;
+                location: string;
                 url: {
                     label: string;
                     href: string;
@@ -3341,6 +3736,7 @@ declare const resumeDataSchema: z.ZodObject<{
                 area: string;
                 score: string;
                 id?: string | undefined;
+                location?: string | undefined;
             }>, "many">;
         }, "strip", z.ZodTypeAny, {
             id: "education";
@@ -3356,6 +3752,7 @@ declare const resumeDataSchema: z.ZodObject<{
                 date: string;
                 id: string;
                 visible: boolean;
+                location: string;
                 url: {
                     label: string;
                     href: string;
@@ -3382,6 +3779,7 @@ declare const resumeDataSchema: z.ZodObject<{
                 area: string;
                 score: string;
                 id?: string | undefined;
+                location?: string | undefined;
             }[];
             visible?: boolean | undefined;
             columns?: number | undefined;
@@ -4421,6 +4819,7 @@ declare const resumeDataSchema: z.ZodObject<{
                 date: string;
                 id: string;
                 visible: boolean;
+                location: string;
                 url: {
                     label: string;
                     href: string;
@@ -4700,6 +5099,7 @@ declare const resumeDataSchema: z.ZodObject<{
                 area: string;
                 score: string;
                 id?: string | undefined;
+                location?: string | undefined;
             }[];
             visible?: boolean | undefined;
             columns?: number | undefined;
@@ -4931,7 +5331,7 @@ declare const resumeDataSchema: z.ZodObject<{
     metadata: z.ZodObject<{
         template: z.ZodDefault<z.ZodString>;
         layout: z.ZodDefault<z.ZodArray<z.ZodArray<z.ZodArray<z.ZodString, "many">, "many">, "many">>;
-        css: z.ZodObject<{
+        css: z.ZodDefault<z.ZodObject<{
             value: z.ZodDefault<z.ZodString>;
             visible: z.ZodDefault<z.ZodBoolean>;
         }, "strip", z.ZodTypeAny, {
@@ -4940,11 +5340,13 @@ declare const resumeDataSchema: z.ZodObject<{
         }, {
             value?: string | undefined;
             visible?: boolean | undefined;
-        }>;
-        page: z.ZodObject<{
+        }>>;
+        page: z.ZodDefault<z.ZodObject<{
             margin: z.ZodDefault<z.ZodNumber>;
-            format: z.ZodDefault<z.ZodEnum<["a4", "letter"]>>;
-            options: z.ZodObject<{
+            marginLeft: z.ZodDefault<z.ZodNumber>;
+            marginRight: z.ZodDefault<z.ZodNumber>;
+            format: z.ZodDefault<z.ZodEnum<["a4", "letter", "legal"]>>;
+            options: z.ZodDefault<z.ZodObject<{
                 breakLine: z.ZodDefault<z.ZodBoolean>;
                 pageNumbers: z.ZodDefault<z.ZodBoolean>;
             }, "strip", z.ZodTypeAny, {
@@ -4953,23 +5355,27 @@ declare const resumeDataSchema: z.ZodObject<{
             }, {
                 breakLine?: boolean | undefined;
                 pageNumbers?: boolean | undefined;
-            }>;
+            }>>;
         }, "strip", z.ZodTypeAny, {
             options: {
                 breakLine: boolean;
                 pageNumbers: boolean;
             };
             margin: number;
-            format: "a4" | "letter";
+            marginLeft: number;
+            marginRight: number;
+            format: "a4" | "letter" | "legal";
         }, {
-            options: {
+            options?: {
                 breakLine?: boolean | undefined;
                 pageNumbers?: boolean | undefined;
-            };
+            } | undefined;
             margin?: number | undefined;
-            format?: "a4" | "letter" | undefined;
-        }>;
-        theme: z.ZodObject<{
+            marginLeft?: number | undefined;
+            marginRight?: number | undefined;
+            format?: "a4" | "letter" | "legal" | undefined;
+        }>>;
+        theme: z.ZodDefault<z.ZodObject<{
             background: z.ZodDefault<z.ZodString>;
             text: z.ZodDefault<z.ZodString>;
             primary: z.ZodDefault<z.ZodString>;
@@ -4981,9 +5387,9 @@ declare const resumeDataSchema: z.ZodObject<{
             background?: string | undefined;
             text?: string | undefined;
             primary?: string | undefined;
-        }>;
-        typography: z.ZodObject<{
-            font: z.ZodObject<{
+        }>>;
+        typography: z.ZodDefault<z.ZodObject<{
+            font: z.ZodDefault<z.ZodObject<{
                 family: z.ZodDefault<z.ZodString>;
                 subset: z.ZodDefault<z.ZodString>;
                 variants: z.ZodDefault<z.ZodArray<z.ZodString, "many">>;
@@ -4998,8 +5404,9 @@ declare const resumeDataSchema: z.ZodObject<{
                 family?: string | undefined;
                 subset?: string | undefined;
                 variants?: string[] | undefined;
-            }>;
+            }>>;
             lineHeight: z.ZodDefault<z.ZodNumber>;
+            listLineHeight: z.ZodDefault<z.ZodNumber>;
             hideIcons: z.ZodDefault<z.ZodBoolean>;
             underlineLinks: z.ZodDefault<z.ZodBoolean>;
         }, "strip", z.ZodTypeAny, {
@@ -5010,19 +5417,260 @@ declare const resumeDataSchema: z.ZodObject<{
                 variants: string[];
             };
             lineHeight: number;
+            listLineHeight: number;
             hideIcons: boolean;
             underlineLinks: boolean;
         }, {
-            font: {
+            font?: {
                 size?: number | undefined;
                 family?: string | undefined;
                 subset?: string | undefined;
                 variants?: string[] | undefined;
-            };
+            } | undefined;
             lineHeight?: number | undefined;
+            listLineHeight?: number | undefined;
             hideIcons?: boolean | undefined;
             underlineLinks?: boolean | undefined;
-        }>;
+        }>>;
+        presentation: z.ZodDefault<z.ZodObject<{
+            dateFormat: z.ZodDefault<z.ZodEnum<["mm/yyyy", "mmm yyyy", "month yyyy", "yyyy"]>>;
+            headerAlignment: z.ZodDefault<z.ZodEnum<["left", "center", "right"]>>;
+            dateAlignment: z.ZodDefault<z.ZodEnum<["left", "right"]>>;
+            locationAlignment: z.ZodDefault<z.ZodEnum<["left", "right"]>>;
+            skillsLayout: z.ZodDefault<z.ZodEnum<["comma-separated", "comma-separated-list", "columns"]>>;
+            skillsColumns: z.ZodDefault<z.ZodNumber>;
+        }, "strip", z.ZodTypeAny, {
+            dateFormat: "mm/yyyy" | "mmm yyyy" | "month yyyy" | "yyyy";
+            headerAlignment: "left" | "center" | "right";
+            dateAlignment: "left" | "right";
+            locationAlignment: "left" | "right";
+            skillsLayout: "comma-separated" | "comma-separated-list" | "columns";
+            skillsColumns: number;
+        }, {
+            dateFormat?: "mm/yyyy" | "mmm yyyy" | "month yyyy" | "yyyy" | undefined;
+            headerAlignment?: "left" | "center" | "right" | undefined;
+            dateAlignment?: "left" | "right" | undefined;
+            locationAlignment?: "left" | "right" | undefined;
+            skillsLayout?: "comma-separated" | "comma-separated-list" | "columns" | undefined;
+            skillsColumns?: number | undefined;
+        }>>;
+        display: z.ZodDefault<z.ZodObject<{
+            experience: z.ZodDefault<z.ZodObject<{
+                primary: z.ZodDefault<z.ZodEnum<["company", "position"]>>;
+                location: z.ZodDefault<z.ZodEnum<["company", "position", "none"]>>;
+                dates: z.ZodDefault<z.ZodEnum<["company", "position", "both"]>>;
+            }, "strip", z.ZodTypeAny, {
+                location: "company" | "position" | "none";
+                primary: "company" | "position";
+                dates: "company" | "position" | "both";
+            }, {
+                location?: "company" | "position" | "none" | undefined;
+                primary?: "company" | "position" | undefined;
+                dates?: "company" | "position" | "both" | undefined;
+            }>>;
+            education: z.ZodDefault<z.ZodObject<{
+                primary: z.ZodDefault<z.ZodEnum<["institution", "degree"]>>;
+            }, "strip", z.ZodTypeAny, {
+                primary: "institution" | "degree";
+            }, {
+                primary?: "institution" | "degree" | undefined;
+            }>>;
+        }, "strip", z.ZodTypeAny, {
+            experience: {
+                location: "company" | "position" | "none";
+                primary: "company" | "position";
+                dates: "company" | "position" | "both";
+            };
+            education: {
+                primary: "institution" | "degree";
+            };
+        }, {
+            experience?: {
+                location?: "company" | "position" | "none" | undefined;
+                primary?: "company" | "position" | undefined;
+                dates?: "company" | "position" | "both" | undefined;
+            } | undefined;
+            education?: {
+                primary?: "institution" | "degree" | undefined;
+            } | undefined;
+        }>>;
+        advanced: z.ZodDefault<z.ZodObject<{
+            bullets: z.ZodDefault<z.ZodEnum<["circle", "dash", "chevron", "arrow", "comma", "line"]>>;
+            fontWeight: z.ZodDefault<z.ZodObject<{
+                body: z.ZodDefault<z.ZodNumber>;
+                name: z.ZodDefault<z.ZodNumber>;
+                primaryHeading: z.ZodDefault<z.ZodNumber>;
+                secondaryHeading: z.ZodDefault<z.ZodNumber>;
+                sectionTitle: z.ZodDefault<z.ZodNumber>;
+                minor: z.ZodDefault<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                name: number;
+                body: number;
+                primaryHeading: number;
+                secondaryHeading: number;
+                sectionTitle: number;
+                minor: number;
+            }, {
+                name?: number | undefined;
+                body?: number | undefined;
+                primaryHeading?: number | undefined;
+                secondaryHeading?: number | undefined;
+                sectionTitle?: number | undefined;
+                minor?: number | undefined;
+            }>>;
+            fontScale: z.ZodDefault<z.ZodObject<{
+                body: z.ZodDefault<z.ZodNumber>;
+                name: z.ZodDefault<z.ZodNumber>;
+                primaryHeading: z.ZodDefault<z.ZodNumber>;
+                secondaryHeading: z.ZodDefault<z.ZodNumber>;
+                sectionTitle: z.ZodDefault<z.ZodNumber>;
+                minor: z.ZodDefault<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                name: number;
+                body: number;
+                primaryHeading: number;
+                secondaryHeading: number;
+                sectionTitle: number;
+                minor: number;
+            }, {
+                name?: number | undefined;
+                body?: number | undefined;
+                primaryHeading?: number | undefined;
+                secondaryHeading?: number | undefined;
+                sectionTitle?: number | undefined;
+                minor?: number | undefined;
+            }>>;
+            textTransform: z.ZodDefault<z.ZodObject<{
+                body: z.ZodDefault<z.ZodEnum<["none", "uppercase", "capitalize"]>>;
+                name: z.ZodDefault<z.ZodEnum<["none", "uppercase", "capitalize"]>>;
+                primaryHeading: z.ZodDefault<z.ZodEnum<["none", "uppercase", "capitalize"]>>;
+                secondaryHeading: z.ZodDefault<z.ZodEnum<["none", "uppercase", "capitalize"]>>;
+                sectionTitle: z.ZodDefault<z.ZodEnum<["none", "uppercase", "capitalize"]>>;
+                minor: z.ZodDefault<z.ZodEnum<["none", "uppercase", "capitalize"]>>;
+            }, "strip", z.ZodTypeAny, {
+                name: "none" | "uppercase" | "capitalize";
+                body: "none" | "uppercase" | "capitalize";
+                primaryHeading: "none" | "uppercase" | "capitalize";
+                secondaryHeading: "none" | "uppercase" | "capitalize";
+                sectionTitle: "none" | "uppercase" | "capitalize";
+                minor: "none" | "uppercase" | "capitalize";
+            }, {
+                name?: "none" | "uppercase" | "capitalize" | undefined;
+                body?: "none" | "uppercase" | "capitalize" | undefined;
+                primaryHeading?: "none" | "uppercase" | "capitalize" | undefined;
+                secondaryHeading?: "none" | "uppercase" | "capitalize" | undefined;
+                sectionTitle?: "none" | "uppercase" | "capitalize" | undefined;
+                minor?: "none" | "uppercase" | "capitalize" | undefined;
+            }>>;
+            spacing: z.ZodDefault<z.ZodObject<{
+                betweenSections: z.ZodDefault<z.ZodNumber>;
+                titleToContent: z.ZodDefault<z.ZodNumber>;
+                headingToSubheading: z.ZodDefault<z.ZodNumber>;
+                betweenBlocks: z.ZodDefault<z.ZodNumber>;
+                betweenListItems: z.ZodDefault<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                betweenSections: number;
+                titleToContent: number;
+                headingToSubheading: number;
+                betweenBlocks: number;
+                betweenListItems: number;
+            }, {
+                betweenSections?: number | undefined;
+                titleToContent?: number | undefined;
+                headingToSubheading?: number | undefined;
+                betweenBlocks?: number | undefined;
+                betweenListItems?: number | undefined;
+            }>>;
+            borders: z.ZodDefault<z.ZodObject<{
+                aboveHeader: z.ZodDefault<z.ZodNumber>;
+                belowHeader: z.ZodDefault<z.ZodNumber>;
+                sectionTitles: z.ZodDefault<z.ZodNumber>;
+            }, "strip", z.ZodTypeAny, {
+                aboveHeader: number;
+                belowHeader: number;
+                sectionTitles: number;
+            }, {
+                aboveHeader?: number | undefined;
+                belowHeader?: number | undefined;
+                sectionTitles?: number | undefined;
+            }>>;
+        }, "strip", z.ZodTypeAny, {
+            bullets: "circle" | "dash" | "chevron" | "arrow" | "comma" | "line";
+            fontWeight: {
+                name: number;
+                body: number;
+                primaryHeading: number;
+                secondaryHeading: number;
+                sectionTitle: number;
+                minor: number;
+            };
+            fontScale: {
+                name: number;
+                body: number;
+                primaryHeading: number;
+                secondaryHeading: number;
+                sectionTitle: number;
+                minor: number;
+            };
+            textTransform: {
+                name: "none" | "uppercase" | "capitalize";
+                body: "none" | "uppercase" | "capitalize";
+                primaryHeading: "none" | "uppercase" | "capitalize";
+                secondaryHeading: "none" | "uppercase" | "capitalize";
+                sectionTitle: "none" | "uppercase" | "capitalize";
+                minor: "none" | "uppercase" | "capitalize";
+            };
+            spacing: {
+                betweenSections: number;
+                titleToContent: number;
+                headingToSubheading: number;
+                betweenBlocks: number;
+                betweenListItems: number;
+            };
+            borders: {
+                aboveHeader: number;
+                belowHeader: number;
+                sectionTitles: number;
+            };
+        }, {
+            bullets?: "circle" | "dash" | "chevron" | "arrow" | "comma" | "line" | undefined;
+            fontWeight?: {
+                name?: number | undefined;
+                body?: number | undefined;
+                primaryHeading?: number | undefined;
+                secondaryHeading?: number | undefined;
+                sectionTitle?: number | undefined;
+                minor?: number | undefined;
+            } | undefined;
+            fontScale?: {
+                name?: number | undefined;
+                body?: number | undefined;
+                primaryHeading?: number | undefined;
+                secondaryHeading?: number | undefined;
+                sectionTitle?: number | undefined;
+                minor?: number | undefined;
+            } | undefined;
+            textTransform?: {
+                name?: "none" | "uppercase" | "capitalize" | undefined;
+                body?: "none" | "uppercase" | "capitalize" | undefined;
+                primaryHeading?: "none" | "uppercase" | "capitalize" | undefined;
+                secondaryHeading?: "none" | "uppercase" | "capitalize" | undefined;
+                sectionTitle?: "none" | "uppercase" | "capitalize" | undefined;
+                minor?: "none" | "uppercase" | "capitalize" | undefined;
+            } | undefined;
+            spacing?: {
+                betweenSections?: number | undefined;
+                titleToContent?: number | undefined;
+                headingToSubheading?: number | undefined;
+                betweenBlocks?: number | undefined;
+                betweenListItems?: number | undefined;
+            } | undefined;
+            borders?: {
+                aboveHeader?: number | undefined;
+                belowHeader?: number | undefined;
+                sectionTitles?: number | undefined;
+            } | undefined;
+        }>>;
         notes: z.ZodDefault<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
         template: string;
@@ -5037,7 +5685,9 @@ declare const resumeDataSchema: z.ZodObject<{
                 pageNumbers: boolean;
             };
             margin: number;
-            format: "a4" | "letter";
+            marginLeft: number;
+            marginRight: number;
+            format: "a4" | "letter" | "legal";
         };
         theme: {
             background: string;
@@ -5052,41 +5702,159 @@ declare const resumeDataSchema: z.ZodObject<{
                 variants: string[];
             };
             lineHeight: number;
+            listLineHeight: number;
             hideIcons: boolean;
             underlineLinks: boolean;
         };
+        presentation: {
+            dateFormat: "mm/yyyy" | "mmm yyyy" | "month yyyy" | "yyyy";
+            headerAlignment: "left" | "center" | "right";
+            dateAlignment: "left" | "right";
+            locationAlignment: "left" | "right";
+            skillsLayout: "comma-separated" | "comma-separated-list" | "columns";
+            skillsColumns: number;
+        };
+        display: {
+            experience: {
+                location: "company" | "position" | "none";
+                primary: "company" | "position";
+                dates: "company" | "position" | "both";
+            };
+            education: {
+                primary: "institution" | "degree";
+            };
+        };
+        advanced: {
+            bullets: "circle" | "dash" | "chevron" | "arrow" | "comma" | "line";
+            fontWeight: {
+                name: number;
+                body: number;
+                primaryHeading: number;
+                secondaryHeading: number;
+                sectionTitle: number;
+                minor: number;
+            };
+            fontScale: {
+                name: number;
+                body: number;
+                primaryHeading: number;
+                secondaryHeading: number;
+                sectionTitle: number;
+                minor: number;
+            };
+            textTransform: {
+                name: "none" | "uppercase" | "capitalize";
+                body: "none" | "uppercase" | "capitalize";
+                primaryHeading: "none" | "uppercase" | "capitalize";
+                secondaryHeading: "none" | "uppercase" | "capitalize";
+                sectionTitle: "none" | "uppercase" | "capitalize";
+                minor: "none" | "uppercase" | "capitalize";
+            };
+            spacing: {
+                betweenSections: number;
+                titleToContent: number;
+                headingToSubheading: number;
+                betweenBlocks: number;
+                betweenListItems: number;
+            };
+            borders: {
+                aboveHeader: number;
+                belowHeader: number;
+                sectionTitles: number;
+            };
+        };
         notes: string;
     }, {
-        css: {
+        template?: string | undefined;
+        layout?: string[][][] | undefined;
+        css?: {
             value?: string | undefined;
             visible?: boolean | undefined;
-        };
-        page: {
-            options: {
+        } | undefined;
+        page?: {
+            options?: {
                 breakLine?: boolean | undefined;
                 pageNumbers?: boolean | undefined;
-            };
+            } | undefined;
             margin?: number | undefined;
-            format?: "a4" | "letter" | undefined;
-        };
-        theme: {
+            marginLeft?: number | undefined;
+            marginRight?: number | undefined;
+            format?: "a4" | "letter" | "legal" | undefined;
+        } | undefined;
+        theme?: {
             background?: string | undefined;
             text?: string | undefined;
             primary?: string | undefined;
-        };
-        typography: {
-            font: {
+        } | undefined;
+        typography?: {
+            font?: {
                 size?: number | undefined;
                 family?: string | undefined;
                 subset?: string | undefined;
                 variants?: string[] | undefined;
-            };
+            } | undefined;
             lineHeight?: number | undefined;
+            listLineHeight?: number | undefined;
             hideIcons?: boolean | undefined;
             underlineLinks?: boolean | undefined;
-        };
-        template?: string | undefined;
-        layout?: string[][][] | undefined;
+        } | undefined;
+        presentation?: {
+            dateFormat?: "mm/yyyy" | "mmm yyyy" | "month yyyy" | "yyyy" | undefined;
+            headerAlignment?: "left" | "center" | "right" | undefined;
+            dateAlignment?: "left" | "right" | undefined;
+            locationAlignment?: "left" | "right" | undefined;
+            skillsLayout?: "comma-separated" | "comma-separated-list" | "columns" | undefined;
+            skillsColumns?: number | undefined;
+        } | undefined;
+        display?: {
+            experience?: {
+                location?: "company" | "position" | "none" | undefined;
+                primary?: "company" | "position" | undefined;
+                dates?: "company" | "position" | "both" | undefined;
+            } | undefined;
+            education?: {
+                primary?: "institution" | "degree" | undefined;
+            } | undefined;
+        } | undefined;
+        advanced?: {
+            bullets?: "circle" | "dash" | "chevron" | "arrow" | "comma" | "line" | undefined;
+            fontWeight?: {
+                name?: number | undefined;
+                body?: number | undefined;
+                primaryHeading?: number | undefined;
+                secondaryHeading?: number | undefined;
+                sectionTitle?: number | undefined;
+                minor?: number | undefined;
+            } | undefined;
+            fontScale?: {
+                name?: number | undefined;
+                body?: number | undefined;
+                primaryHeading?: number | undefined;
+                secondaryHeading?: number | undefined;
+                sectionTitle?: number | undefined;
+                minor?: number | undefined;
+            } | undefined;
+            textTransform?: {
+                name?: "none" | "uppercase" | "capitalize" | undefined;
+                body?: "none" | "uppercase" | "capitalize" | undefined;
+                primaryHeading?: "none" | "uppercase" | "capitalize" | undefined;
+                secondaryHeading?: "none" | "uppercase" | "capitalize" | undefined;
+                sectionTitle?: "none" | "uppercase" | "capitalize" | undefined;
+                minor?: "none" | "uppercase" | "capitalize" | undefined;
+            } | undefined;
+            spacing?: {
+                betweenSections?: number | undefined;
+                titleToContent?: number | undefined;
+                headingToSubheading?: number | undefined;
+                betweenBlocks?: number | undefined;
+                betweenListItems?: number | undefined;
+            } | undefined;
+            borders?: {
+                aboveHeader?: number | undefined;
+                belowHeader?: number | undefined;
+                sectionTitles?: number | undefined;
+            } | undefined;
+        } | undefined;
         notes?: string | undefined;
     }>;
 }, "strip", z.ZodTypeAny, {
@@ -5216,6 +5984,7 @@ declare const resumeDataSchema: z.ZodObject<{
                 date: string;
                 id: string;
                 visible: boolean;
+                location: string;
                 url: {
                     label: string;
                     href: string;
@@ -5434,7 +6203,9 @@ declare const resumeDataSchema: z.ZodObject<{
                 pageNumbers: boolean;
             };
             margin: number;
-            format: "a4" | "letter";
+            marginLeft: number;
+            marginRight: number;
+            format: "a4" | "letter" | "legal";
         };
         theme: {
             background: string;
@@ -5449,8 +6220,66 @@ declare const resumeDataSchema: z.ZodObject<{
                 variants: string[];
             };
             lineHeight: number;
+            listLineHeight: number;
             hideIcons: boolean;
             underlineLinks: boolean;
+        };
+        presentation: {
+            dateFormat: "mm/yyyy" | "mmm yyyy" | "month yyyy" | "yyyy";
+            headerAlignment: "left" | "center" | "right";
+            dateAlignment: "left" | "right";
+            locationAlignment: "left" | "right";
+            skillsLayout: "comma-separated" | "comma-separated-list" | "columns";
+            skillsColumns: number;
+        };
+        display: {
+            experience: {
+                location: "company" | "position" | "none";
+                primary: "company" | "position";
+                dates: "company" | "position" | "both";
+            };
+            education: {
+                primary: "institution" | "degree";
+            };
+        };
+        advanced: {
+            bullets: "circle" | "dash" | "chevron" | "arrow" | "comma" | "line";
+            fontWeight: {
+                name: number;
+                body: number;
+                primaryHeading: number;
+                secondaryHeading: number;
+                sectionTitle: number;
+                minor: number;
+            };
+            fontScale: {
+                name: number;
+                body: number;
+                primaryHeading: number;
+                secondaryHeading: number;
+                sectionTitle: number;
+                minor: number;
+            };
+            textTransform: {
+                name: "none" | "uppercase" | "capitalize";
+                body: "none" | "uppercase" | "capitalize";
+                primaryHeading: "none" | "uppercase" | "capitalize";
+                secondaryHeading: "none" | "uppercase" | "capitalize";
+                sectionTitle: "none" | "uppercase" | "capitalize";
+                minor: "none" | "uppercase" | "capitalize";
+            };
+            spacing: {
+                betweenSections: number;
+                titleToContent: number;
+                headingToSubheading: number;
+                betweenBlocks: number;
+                betweenListItems: number;
+            };
+            borders: {
+                aboveHeader: number;
+                belowHeader: number;
+                sectionTitles: number;
+            };
         };
         notes: string;
     };
@@ -5558,6 +6387,7 @@ declare const resumeDataSchema: z.ZodObject<{
                 area: string;
                 score: string;
                 id?: string | undefined;
+                location?: string | undefined;
             }[];
             visible?: boolean | undefined;
             columns?: number | undefined;
@@ -5787,36 +6617,96 @@ declare const resumeDataSchema: z.ZodObject<{
         }> | undefined;
     };
     metadata: {
-        css: {
+        template?: string | undefined;
+        layout?: string[][][] | undefined;
+        css?: {
             value?: string | undefined;
             visible?: boolean | undefined;
-        };
-        page: {
-            options: {
+        } | undefined;
+        page?: {
+            options?: {
                 breakLine?: boolean | undefined;
                 pageNumbers?: boolean | undefined;
-            };
+            } | undefined;
             margin?: number | undefined;
-            format?: "a4" | "letter" | undefined;
-        };
-        theme: {
+            marginLeft?: number | undefined;
+            marginRight?: number | undefined;
+            format?: "a4" | "letter" | "legal" | undefined;
+        } | undefined;
+        theme?: {
             background?: string | undefined;
             text?: string | undefined;
             primary?: string | undefined;
-        };
-        typography: {
-            font: {
+        } | undefined;
+        typography?: {
+            font?: {
                 size?: number | undefined;
                 family?: string | undefined;
                 subset?: string | undefined;
                 variants?: string[] | undefined;
-            };
+            } | undefined;
             lineHeight?: number | undefined;
+            listLineHeight?: number | undefined;
             hideIcons?: boolean | undefined;
             underlineLinks?: boolean | undefined;
-        };
-        template?: string | undefined;
-        layout?: string[][][] | undefined;
+        } | undefined;
+        presentation?: {
+            dateFormat?: "mm/yyyy" | "mmm yyyy" | "month yyyy" | "yyyy" | undefined;
+            headerAlignment?: "left" | "center" | "right" | undefined;
+            dateAlignment?: "left" | "right" | undefined;
+            locationAlignment?: "left" | "right" | undefined;
+            skillsLayout?: "comma-separated" | "comma-separated-list" | "columns" | undefined;
+            skillsColumns?: number | undefined;
+        } | undefined;
+        display?: {
+            experience?: {
+                location?: "company" | "position" | "none" | undefined;
+                primary?: "company" | "position" | undefined;
+                dates?: "company" | "position" | "both" | undefined;
+            } | undefined;
+            education?: {
+                primary?: "institution" | "degree" | undefined;
+            } | undefined;
+        } | undefined;
+        advanced?: {
+            bullets?: "circle" | "dash" | "chevron" | "arrow" | "comma" | "line" | undefined;
+            fontWeight?: {
+                name?: number | undefined;
+                body?: number | undefined;
+                primaryHeading?: number | undefined;
+                secondaryHeading?: number | undefined;
+                sectionTitle?: number | undefined;
+                minor?: number | undefined;
+            } | undefined;
+            fontScale?: {
+                name?: number | undefined;
+                body?: number | undefined;
+                primaryHeading?: number | undefined;
+                secondaryHeading?: number | undefined;
+                sectionTitle?: number | undefined;
+                minor?: number | undefined;
+            } | undefined;
+            textTransform?: {
+                name?: "none" | "uppercase" | "capitalize" | undefined;
+                body?: "none" | "uppercase" | "capitalize" | undefined;
+                primaryHeading?: "none" | "uppercase" | "capitalize" | undefined;
+                secondaryHeading?: "none" | "uppercase" | "capitalize" | undefined;
+                sectionTitle?: "none" | "uppercase" | "capitalize" | undefined;
+                minor?: "none" | "uppercase" | "capitalize" | undefined;
+            } | undefined;
+            spacing?: {
+                betweenSections?: number | undefined;
+                titleToContent?: number | undefined;
+                headingToSubheading?: number | undefined;
+                betweenBlocks?: number | undefined;
+                betweenListItems?: number | undefined;
+            } | undefined;
+            borders?: {
+                aboveHeader?: number | undefined;
+                belowHeader?: number | undefined;
+                sectionTitles?: number | undefined;
+            } | undefined;
+        } | undefined;
         notes?: string | undefined;
     };
 }>;

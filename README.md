@@ -26,5 +26,14 @@ Dual build: ESM (`.mjs`) for Vite/Nuxt and CommonJS (`.js`) for NestJS, bundled 
    `git tag v1.1.0 && git push origin main --tags`
 4. In each app, point the dependency at the new tag and run `pnpm install`.
 
+Tests: `pnpm test` (node:test on the build; schema back-compat + date helpers).
+
 Schema changes affect stored resume data. Keep new fields optional or defaulted
 (`.default(...)`), so existing resumes still validate.
+
+## Design settings (v1.2.0)
+`metadata` covers every editor Design control: `presentation` (date format, alignments, skills layout/columns),
+`display` (experience/education lead fields), `advanced` (bullets, per-role font weight/scale/transform, spacing px,
+border px), `typography.listLineHeight`, `page.marginLeft/marginRight`, `page.format` incl. `legal`.
+Dates: store canonical strings via `toResumeDate()`, display with `formatResumeDate(value, metadata.presentation.dateFormat)`
+(also reads legacy "Jan 2020 - Mar 2022" strings).

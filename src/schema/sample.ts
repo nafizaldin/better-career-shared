@@ -1,4 +1,5 @@
 import { ResumeData } from ".";
+import { metadataSchema } from "./metadata";
 
 export const sampleResume: ResumeData = {
   basics: {
@@ -97,6 +98,7 @@ export const sampleResume: ResumeData = {
           studyType: "Bachelor's in Computer Science",
           area: "Berkeley, CA",
           score: "",
+          location: "",
           date: "August 2012 to May 2016",
           summary: "",
           url: {
@@ -316,42 +318,18 @@ export const sampleResume: ResumeData = {
     },
     custom: {},
   },
-  metadata: {
+  // Defaults + overrides, so new metadata fields never need listing here
+  metadata: metadataSchema.parse({
     template: "onyx",
     layout: [
       [
         ["profiles", "summary", "experience", "education", "projects", "volunteer", "references"],
-        ["skills", "languages", "interests", "certifications", "awards"]
-      ]
+        ["skills", "languages", "interests", "certifications", "awards"],
+      ],
     ],
-    css: {
-      value: "",
-      visible: false
-    },
-    page: {
-      margin: 18,
-      format: "a4",
-      options: {
-        breakLine: true,
-        pageNumbers: false
-      }
-    },
-    theme: {
-      background: "#ffffff",
-      text: "#000000",
-      primary: "#000000"
-    },
-    typography: {
-      font: {
-        family: "Inter",
-        subset: "latin",
-        variants: ["regular", "italic", "600", "700"],
-        size: 14
-      },
-      lineHeight: 1.5,
-      hideIcons: false,
-      underlineLinks: true
-    },
-    notes: ""
-  }
+    css: { value: "", visible: false },
+    page: { options: { pageNumbers: false } },
+    theme: { primary: "#000000" },
+    typography: { font: { family: "Inter", variants: ["regular", "italic", "600", "700"] } },
+  }),
 };

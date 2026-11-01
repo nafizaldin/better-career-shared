@@ -160,6 +160,17 @@ var defaultLayout = [
     ["skills", "interests", "certifications", "awards", "publications", "languages"]
   ]
 ];
+var roles = (value) => ({
+  body: value(),
+  name: value(),
+  primaryHeading: value(),
+  secondaryHeading: value(),
+  sectionTitle: value(),
+  minor: value()
+});
+var weight = () => import_zod6.z.number().int().min(300).max(800).default(400);
+var scale = () => import_zod6.z.number().min(0.75).max(2).default(1);
+var transform = () => import_zod6.z.enum(["none", "uppercase", "capitalize"]).default("none");
 var metadataSchema = import_zod6.z.object({
   template: import_zod6.z.string().default("onyx"),
   layout: import_zod6.z.array(import_zod6.z.array(import_zod6.z.array(import_zod6.z.string()))).default(defaultLayout),
@@ -167,66 +178,89 @@ var metadataSchema = import_zod6.z.object({
   css: import_zod6.z.object({
     value: import_zod6.z.string().default(".section {\n	outline: 1px solid #000;\n	outline-offset: 4px;\n}"),
     visible: import_zod6.z.boolean().default(false)
-  }),
+  }).default({}),
   page: import_zod6.z.object({
+    /** Top/bottom margin in mm (also the side margins unless marginLeft/Right are set). */
     margin: import_zod6.z.number().default(18),
-    format: import_zod6.z.enum(["a4", "letter"]).default("a4"),
+    /** Side margins in mm. */
+    marginLeft: import_zod6.z.number().min(0).max(50).default(18),
+    marginRight: import_zod6.z.number().min(0).max(50).default(18),
+    format: import_zod6.z.enum(["a4", "letter", "legal"]).default("a4"),
     options: import_zod6.z.object({
       breakLine: import_zod6.z.boolean().default(true),
       pageNumbers: import_zod6.z.boolean().default(true)
-    })
-  }),
+    }).default({})
+  }).default({}),
   theme: import_zod6.z.object({
     background: import_zod6.z.string().default("#ffffff"),
     text: import_zod6.z.string().default("#000000"),
+    /** Accent colour (Design → Presentation). */
     primary: import_zod6.z.string().default("#dc2626")
-  }),
+  }).default({}),
   typography: import_zod6.z.object({
     font: import_zod6.z.object({
+      /** CSS font-family name the artboard can load (Google Fonts or bundled). */
       family: import_zod6.z.string().default("IBM Plex Serif"),
       subset: import_zod6.z.string().default("latin"),
       variants: import_zod6.z.array(import_zod6.z.string()).default(["regular"]),
+      /** Base size in px. */
       size: import_zod6.z.number().default(14)
-    }),
-    lineHeight: import_zod6.z.number().default(1.5),
+    }).default({}),
+    /** Line-height multiplier for paragraphs. */
+    lineHeight: import_zod6.z.number().min(1).max(2.5).default(1.5),
+    /** Line-height multiplier for list items. */
+    listLineHeight: import_zod6.z.number().min(1).max(2.5).default(1.4),
     hideIcons: import_zod6.z.boolean().default(false),
     underlineLinks: import_zod6.z.boolean().default(true)
-  }),
+  }).default({}),
+  /** Design → Presentation */
+  presentation: import_zod6.z.object({
+    dateFormat: import_zod6.z.enum(["mm/yyyy", "mmm yyyy", "month yyyy", "yyyy"]).default("mmm yyyy"),
+    headerAlignment: import_zod6.z.enum(["left", "center", "right"]).default("left"),
+    dateAlignment: import_zod6.z.enum(["left", "right"]).default("right"),
+    locationAlignment: import_zod6.z.enum(["left", "right"]).default("right"),
+    skillsLayout: import_zod6.z.enum(["comma-separated", "comma-separated-list", "columns"]).default("comma-separated"),
+    skillsColumns: import_zod6.z.number().int().min(1).max(5).default(3)
+  }).default({}),
+  /** Design → Settings: what each entry leads with */
+  display: import_zod6.z.object({
+    experience: import_zod6.z.object({
+      primary: import_zod6.z.enum(["company", "position"]).default("company"),
+      location: import_zod6.z.enum(["company", "position", "none"]).default("company"),
+      dates: import_zod6.z.enum(["company", "position", "both"]).default("company")
+    }).default({}),
+    education: import_zod6.z.object({
+      primary: import_zod6.z.enum(["institution", "degree"]).default("institution")
+    }).default({})
+  }).default({}),
+  /** Design → Advanced */
+  advanced: import_zod6.z.object({
+    bullets: import_zod6.z.enum(["circle", "dash", "chevron", "arrow", "comma", "line"]).default("circle"),
+    /** CSS font-weight per role. */
+    fontWeight: import_zod6.z.object(roles(weight)).default({}),
+    /** Font-size multiplier per role, relative to typography.font.size. */
+    fontScale: import_zod6.z.object(roles(scale)).default({}),
+    textTransform: import_zod6.z.object(roles(transform)).default({}),
+    /** Spacing in px. */
+    spacing: import_zod6.z.object({
+      betweenSections: import_zod6.z.number().min(0).max(48).default(16),
+      titleToContent: import_zod6.z.number().min(0).max(48).default(8),
+      headingToSubheading: import_zod6.z.number().min(0).max(48).default(2),
+      betweenBlocks: import_zod6.z.number().min(0).max(48).default(12),
+      betweenListItems: import_zod6.z.number().min(0).max(48).default(4)
+    }).default({}),
+    /** Border widths in px (0 = none). */
+    borders: import_zod6.z.object({
+      aboveHeader: import_zod6.z.number().min(0).max(4).default(0),
+      belowHeader: import_zod6.z.number().min(0).max(4).default(0),
+      sectionTitles: import_zod6.z.number().min(0).max(4).default(0)
+    }).default({})
+  }).default({}),
   notes: import_zod6.z.string().default("")
 });
-var defaultMetadata = {
-  template: "onyx",
-  layout: defaultLayout,
-  css: {
-    value: ".section {\n	outline: 1px solid #000;\n	outline-offset: 4px;\n}",
-    visible: false
-  },
-  page: {
-    margin: 18,
-    format: "a4",
-    options: {
-      breakLine: true,
-      pageNumbers: true
-    }
-  },
-  theme: {
-    background: "#ffffff",
-    text: "#000000",
-    primary: "#dc2626"
-  },
-  typography: {
-    font: {
-      family: "IBM Plex Serif",
-      subset: "latin",
-      variants: ["regular", "italic", "600"],
-      size: 14
-    },
-    lineHeight: 1.5,
-    hideIcons: false,
-    underlineLinks: true
-  },
-  notes: ""
-};
+var defaultMetadata = metadataSchema.parse({
+  typography: { font: { variants: ["regular", "italic", "600"] } }
+});
 
 // src/schema/sections/index.ts
 var import_zod20 = require("zod");
@@ -296,6 +330,8 @@ var educationSchema = itemSchema.extend({
   studyType: import_zod10.z.string(),
   area: import_zod10.z.string(),
   score: import_zod10.z.string(),
+  /** Added in v1.2.0; older items get "" */
+  location: import_zod10.z.string().default(""),
   date: import_zod10.z.string(),
   summary: import_zod10.z.string(),
   url: urlSchema
@@ -307,6 +343,7 @@ var defaultEducation = {
   studyType: "",
   area: "",
   score: "",
+  location: "",
   date: "",
   summary: "",
   url: defaultUrl
@@ -661,6 +698,7 @@ var sampleResume = {
           studyType: "Bachelor's in Computer Science",
           area: "Berkeley, CA",
           score: "",
+          location: "",
           date: "August 2012 to May 2016",
           summary: "",
           url: {
@@ -876,7 +914,8 @@ var sampleResume = {
     },
     custom: {}
   },
-  metadata: {
+  // Defaults + overrides, so new metadata fields never need listing here
+  metadata: metadataSchema.parse({
     template: "onyx",
     layout: [
       [
@@ -884,36 +923,11 @@ var sampleResume = {
         ["skills", "languages", "interests", "certifications", "awards"]
       ]
     ],
-    css: {
-      value: "",
-      visible: false
-    },
-    page: {
-      margin: 18,
-      format: "a4",
-      options: {
-        breakLine: true,
-        pageNumbers: false
-      }
-    },
-    theme: {
-      background: "#ffffff",
-      text: "#000000",
-      primary: "#000000"
-    },
-    typography: {
-      font: {
-        family: "Inter",
-        subset: "latin",
-        variants: ["regular", "italic", "600", "700"],
-        size: 14
-      },
-      lineHeight: 1.5,
-      hideIcons: false,
-      underlineLinks: true
-    },
-    notes: ""
-  }
+    css: { value: "", visible: false },
+    page: { options: { pageNumbers: false } },
+    theme: { primary: "#000000" },
+    typography: { font: { family: "Inter", variants: ["regular", "italic", "600", "700"] } }
+  })
 };
 
 // src/schema/index.ts
@@ -976,6 +990,7 @@ var minimalResumeData = {
           studyType: "Bachelor",
           area: "Computer Science",
           score: "",
+          location: "",
           date: "Nov 2025 - Present",
           summary: "Relevant coursework, honors, or achievements.",
           url: { label: "", href: "" }

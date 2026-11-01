@@ -8,6 +8,8 @@ export const educationSchema = itemSchema.extend({
   studyType: z.string(),
   area: z.string(),
   score: z.string(),
+  /** Added in v1.2.0; older items get "" */
+  location: z.string().default(""),
   date: z.string(),
   summary: z.string(),
   url: urlSchema,
@@ -24,6 +26,7 @@ export const defaultEducation: Education = {
   studyType: "",
   area: "",
   score: "",
+  location: "",
   date: "",
   summary: "",
   url: defaultUrl,

@@ -69,6 +69,7 @@ export const minimalResumeData: ResumeData = {
           studyType: "Bachelor",
           area: "Computer Science",
           score: "",
+          location: "",
           date: "Nov 2025 - Present",
           summary: "Relevant coursework, honors, or achievements.",
           url: { label: "", href: "" },

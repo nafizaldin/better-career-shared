@@ -39,6 +39,8 @@ __export(utils_exports, {
   extractUrl: () => extractUrl,
   findItemInLayout: () => findItemInLayout,
   fonts: () => fonts,
+  formatResumeDate: () => formatResumeDate,
+  formatResumeMonth: () => formatResumeMonth,
   generateRandomName: () => generateRandomName,
   getFontUrls: () => getFontUrls,
   getInitials: () => getInitials,
@@ -53,10 +55,12 @@ __export(utils_exports, {
   parseArrayLikeCSVEntry: () => parseArrayLikeCSVEntry,
   parseCSV: () => parseCSV,
   parseLayoutLocator: () => parseLayoutLocator,
+  parseResumeDate: () => parseResumeDate,
   processUsername: () => processUsername,
   removeItemInLayout: () => removeItemInLayout,
   sortByDate: () => sortByDate,
-  templatesList: () => templatesList
+  templatesList: () => templatesList,
+  toResumeDate: () => toResumeDate
 });
 module.exports = __toCommonJS(utils_exports);
 
@@ -9005,6 +9009,85 @@ var templatesList = [
   "pikachu",
   "rhyhorn"
 ];
+
+// src/utils/namespaces/resume-date.ts
+var MONTHS = [
+  "january",
+  "february",
+  "march",
+  "april",
+  "may",
+  "june",
+  "july",
+  "august",
+  "september",
+  "october",
+  "november",
+  "december"
+];
+var PRESENT = /^(present|current|now|ongoing)$/i;
+var parseMonth = (raw) => {
+  const value = raw.trim();
+  let m = value.match(/^(\d{4})-(\d{1,2})(?:-\d{1,2})?(?:T.*)?$/);
+  if (m) return { year: Number(m[1]), month: Number(m[2]) };
+  m = value.match(/^(\d{1,2})\/(\d{4})$/);
+  if (m) return { year: Number(m[2]), month: Number(m[1]) };
+  m = value.match(/^([A-Za-z]{3,9})\.?\s+(\d{4})$/);
+  if (m) {
+    const index = MONTHS.findIndex((name) => name.startsWith(m[1].toLowerCase()));
+    if (index >= 0) return { year: Number(m[2]), month: index + 1 };
+  }
+  m = value.match(/^(\d{4})$/);
+  if (m) return { year: Number(m[1]) };
+  return void 0;
+};
+var parseResumeDate = (input) => {
+  const value = (input ?? "").trim();
+  if (!value) return null;
+  const parts = value.split(/\s+(?:-|–|—|to)\s+/i);
+  if (parts.length > 2) return null;
+  const start = parseMonth(parts[0]);
+  if (!start) return null;
+  if (parts.length === 1) return { start };
+  if (PRESENT.test(parts[1].trim())) return { start, end: "present" };
+  const end = parseMonth(parts[1]);
+  return end ? { start, end } : null;
+};
+var pad = (n) => String(n).padStart(2, "0");
+var formatResumeMonth = (date, format) => {
+  if (!date.month || format === "yyyy") return String(date.year);
+  const name = MONTHS[date.month - 1];
+  switch (format) {
+    case "mm/yyyy":
+      return `${pad(date.month)}/${date.year}`;
+    case "month yyyy":
+      return `${name[0].toUpperCase()}${name.slice(1)} ${date.year}`;
+    default:
+      return `${name[0].toUpperCase()}${name.slice(1, 3)} ${date.year}`;
+  }
+};
+var formatResumeDate = (input, format = "mmm yyyy", presentLabel = "Present") => {
+  const parsed = parseResumeDate(input);
+  if (!parsed?.start) return (input ?? "").trim();
+  const start = formatResumeMonth(parsed.start, format);
+  if (!parsed.end) return start;
+  const end = parsed.end === "present" ? presentLabel : formatResumeMonth(parsed.end, format);
+  return `${start} - ${end}`;
+};
+var toResumeDate = (start, end) => {
+  const month = (value) => {
+    if (!value) return "";
+    if (value instanceof Date) return `${value.getFullYear()}-${pad(value.getMonth() + 1)}`;
+    const parsed = parseMonth(value);
+    if (!parsed) return "";
+    return parsed.month ? `${parsed.year}-${pad(parsed.month)}` : String(parsed.year);
+  };
+  const from = month(start);
+  if (!from) return "";
+  if (end === "present") return `${from} - Present`;
+  const to = month(end ?? void 0);
+  return to ? `${from} - ${to}` : from;
+};
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   ErrorMessage,
@@ -9016,6 +9099,8 @@ var templatesList = [
   extractUrl,
   findItemInLayout,
   fonts,
+  formatResumeDate,
+  formatResumeMonth,
   generateRandomName,
   getFontUrls,
   getInitials,
@@ -9030,9 +9115,11 @@ var templatesList = [
   parseArrayLikeCSVEntry,
   parseCSV,
   parseLayoutLocator,
+  parseResumeDate,
   processUsername,
   removeItemInLayout,
   sortByDate,
-  templatesList
+  templatesList,
+  toResumeDate
 });
 //# sourceMappingURL=index.js.map

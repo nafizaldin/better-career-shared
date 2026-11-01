@@ -98,4 +98,22 @@ declare const cn: (...inputs: ClassValue[]) => string;
 declare const templatesList: readonly ["azurill", "bronzor", "chikorita", "ditto", "gengar", "glalie", "kakuna", "leafish", "nosepass", "onyx", "pikachu", "rhyhorn"];
 type Template = (typeof templatesList)[number];
 
-export { ErrorMessage, type Font, Json, type Language, LayoutLocator, SortablePayload, type Template, breakpoints, cn, deepSearchAndParseDates, delay, exclude, extractUrl, findItemInLayout, fonts, generateRandomName, getFontUrls, getInitials, hexToRgb, isEmptyString, isUrl, kebabCase, languages, linearTransform, moveItemInLayout, pageSizeMap, parseArrayLikeCSVEntry, parseCSV, parseLayoutLocator, processUsername, removeItemInLayout, sortByDate, templatesList };
+type DateFormat = "mm/yyyy" | "mmm yyyy" | "month yyyy" | "yyyy";
+type ResumeMonth = {
+    year: number;
+    month?: number;
+};
+type ResumeDateRange = {
+    start?: ResumeMonth;
+    /** "present" for ongoing ranges */
+    end?: ResumeMonth | "present";
+};
+/** Parse a stored date or range; null if it isn't a recognisable date (free text). */
+declare const parseResumeDate: (input: string | undefined | null) => ResumeDateRange | null;
+declare const formatResumeMonth: (date: ResumeMonth, format: DateFormat) => string;
+/** Display a stored date in the resume's format; free text is returned unchanged. */
+declare const formatResumeDate: (input: string | undefined | null, format?: DateFormat, presentLabel?: string) => string;
+/** Build the canonical stored string from form values ("YYYY-MM[-DD]" / Date / empty). */
+declare const toResumeDate: (start: string | Date | undefined | null, end?: string | Date | "present" | null) => string;
+
+export { type DateFormat, ErrorMessage, type Font, Json, type Language, LayoutLocator, type ResumeDateRange, type ResumeMonth, SortablePayload, type Template, breakpoints, cn, deepSearchAndParseDates, delay, exclude, extractUrl, findItemInLayout, fonts, formatResumeDate, formatResumeMonth, generateRandomName, getFontUrls, getInitials, hexToRgb, isEmptyString, isUrl, kebabCase, languages, linearTransform, moveItemInLayout, pageSizeMap, parseArrayLikeCSVEntry, parseCSV, parseLayoutLocator, parseResumeDate, processUsername, removeItemInLayout, sortByDate, templatesList, toResumeDate };
