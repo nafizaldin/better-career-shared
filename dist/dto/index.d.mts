@@ -72,8 +72,25 @@ declare const MessageDto_base: nestjs_zod_dto.ZodDto<{
 declare class MessageDto extends MessageDto_base {
 }
 
-declare const AuthProvidersDto_base: nestjs_zod_dto.ZodDto<("email" | "github" | "google")[], z.ZodArrayDef<z.ZodEnum<["email", "github", "google"]>>, ("email" | "github" | "google")[]>;
+declare const AuthProvidersDto_base: nestjs_zod_dto.ZodDto<("email" | "linkedin" | "github" | "google" | "facebook")[], z.ZodArrayDef<z.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>, ("email" | "linkedin" | "github" | "google" | "facebook")[]>;
 declare class AuthProvidersDto extends AuthProvidersDto_base {
+}
+
+declare const oauthExchangeSchema: z.ZodObject<{
+    code: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    code: string;
+}, {
+    code: string;
+}>;
+declare const OAuthExchangeDto_base: nestjs_zod_dto.ZodDto<{
+    code: string;
+}, z.ZodObjectDef<{
+    code: z.ZodString;
+}, "strip", z.ZodTypeAny>, {
+    code: string;
+}>;
+declare class OAuthExchangeDto extends OAuthExchangeDto_base {
 }
 
 declare const registerSchema: z.ZodObject<Pick<{
@@ -85,7 +102,7 @@ declare const registerSchema: z.ZodObject<Pick<{
     locale: z.ZodDefault<z.ZodString>;
     emailVerified: z.ZodDefault<z.ZodBoolean>;
     twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
-    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>;
     shortName: z.ZodOptional<z.ZodString>;
     status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
     verificationToken: z.ZodOptional<z.ZodString>;
@@ -126,7 +143,7 @@ declare const RegisterDto_base: nestjs_zod_dto.ZodDto<{
     locale: z.ZodDefault<z.ZodString>;
     emailVerified: z.ZodDefault<z.ZodBoolean>;
     twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
-    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>;
     shortName: z.ZodOptional<z.ZodString>;
     status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
     verificationToken: z.ZodOptional<z.ZodString>;
@@ -183,7 +200,7 @@ declare const authResponseSchema: z.ZodObject<{
         locale: z.ZodDefault<z.ZodString>;
         emailVerified: z.ZodDefault<z.ZodBoolean>;
         twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
-        provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+        provider: z.ZodDefault<z.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>;
         shortName: z.ZodOptional<z.ZodString>;
         status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
         verificationToken: z.ZodOptional<z.ZodString>;
@@ -204,7 +221,7 @@ declare const authResponseSchema: z.ZodObject<{
         locale: string;
         emailVerified: boolean;
         twoFactorEnabled: boolean;
-        provider: "email" | "github" | "google";
+        provider: "email" | "linkedin" | "github" | "google" | "facebook";
         role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
         createdAt: string | Date;
         updatedAt: string | Date;
@@ -228,7 +245,7 @@ declare const authResponseSchema: z.ZodObject<{
         locale?: string | undefined;
         emailVerified?: boolean | undefined;
         twoFactorEnabled?: boolean | undefined;
-        provider?: "email" | "github" | "google" | undefined;
+        provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
         shortName?: string | undefined;
         verificationExpires?: string | Date | undefined;
         tempData?: any;
@@ -247,7 +264,7 @@ declare const authResponseSchema: z.ZodObject<{
         locale: string;
         emailVerified: boolean;
         twoFactorEnabled: boolean;
-        provider: "email" | "github" | "google";
+        provider: "email" | "linkedin" | "github" | "google" | "facebook";
         role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
         createdAt: string | Date;
         updatedAt: string | Date;
@@ -274,7 +291,7 @@ declare const authResponseSchema: z.ZodObject<{
         locale?: string | undefined;
         emailVerified?: boolean | undefined;
         twoFactorEnabled?: boolean | undefined;
-        provider?: "email" | "github" | "google" | undefined;
+        provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
         shortName?: string | undefined;
         verificationExpires?: string | Date | undefined;
         tempData?: any;
@@ -294,7 +311,7 @@ declare const AuthResponseDto_base: nestjs_zod_dto.ZodDto<{
         locale: string;
         emailVerified: boolean;
         twoFactorEnabled: boolean;
-        provider: "email" | "github" | "google";
+        provider: "email" | "linkedin" | "github" | "google" | "facebook";
         role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
         createdAt: string | Date;
         updatedAt: string | Date;
@@ -316,7 +333,7 @@ declare const AuthResponseDto_base: nestjs_zod_dto.ZodDto<{
         locale: z.ZodDefault<z.ZodString>;
         emailVerified: z.ZodDefault<z.ZodBoolean>;
         twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
-        provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+        provider: z.ZodDefault<z.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>;
         shortName: z.ZodOptional<z.ZodString>;
         status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
         verificationToken: z.ZodOptional<z.ZodString>;
@@ -337,7 +354,7 @@ declare const AuthResponseDto_base: nestjs_zod_dto.ZodDto<{
         locale: string;
         emailVerified: boolean;
         twoFactorEnabled: boolean;
-        provider: "email" | "github" | "google";
+        provider: "email" | "linkedin" | "github" | "google" | "facebook";
         role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
         createdAt: string | Date;
         updatedAt: string | Date;
@@ -361,7 +378,7 @@ declare const AuthResponseDto_base: nestjs_zod_dto.ZodDto<{
         locale?: string | undefined;
         emailVerified?: boolean | undefined;
         twoFactorEnabled?: boolean | undefined;
-        provider?: "email" | "github" | "google" | undefined;
+        provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
         shortName?: string | undefined;
         verificationExpires?: string | Date | undefined;
         tempData?: any;
@@ -384,7 +401,7 @@ declare const AuthResponseDto_base: nestjs_zod_dto.ZodDto<{
         locale?: string | undefined;
         emailVerified?: boolean | undefined;
         twoFactorEnabled?: boolean | undefined;
-        provider?: "email" | "github" | "google" | undefined;
+        provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
         shortName?: string | undefined;
         verificationExpires?: string | Date | undefined;
         tempData?: any;
@@ -11750,7 +11767,7 @@ declare const resumeSchema: z.ZodObject<{
         locale: z.ZodDefault<z.ZodString>;
         emailVerified: z.ZodDefault<z.ZodBoolean>;
         twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
-        provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+        provider: z.ZodDefault<z.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>;
         shortName: z.ZodOptional<z.ZodString>;
         status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
         verificationToken: z.ZodOptional<z.ZodString>;
@@ -11771,7 +11788,7 @@ declare const resumeSchema: z.ZodObject<{
         locale: string;
         emailVerified: boolean;
         twoFactorEnabled: boolean;
-        provider: "email" | "github" | "google";
+        provider: "email" | "linkedin" | "github" | "google" | "facebook";
         role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
         createdAt: string | Date;
         updatedAt: string | Date;
@@ -11795,7 +11812,7 @@ declare const resumeSchema: z.ZodObject<{
         locale?: string | undefined;
         emailVerified?: boolean | undefined;
         twoFactorEnabled?: boolean | undefined;
-        provider?: "email" | "github" | "google" | undefined;
+        provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
         shortName?: string | undefined;
         verificationExpires?: string | Date | undefined;
         tempData?: any;
@@ -12237,7 +12254,7 @@ declare const resumeSchema: z.ZodObject<{
         locale: string;
         emailVerified: boolean;
         twoFactorEnabled: boolean;
-        provider: "email" | "github" | "google";
+        provider: "email" | "linkedin" | "github" | "google" | "facebook";
         role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
         createdAt: string | Date;
         updatedAt: string | Date;
@@ -12316,7 +12333,7 @@ declare const resumeSchema: z.ZodObject<{
         locale?: string | undefined;
         emailVerified?: boolean | undefined;
         twoFactorEnabled?: boolean | undefined;
-        provider?: "email" | "github" | "google" | undefined;
+        provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
         shortName?: string | undefined;
         verificationExpires?: string | Date | undefined;
         tempData?: any;
@@ -13126,7 +13143,7 @@ declare const ResumeDto_base: nestjs_zod_dto.ZodDto<{
         locale: string;
         emailVerified: boolean;
         twoFactorEnabled: boolean;
-        provider: "email" | "github" | "google";
+        provider: "email" | "linkedin" | "github" | "google" | "facebook";
         role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
         createdAt: string | Date;
         updatedAt: string | Date;
@@ -16328,7 +16345,7 @@ declare const ResumeDto_base: nestjs_zod_dto.ZodDto<{
         locale: z.ZodDefault<z.ZodString>;
         emailVerified: z.ZodDefault<z.ZodBoolean>;
         twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
-        provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+        provider: z.ZodDefault<z.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>;
         shortName: z.ZodOptional<z.ZodString>;
         status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
         verificationToken: z.ZodOptional<z.ZodString>;
@@ -16349,7 +16366,7 @@ declare const ResumeDto_base: nestjs_zod_dto.ZodDto<{
         locale: string;
         emailVerified: boolean;
         twoFactorEnabled: boolean;
-        provider: "email" | "github" | "google";
+        provider: "email" | "linkedin" | "github" | "google" | "facebook";
         role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
         createdAt: string | Date;
         updatedAt: string | Date;
@@ -16373,7 +16390,7 @@ declare const ResumeDto_base: nestjs_zod_dto.ZodDto<{
         locale?: string | undefined;
         emailVerified?: boolean | undefined;
         twoFactorEnabled?: boolean | undefined;
-        provider?: "email" | "github" | "google" | undefined;
+        provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
         shortName?: string | undefined;
         verificationExpires?: string | Date | undefined;
         tempData?: any;
@@ -16450,7 +16467,7 @@ declare const ResumeDto_base: nestjs_zod_dto.ZodDto<{
         locale?: string | undefined;
         emailVerified?: boolean | undefined;
         twoFactorEnabled?: boolean | undefined;
-        provider?: "email" | "github" | "google" | undefined;
+        provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
         shortName?: string | undefined;
         verificationExpires?: string | Date | undefined;
         tempData?: any;
@@ -20021,7 +20038,7 @@ declare const updateResumeSchema: zod.ZodObject<Omit<{
         locale: zod.ZodDefault<zod.ZodString>;
         emailVerified: zod.ZodDefault<zod.ZodBoolean>;
         twoFactorEnabled: zod.ZodDefault<zod.ZodBoolean>;
-        provider: zod.ZodDefault<zod.ZodEnum<["email", "github", "google"]>>;
+        provider: zod.ZodDefault<zod.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>;
         shortName: zod.ZodOptional<zod.ZodString>;
         status: zod.ZodDefault<zod.ZodEnum<["ACTIVE", "INACTIVE"]>>;
         verificationToken: zod.ZodOptional<zod.ZodString>;
@@ -20042,7 +20059,7 @@ declare const updateResumeSchema: zod.ZodObject<Omit<{
         locale: string;
         emailVerified: boolean;
         twoFactorEnabled: boolean;
-        provider: "email" | "github" | "google";
+        provider: "email" | "linkedin" | "github" | "google" | "facebook";
         role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
         createdAt: string | Date;
         updatedAt: string | Date;
@@ -20066,7 +20083,7 @@ declare const updateResumeSchema: zod.ZodObject<Omit<{
         locale?: string | undefined;
         emailVerified?: boolean | undefined;
         twoFactorEnabled?: boolean | undefined;
-        provider?: "email" | "github" | "google" | undefined;
+        provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
         shortName?: string | undefined;
         verificationExpires?: string | Date | undefined;
         tempData?: any;
@@ -20092,7 +20109,7 @@ declare const updateResumeSchema: zod.ZodObject<Omit<{
         locale: string;
         emailVerified: boolean;
         twoFactorEnabled: boolean;
-        provider: "email" | "github" | "google";
+        provider: "email" | "linkedin" | "github" | "google" | "facebook";
         role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
         createdAt: string | Date;
         updatedAt: string | Date;
@@ -20493,7 +20510,7 @@ declare const updateResumeSchema: zod.ZodObject<Omit<{
         locale?: string | undefined;
         emailVerified?: boolean | undefined;
         twoFactorEnabled?: boolean | undefined;
-        provider?: "email" | "github" | "google" | undefined;
+        provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
         shortName?: string | undefined;
         verificationExpires?: string | Date | undefined;
         tempData?: any;
@@ -20887,7 +20904,7 @@ declare const UpdateResumeDto_base: nestjs_zod_dto.ZodDto<{
         locale: string;
         emailVerified: boolean;
         twoFactorEnabled: boolean;
-        provider: "email" | "github" | "google";
+        provider: "email" | "linkedin" | "github" | "google" | "facebook";
         role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
         createdAt: string | Date;
         updatedAt: string | Date;
@@ -24458,7 +24475,7 @@ declare const UpdateResumeDto_base: nestjs_zod_dto.ZodDto<{
         locale: zod.ZodDefault<zod.ZodString>;
         emailVerified: zod.ZodDefault<zod.ZodBoolean>;
         twoFactorEnabled: zod.ZodDefault<zod.ZodBoolean>;
-        provider: zod.ZodDefault<zod.ZodEnum<["email", "github", "google"]>>;
+        provider: zod.ZodDefault<zod.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>;
         shortName: zod.ZodOptional<zod.ZodString>;
         status: zod.ZodDefault<zod.ZodEnum<["ACTIVE", "INACTIVE"]>>;
         verificationToken: zod.ZodOptional<zod.ZodString>;
@@ -24479,7 +24496,7 @@ declare const UpdateResumeDto_base: nestjs_zod_dto.ZodDto<{
         locale: string;
         emailVerified: boolean;
         twoFactorEnabled: boolean;
-        provider: "email" | "github" | "google";
+        provider: "email" | "linkedin" | "github" | "google" | "facebook";
         role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
         createdAt: string | Date;
         updatedAt: string | Date;
@@ -24503,7 +24520,7 @@ declare const UpdateResumeDto_base: nestjs_zod_dto.ZodDto<{
         locale?: string | undefined;
         emailVerified?: boolean | undefined;
         twoFactorEnabled?: boolean | undefined;
-        provider?: "email" | "github" | "google" | undefined;
+        provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
         shortName?: string | undefined;
         verificationExpires?: string | Date | undefined;
         tempData?: any;
@@ -24533,7 +24550,7 @@ declare const UpdateResumeDto_base: nestjs_zod_dto.ZodDto<{
         locale?: string | undefined;
         emailVerified?: boolean | undefined;
         twoFactorEnabled?: boolean | undefined;
-        provider?: "email" | "github" | "google" | undefined;
+        provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
         shortName?: string | undefined;
         verificationExpires?: string | Date | undefined;
         tempData?: any;
@@ -26933,7 +26950,7 @@ declare const updateUserSchema: zod.ZodObject<Pick<{
     locale: zod.ZodOptional<zod.ZodDefault<zod.ZodString>>;
     emailVerified: zod.ZodOptional<zod.ZodDefault<zod.ZodBoolean>>;
     twoFactorEnabled: zod.ZodOptional<zod.ZodDefault<zod.ZodBoolean>>;
-    provider: zod.ZodOptional<zod.ZodDefault<zod.ZodEnum<["email", "github", "google"]>>>;
+    provider: zod.ZodOptional<zod.ZodDefault<zod.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>>;
     shortName: zod.ZodOptional<zod.ZodOptional<zod.ZodString>>;
     status: zod.ZodOptional<zod.ZodDefault<zod.ZodEnum<["ACTIVE", "INACTIVE"]>>>;
     verificationToken: zod.ZodOptional<zod.ZodOptional<zod.ZodString>>;
@@ -26975,7 +26992,7 @@ declare const UpdateUserDto_base: nestjs_zod_dto.ZodDto<{
     locale: zod.ZodOptional<zod.ZodDefault<zod.ZodString>>;
     emailVerified: zod.ZodOptional<zod.ZodDefault<zod.ZodBoolean>>;
     twoFactorEnabled: zod.ZodOptional<zod.ZodDefault<zod.ZodBoolean>>;
-    provider: zod.ZodOptional<zod.ZodDefault<zod.ZodEnum<["email", "github", "google"]>>>;
+    provider: zod.ZodOptional<zod.ZodDefault<zod.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>>;
     shortName: zod.ZodOptional<zod.ZodOptional<zod.ZodString>>;
     status: zod.ZodOptional<zod.ZodDefault<zod.ZodEnum<["ACTIVE", "INACTIVE"]>>>;
     verificationToken: zod.ZodOptional<zod.ZodOptional<zod.ZodString>>;
@@ -27007,7 +27024,7 @@ declare const userSchema: z.ZodObject<{
     locale: z.ZodDefault<z.ZodString>;
     emailVerified: z.ZodDefault<z.ZodBoolean>;
     twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
-    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>;
     shortName: z.ZodOptional<z.ZodString>;
     status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
     verificationToken: z.ZodOptional<z.ZodString>;
@@ -27028,7 +27045,7 @@ declare const userSchema: z.ZodObject<{
     locale: string;
     emailVerified: boolean;
     twoFactorEnabled: boolean;
-    provider: "email" | "github" | "google";
+    provider: "email" | "linkedin" | "github" | "google" | "facebook";
     role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
     createdAt: string | Date;
     updatedAt: string | Date;
@@ -27052,7 +27069,7 @@ declare const userSchema: z.ZodObject<{
     locale?: string | undefined;
     emailVerified?: boolean | undefined;
     twoFactorEnabled?: boolean | undefined;
-    provider?: "email" | "github" | "google" | undefined;
+    provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
     shortName?: string | undefined;
     verificationExpires?: string | Date | undefined;
     tempData?: any;
@@ -27069,7 +27086,7 @@ declare const UserDto_base: nestjs_zod_dto.ZodDto<{
     locale: string;
     emailVerified: boolean;
     twoFactorEnabled: boolean;
-    provider: "email" | "github" | "google";
+    provider: "email" | "linkedin" | "github" | "google" | "facebook";
     role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
     createdAt: string | Date;
     updatedAt: string | Date;
@@ -27088,7 +27105,7 @@ declare const UserDto_base: nestjs_zod_dto.ZodDto<{
     locale: z.ZodDefault<z.ZodString>;
     emailVerified: z.ZodDefault<z.ZodBoolean>;
     twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
-    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>;
     shortName: z.ZodOptional<z.ZodString>;
     status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
     verificationToken: z.ZodOptional<z.ZodString>;
@@ -27113,7 +27130,7 @@ declare const UserDto_base: nestjs_zod_dto.ZodDto<{
     locale?: string | undefined;
     emailVerified?: boolean | undefined;
     twoFactorEnabled?: boolean | undefined;
-    provider?: "email" | "github" | "google" | undefined;
+    provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
     shortName?: string | undefined;
     verificationExpires?: string | Date | undefined;
     tempData?: any;
@@ -27131,7 +27148,7 @@ declare const userWithSecretsSchema: z.ZodObject<{
     locale: z.ZodDefault<z.ZodString>;
     emailVerified: z.ZodDefault<z.ZodBoolean>;
     twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
-    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>;
     shortName: z.ZodOptional<z.ZodString>;
     status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
     verificationToken: z.ZodOptional<z.ZodString>;
@@ -27184,7 +27201,7 @@ declare const userWithSecretsSchema: z.ZodObject<{
     locale: string;
     emailVerified: boolean;
     twoFactorEnabled: boolean;
-    provider: "email" | "github" | "google";
+    provider: "email" | "linkedin" | "github" | "google" | "facebook";
     role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
     createdAt: string | Date;
     updatedAt: string | Date;
@@ -27230,7 +27247,7 @@ declare const userWithSecretsSchema: z.ZodObject<{
     locale?: string | undefined;
     emailVerified?: boolean | undefined;
     twoFactorEnabled?: boolean | undefined;
-    provider?: "email" | "github" | "google" | undefined;
+    provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
     shortName?: string | undefined;
     verificationExpires?: string | Date | undefined;
     tempData?: any;
@@ -27247,7 +27264,7 @@ declare const UserWithSecrets_base: nestjs_zod_dto.ZodDto<{
     locale: string;
     emailVerified: boolean;
     twoFactorEnabled: boolean;
-    provider: "email" | "github" | "google";
+    provider: "email" | "linkedin" | "github" | "google" | "facebook";
     role: "USER" | "ADMIN" | "ACCOUNT_DEPARTMENT" | "PUBLISHER_DEPARTMENT";
     createdAt: string | Date;
     updatedAt: string | Date;
@@ -27277,7 +27294,7 @@ declare const UserWithSecrets_base: nestjs_zod_dto.ZodDto<{
     locale: z.ZodDefault<z.ZodString>;
     emailVerified: z.ZodDefault<z.ZodBoolean>;
     twoFactorEnabled: z.ZodDefault<z.ZodBoolean>;
-    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google"]>>;
+    provider: z.ZodDefault<z.ZodEnum<["email", "github", "google", "facebook", "linkedin"]>>;
     shortName: z.ZodOptional<z.ZodString>;
     status: z.ZodDefault<z.ZodEnum<["ACTIVE", "INACTIVE"]>>;
     verificationToken: z.ZodOptional<z.ZodString>;
@@ -27345,7 +27362,7 @@ declare const UserWithSecrets_base: nestjs_zod_dto.ZodDto<{
     locale?: string | undefined;
     emailVerified?: boolean | undefined;
     twoFactorEnabled?: boolean | undefined;
-    provider?: "email" | "github" | "google" | undefined;
+    provider?: "email" | "linkedin" | "github" | "google" | "facebook" | undefined;
     shortName?: string | undefined;
     verificationExpires?: string | Date | undefined;
     tempData?: any;
@@ -27355,4 +27372,4 @@ declare const UserWithSecrets_base: nestjs_zod_dto.ZodDto<{
 declare class UserWithSecrets extends UserWithSecrets_base {
 }
 
-export { AuthProvidersDto, AuthResponseDto, BackupCodesDto, ContactFormDto, ContributorDto, CreateBlogDto, CreateCoverLetterDto, CreateJobMatchingDto, CreateResumeAnalysisDto, CreateResumeDto, CreateResumeGuidanceDto, CreateTemplateDto, DeleteResumeDto, FeatureDto, ForgotPasswordDto, GenerateCoverLetterDto, ImportResumeDto, JobMatchingDto, LoginDto, MessageDto, ResetPasswordDto as NewResetPasswordDto, RegisterDto, ResetPasswordDto$1 as ResetPasswordDto, ResumeAnalysisDto, ResumeDto, ResumeGuidanceDto, SignupDto, StatisticsDto, SubscribeNewsletterDto, TemplateDto, TwoFactorBackupDto, TwoFactorDto, UpdateBlogDto, UpdateCoverLetterDto, UpdateJobMatchingDto, UpdateNoteDto, UpdateNotesDto, UpdatePasswordDto, UpdateResumeDto, UpdateTemplateDto, UpdateTrackingSettingsDto, UpdateUserDto, UrlDto, UserDto, UserWithSecrets, VerifyOtpDto, authResponseSchema, backupCodesSchema, contactFormSchema, contributorSchema, createBlogSchema, createCoverLetterSchema, createJobMatchingSchema, createResumeAnalysisSchema, createResumeGuidanceSchema, createResumeSchema, createTemplateSchema, deleteResumeSchema, featureSchema, forgotPasswordSchema, generateCoverLetterSchema, importResumeSchema, jobMatchingSchema, loginSchema, messageSchema, registerSchema, resetPasswordSchema, resumeAnalysisSchema, resumeGuidanceSchema, resumeSchema, secretsSchema, signupSchema, statisticsSchema, subscribeNewsletterSchema, templateSchema, twoFactorBackupSchema, twoFactorSchema, updateBlogSchema, updateCoverLetterSchema, updateJobMatchingSchema, updateNoteSchema, updateNotesSchema, updatePasswordSchema, updateResumeSchema, updateTemplateSchema, updateTrackingSettingsSchema, updateUserSchema, urlSchema, userSchema, userWithSecretsSchema, usernameSchema, verifyOtpSchema };
+export { AuthProvidersDto, AuthResponseDto, BackupCodesDto, ContactFormDto, ContributorDto, CreateBlogDto, CreateCoverLetterDto, CreateJobMatchingDto, CreateResumeAnalysisDto, CreateResumeDto, CreateResumeGuidanceDto, CreateTemplateDto, DeleteResumeDto, FeatureDto, ForgotPasswordDto, GenerateCoverLetterDto, ImportResumeDto, JobMatchingDto, LoginDto, MessageDto, ResetPasswordDto as NewResetPasswordDto, OAuthExchangeDto, RegisterDto, ResetPasswordDto$1 as ResetPasswordDto, ResumeAnalysisDto, ResumeDto, ResumeGuidanceDto, SignupDto, StatisticsDto, SubscribeNewsletterDto, TemplateDto, TwoFactorBackupDto, TwoFactorDto, UpdateBlogDto, UpdateCoverLetterDto, UpdateJobMatchingDto, UpdateNoteDto, UpdateNotesDto, UpdatePasswordDto, UpdateResumeDto, UpdateTemplateDto, UpdateTrackingSettingsDto, UpdateUserDto, UrlDto, UserDto, UserWithSecrets, VerifyOtpDto, authResponseSchema, backupCodesSchema, contactFormSchema, contributorSchema, createBlogSchema, createCoverLetterSchema, createJobMatchingSchema, createResumeAnalysisSchema, createResumeGuidanceSchema, createResumeSchema, createTemplateSchema, deleteResumeSchema, featureSchema, forgotPasswordSchema, generateCoverLetterSchema, importResumeSchema, jobMatchingSchema, loginSchema, messageSchema, oauthExchangeSchema, registerSchema, resetPasswordSchema, resumeAnalysisSchema, resumeGuidanceSchema, resumeSchema, secretsSchema, signupSchema, statisticsSchema, subscribeNewsletterSchema, templateSchema, twoFactorBackupSchema, twoFactorSchema, updateBlogSchema, updateCoverLetterSchema, updateJobMatchingSchema, updateNoteSchema, updateNotesSchema, updatePasswordSchema, updateResumeSchema, updateTemplateSchema, updateTrackingSettingsSchema, updateUserSchema, urlSchema, userSchema, userWithSecretsSchema, usernameSchema, verifyOtpSchema };

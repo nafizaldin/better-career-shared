@@ -2,6 +2,7 @@ export * from "./forgot-password";
 export * from "./login";
 export * from "./message";
 export * from "./providers";
+export * from "./oauth-exchange";
 export * from "./register";
 export * from "./reset-password";
 export * from "./response";

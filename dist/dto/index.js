@@ -51,6 +51,7 @@ __export(dto_exports, {
   LoginDto: () => LoginDto,
   MessageDto: () => MessageDto,
   NewResetPasswordDto: () => ResetPasswordDto2,
+  OAuthExchangeDto: () => OAuthExchangeDto,
   RegisterDto: () => RegisterDto,
   ResetPasswordDto: () => ResetPasswordDto,
   ResumeAnalysisDto: () => ResumeAnalysisDto,
@@ -95,6 +96,7 @@ __export(dto_exports, {
   jobMatchingSchema: () => jobMatchingSchema,
   loginSchema: () => loginSchema,
   messageSchema: () => messageSchema,
+  oauthExchangeSchema: () => oauthExchangeSchema,
   registerSchema: () => registerSchema,
   resetPasswordSchema: () => resetPasswordSchema,
   resumeAnalysisSchema: () => resumeAnalysisSchema,
@@ -950,7 +952,7 @@ var userSchema = import_z3.z.object({
   locale: import_z3.z.string().default("en-US"),
   emailVerified: import_z3.z.boolean().default(false),
   twoFactorEnabled: import_z3.z.boolean().default(false),
-  provider: import_z3.z.enum(["email", "github", "google"]).default("email"),
+  provider: import_z3.z.enum(["email", "github", "google", "facebook", "linkedin"]).default("email"),
   // New fields
   shortName: import_z3.z.string().optional(),
   status: import_z3.z.enum(["ACTIVE", "INACTIVE"]).default("INACTIVE"),
@@ -1004,139 +1006,126 @@ var MessageDto = class extends (0, import_dto5.createZodDto)(messageSchema) {
 // src/dto/auth/providers.ts
 var import_dto6 = require("nestjs-zod/dto");
 var import_z6 = require("nestjs-zod/z");
-var authProvidersSchema = import_z6.z.array(import_z6.z.enum(["email", "github", "google"]));
+var authProvidersSchema = import_z6.z.array(import_z6.z.enum(["email", "github", "google", "facebook", "linkedin"]));
 var AuthProvidersDto = class extends (0, import_dto6.createZodDto)(authProvidersSchema) {
 };
 
-// src/dto/auth/register.ts
+// src/dto/auth/oauth-exchange.ts
 var import_dto7 = require("nestjs-zod/dto");
 var import_z7 = require("nestjs-zod/z");
-var registerSchema = userSchema.pick({ name: true, email: true, username: true, locale: true }).extend({ password: import_z7.z.password().min(6) });
-var RegisterDto = class extends (0, import_dto7.createZodDto)(registerSchema) {
+var oauthExchangeSchema = import_z7.z.object({
+  code: import_z7.z.string().min(20).max(128)
+});
+var OAuthExchangeDto = class extends (0, import_dto7.createZodDto)(oauthExchangeSchema) {
+};
+
+// src/dto/auth/register.ts
+var import_dto8 = require("nestjs-zod/dto");
+var import_z8 = require("nestjs-zod/z");
+var registerSchema = userSchema.pick({ name: true, email: true, username: true, locale: true }).extend({ password: import_z8.z.password().min(6) });
+var RegisterDto = class extends (0, import_dto8.createZodDto)(registerSchema) {
 };
 
 // src/dto/auth/reset-password.ts
-var import_dto8 = require("nestjs-zod/dto");
-var import_z8 = require("nestjs-zod/z");
-var resetPasswordSchema = import_z8.z.object({
-  token: import_z8.z.string(),
-  password: import_z8.z.password().min(6)
+var import_dto9 = require("nestjs-zod/dto");
+var import_z9 = require("nestjs-zod/z");
+var resetPasswordSchema = import_z9.z.object({
+  token: import_z9.z.string(),
+  password: import_z9.z.password().min(6)
 });
-var ResetPasswordDto = class extends (0, import_dto8.createZodDto)(resetPasswordSchema) {
+var ResetPasswordDto = class extends (0, import_dto9.createZodDto)(resetPasswordSchema) {
 };
 
 // src/dto/auth/response.ts
-var import_dto9 = require("nestjs-zod/dto");
-var import_z9 = require("nestjs-zod/z");
-var authResponseSchema = import_z9.z.object({
-  status: import_z9.z.enum(["authenticated", "2fa_required"]),
+var import_dto10 = require("nestjs-zod/dto");
+var import_z10 = require("nestjs-zod/z");
+var authResponseSchema = import_z10.z.object({
+  status: import_z10.z.enum(["authenticated", "2fa_required"]),
   user: userSchema
 });
-var AuthResponseDto = class extends (0, import_dto9.createZodDto)(authResponseSchema) {
+var AuthResponseDto = class extends (0, import_dto10.createZodDto)(authResponseSchema) {
 };
 
 // src/dto/auth/signup.ts
-var import_dto10 = require("nestjs-zod/dto");
-var import_z10 = require("nestjs-zod/z");
-var signupSchema = import_z10.z.object({
-  username: import_z10.z.string().min(3).max(255),
-  email: import_z10.z.string().email(),
-  password: import_z10.z.string().min(6),
-  shortName: import_z10.z.string().optional(),
-  thumb: import_z10.z.string().optional(),
-  number: import_z10.z.string().optional(),
-  go_crazy121211: import_z10.z.boolean().optional(),
-  role: import_z10.z.enum(["super-admin", "admin", "user"]).optional().default("user")
+var import_dto11 = require("nestjs-zod/dto");
+var import_z11 = require("nestjs-zod/z");
+var signupSchema = import_z11.z.object({
+  username: import_z11.z.string().min(3).max(255),
+  email: import_z11.z.string().email(),
+  password: import_z11.z.string().min(6),
+  shortName: import_z11.z.string().optional(),
+  thumb: import_z11.z.string().optional(),
+  number: import_z11.z.string().optional(),
+  go_crazy121211: import_z11.z.boolean().optional(),
+  role: import_z11.z.enum(["super-admin", "admin", "user"]).optional().default("user")
 });
-var SignupDto = class extends (0, import_dto10.createZodDto)(signupSchema) {
+var SignupDto = class extends (0, import_dto11.createZodDto)(signupSchema) {
 };
 
 // src/dto/auth/two-factor.ts
-var import_dto11 = require("nestjs-zod/dto");
-var import_z11 = require("nestjs-zod/z");
-var twoFactorSchema = import_z11.z.object({
-  code: import_z11.z.string().length(6, { message: "Code must be a 6 digit number" }).regex(/^\d+$/, { message: "Code must be a 6 digit number" })
+var import_dto12 = require("nestjs-zod/dto");
+var import_z12 = require("nestjs-zod/z");
+var twoFactorSchema = import_z12.z.object({
+  code: import_z12.z.string().length(6, { message: "Code must be a 6 digit number" }).regex(/^\d+$/, { message: "Code must be a 6 digit number" })
 });
-var TwoFactorDto = class extends (0, import_dto11.createZodDto)(twoFactorSchema) {
+var TwoFactorDto = class extends (0, import_dto12.createZodDto)(twoFactorSchema) {
 };
-var backupCodesSchema = import_z11.z.object({
-  backupCodes: import_z11.z.array(import_z11.z.string().length(10))
+var backupCodesSchema = import_z12.z.object({
+  backupCodes: import_z12.z.array(import_z12.z.string().length(10))
 });
-var BackupCodesDto = class extends (0, import_dto11.createZodDto)(backupCodesSchema) {
+var BackupCodesDto = class extends (0, import_dto12.createZodDto)(backupCodesSchema) {
 };
-var twoFactorBackupSchema = import_z11.z.object({
-  code: import_z11.z.string().length(10)
+var twoFactorBackupSchema = import_z12.z.object({
+  code: import_z12.z.string().length(10)
 });
-var TwoFactorBackupDto = class extends (0, import_dto11.createZodDto)(twoFactorBackupSchema) {
+var TwoFactorBackupDto = class extends (0, import_dto12.createZodDto)(twoFactorBackupSchema) {
 };
 
 // src/dto/auth/update-password.ts
-var import_dto12 = require("nestjs-zod/dto");
-var import_z12 = require("nestjs-zod/z");
-var updatePasswordSchema = import_z12.z.object({
-  password: import_z12.z.string().min(6)
+var import_dto13 = require("nestjs-zod/dto");
+var import_z13 = require("nestjs-zod/z");
+var updatePasswordSchema = import_z13.z.object({
+  password: import_z13.z.string().min(6)
 });
-var UpdatePasswordDto = class extends (0, import_dto12.createZodDto)(updatePasswordSchema) {
+var UpdatePasswordDto = class extends (0, import_dto13.createZodDto)(updatePasswordSchema) {
 };
 
 // src/dto/auth/verify-otp.ts
-var import_dto13 = require("nestjs-zod/dto");
-var import_z13 = require("nestjs-zod/z");
-var verifyOtpSchema = import_z13.z.object({
-  email: import_z13.z.string().email(),
-  otp: import_z13.z.string().length(4)
+var import_dto14 = require("nestjs-zod/dto");
+var import_z14 = require("nestjs-zod/z");
+var verifyOtpSchema = import_z14.z.object({
+  email: import_z14.z.string().email(),
+  otp: import_z14.z.string().length(4)
 });
-var VerifyOtpDto = class extends (0, import_dto13.createZodDto)(verifyOtpSchema) {
+var VerifyOtpDto = class extends (0, import_dto14.createZodDto)(verifyOtpSchema) {
 };
 
 // src/dto/auth/reset-password-new.ts
-var import_dto14 = require("nestjs-zod/dto");
-var import_z14 = require("nestjs-zod/z");
-var resetPasswordSchema2 = import_z14.z.object({
-  email: import_z14.z.string().email(),
-  newPassword: import_z14.z.string().min(6),
-  confirmPassword: import_z14.z.string().min(6)
+var import_dto15 = require("nestjs-zod/dto");
+var import_z15 = require("nestjs-zod/z");
+var resetPasswordSchema2 = import_z15.z.object({
+  email: import_z15.z.string().email(),
+  newPassword: import_z15.z.string().min(6),
+  confirmPassword: import_z15.z.string().min(6)
 }).refine((data) => data.newPassword === data.confirmPassword, {
   message: "Passwords don't match",
   path: ["confirmPassword"]
 });
-var ResetPasswordDto2 = class extends (0, import_dto14.createZodDto)(resetPasswordSchema2) {
+var ResetPasswordDto2 = class extends (0, import_dto15.createZodDto)(resetPasswordSchema2) {
 };
 
 // src/dto/blog/create.ts
-var import_dto15 = require("nestjs-zod/dto");
-var import_z15 = require("nestjs-zod/z");
-var createBlogSchema = import_z15.z.object({
-  title: import_z15.z.string().min(3).max(255),
-  content: import_z15.z.string().min(10),
-  summary: import_z15.z.string().min(10).max(500).optional().nullable(),
-  featuredImage: import_z15.z.string().optional().nullable(),
-  // data URL (base64) or URL; max 5MB enforced server-side
-  tags: import_z15.z.array(import_z15.z.string()).optional().default([]),
-  categories: import_z15.z.array(import_z15.z.string()).optional().default([]),
-  status: import_z15.z.enum(["draft", "published"]).optional().default("draft"),
-  publishedAt: import_z15.z.coerce.date().optional().nullable(),
-  authorName: import_z15.z.string().optional().nullable(),
-  authorBio: import_z15.z.string().optional().nullable(),
-  authorImage: import_z15.z.string().url().optional().nullable(),
-  metaTitle: import_z15.z.string().max(60).optional().nullable(),
-  metaDescription: import_z15.z.string().max(160).optional().nullable()
-});
-var CreateBlogDto = class extends (0, import_dto15.createZodDto)(createBlogSchema) {
-};
-
-// src/dto/blog/update.ts
 var import_dto16 = require("nestjs-zod/dto");
 var import_z16 = require("nestjs-zod/z");
-var updateBlogSchema = import_z16.z.object({
-  title: import_z16.z.string().min(3).max(255).optional(),
-  content: import_z16.z.string().min(10).optional(),
+var createBlogSchema = import_z16.z.object({
+  title: import_z16.z.string().min(3).max(255),
+  content: import_z16.z.string().min(10),
   summary: import_z16.z.string().min(10).max(500).optional().nullable(),
   featuredImage: import_z16.z.string().optional().nullable(),
   // data URL (base64) or URL; max 5MB enforced server-side
-  tags: import_z16.z.array(import_z16.z.string()).optional(),
-  categories: import_z16.z.array(import_z16.z.string()).optional(),
-  status: import_z16.z.enum(["draft", "published"]).optional(),
+  tags: import_z16.z.array(import_z16.z.string()).optional().default([]),
+  categories: import_z16.z.array(import_z16.z.string()).optional().default([]),
+  status: import_z16.z.enum(["draft", "published"]).optional().default("draft"),
   publishedAt: import_z16.z.coerce.date().optional().nullable(),
   authorName: import_z16.z.string().optional().nullable(),
   authorBio: import_z16.z.string().optional().nullable(),
@@ -1144,148 +1133,170 @@ var updateBlogSchema = import_z16.z.object({
   metaTitle: import_z16.z.string().max(60).optional().nullable(),
   metaDescription: import_z16.z.string().max(160).optional().nullable()
 });
-var UpdateBlogDto = class extends (0, import_dto16.createZodDto)(updateBlogSchema) {
+var CreateBlogDto = class extends (0, import_dto16.createZodDto)(createBlogSchema) {
+};
+
+// src/dto/blog/update.ts
+var import_dto17 = require("nestjs-zod/dto");
+var import_z17 = require("nestjs-zod/z");
+var updateBlogSchema = import_z17.z.object({
+  title: import_z17.z.string().min(3).max(255).optional(),
+  content: import_z17.z.string().min(10).optional(),
+  summary: import_z17.z.string().min(10).max(500).optional().nullable(),
+  featuredImage: import_z17.z.string().optional().nullable(),
+  // data URL (base64) or URL; max 5MB enforced server-side
+  tags: import_z17.z.array(import_z17.z.string()).optional(),
+  categories: import_z17.z.array(import_z17.z.string()).optional(),
+  status: import_z17.z.enum(["draft", "published"]).optional(),
+  publishedAt: import_z17.z.coerce.date().optional().nullable(),
+  authorName: import_z17.z.string().optional().nullable(),
+  authorBio: import_z17.z.string().optional().nullable(),
+  authorImage: import_z17.z.string().url().optional().nullable(),
+  metaTitle: import_z17.z.string().max(60).optional().nullable(),
+  metaDescription: import_z17.z.string().max(160).optional().nullable()
+});
+var UpdateBlogDto = class extends (0, import_dto17.createZodDto)(updateBlogSchema) {
 };
 
 // src/dto/contributors/index.ts
-var import_dto17 = require("nestjs-zod/dto");
-var import_z17 = require("nestjs-zod/z");
-var contributorSchema = import_z17.z.object({
-  id: import_z17.z.number(),
-  name: import_z17.z.string(),
-  url: import_z17.z.string(),
-  avatar: import_z17.z.string()
+var import_dto18 = require("nestjs-zod/dto");
+var import_z18 = require("nestjs-zod/z");
+var contributorSchema = import_z18.z.object({
+  id: import_z18.z.number(),
+  name: import_z18.z.string(),
+  url: import_z18.z.string(),
+  avatar: import_z18.z.string()
 });
-var ContributorDto = class extends (0, import_dto17.createZodDto)(contributorSchema) {
+var ContributorDto = class extends (0, import_dto18.createZodDto)(contributorSchema) {
 };
 
 // src/dto/contact/index.ts
-var import_dto18 = require("nestjs-zod/dto");
-var import_z18 = require("nestjs-zod/z");
-var contactFormSchema = import_z18.z.object({
-  firstName: import_z18.z.string().min(1).max(255),
-  lastName: import_z18.z.string().min(1).max(255),
-  phone: import_z18.z.string().min(1).max(20),
-  email: import_z18.z.string().email(),
-  message: import_z18.z.string().min(1).max(1e3),
-  privacyAgreed: import_z18.z.boolean().default(false)
+var import_dto19 = require("nestjs-zod/dto");
+var import_z19 = require("nestjs-zod/z");
+var contactFormSchema = import_z19.z.object({
+  firstName: import_z19.z.string().min(1).max(255),
+  lastName: import_z19.z.string().min(1).max(255),
+  phone: import_z19.z.string().min(1).max(20),
+  email: import_z19.z.string().email(),
+  message: import_z19.z.string().min(1).max(1e3),
+  privacyAgreed: import_z19.z.boolean().default(false)
 });
-var ContactFormDto = class extends (0, import_dto18.createZodDto)(contactFormSchema) {
+var ContactFormDto = class extends (0, import_dto19.createZodDto)(contactFormSchema) {
 };
 
 // src/dto/cover-letter/create.ts
-var import_dto19 = require("nestjs-zod/dto");
-var import_z19 = require("nestjs-zod/z");
-var createCoverLetterSchema = import_z19.z.object({
-  jobMatchingId: import_z19.z.string().min(1),
-  resumeId: import_z19.z.string().min(1),
-  content: import_z19.z.string().min(1),
-  tone: import_z19.z.string().nullable().optional()
+var import_dto20 = require("nestjs-zod/dto");
+var import_z20 = require("nestjs-zod/z");
+var createCoverLetterSchema = import_z20.z.object({
+  jobMatchingId: import_z20.z.string().min(1),
+  resumeId: import_z20.z.string().min(1),
+  content: import_z20.z.string().min(1),
+  tone: import_z20.z.string().nullable().optional()
 });
-var CreateCoverLetterDto = class extends (0, import_dto19.createZodDto)(createCoverLetterSchema) {
+var CreateCoverLetterDto = class extends (0, import_dto20.createZodDto)(createCoverLetterSchema) {
 };
 
 // src/dto/cover-letter/update.ts
-var import_dto20 = require("nestjs-zod/dto");
-var import_z20 = require("nestjs-zod/z");
-var updateCoverLetterSchema = import_z20.z.object({
-  content: import_z20.z.string().min(1).optional(),
-  tone: import_z20.z.string().nullable().optional()
+var import_dto21 = require("nestjs-zod/dto");
+var import_z21 = require("nestjs-zod/z");
+var updateCoverLetterSchema = import_z21.z.object({
+  content: import_z21.z.string().min(1).optional(),
+  tone: import_z21.z.string().nullable().optional()
 });
-var UpdateCoverLetterDto = class extends (0, import_dto20.createZodDto)(updateCoverLetterSchema) {
+var UpdateCoverLetterDto = class extends (0, import_dto21.createZodDto)(updateCoverLetterSchema) {
 };
 
 // src/dto/cover-letter/generate.ts
-var import_dto21 = require("nestjs-zod/dto");
-var import_z21 = require("nestjs-zod/z");
-var generateCoverLetterSchema = import_z21.z.object({
-  jobMatchingId: import_z21.z.string().min(1),
-  resumeId: import_z21.z.string().min(1)
+var import_dto22 = require("nestjs-zod/dto");
+var import_z22 = require("nestjs-zod/z");
+var generateCoverLetterSchema = import_z22.z.object({
+  jobMatchingId: import_z22.z.string().min(1),
+  resumeId: import_z22.z.string().min(1)
 });
-var GenerateCoverLetterDto = class extends (0, import_dto21.createZodDto)(generateCoverLetterSchema) {
+var GenerateCoverLetterDto = class extends (0, import_dto22.createZodDto)(generateCoverLetterSchema) {
 };
 
 // src/dto/feature/index.ts
-var import_dto22 = require("nestjs-zod/dto");
-var import_z22 = require("nestjs-zod/z");
-var featureSchema = import_z22.z.object({
-  isSignupsDisabled: import_z22.z.boolean().default(false),
-  isEmailAuthDisabled: import_z22.z.boolean().default(false)
+var import_dto23 = require("nestjs-zod/dto");
+var import_z23 = require("nestjs-zod/z");
+var featureSchema = import_z23.z.object({
+  isSignupsDisabled: import_z23.z.boolean().default(false),
+  isEmailAuthDisabled: import_z23.z.boolean().default(false)
 });
-var FeatureDto = class extends (0, import_dto22.createZodDto)(featureSchema) {
+var FeatureDto = class extends (0, import_dto23.createZodDto)(featureSchema) {
 };
 
 // src/dto/job-matching/create.ts
-var import_dto23 = require("nestjs-zod/dto");
-var import_z23 = require("nestjs-zod/z");
-var createJobMatchingSchema = import_z23.z.object({
-  title: import_z23.z.string().min(1),
-  company: import_z23.z.string().min(1),
-  jobDescription: import_z23.z.string().min(1),
-  resumeId: import_z23.z.string().min(1),
-  jobType: import_z23.z.string().nullable().optional(),
-  averageSalary: import_z23.z.string().nullable().optional(),
-  matchScore: import_z23.z.number().min(0).max(100).nullable().optional(),
-  keywords: import_z23.z.array(import_z23.z.string()).optional()
-});
-var CreateJobMatchingDto = class extends (0, import_dto23.createZodDto)(createJobMatchingSchema) {
-};
-
-// src/dto/job-matching/update.ts
 var import_dto24 = require("nestjs-zod/dto");
 var import_z24 = require("nestjs-zod/z");
-var updateJobMatchingSchema = import_z24.z.object({
-  title: import_z24.z.string().min(1).optional(),
-  company: import_z24.z.string().min(1).optional(),
-  jobDescription: import_z24.z.string().min(1).optional(),
+var createJobMatchingSchema = import_z24.z.object({
+  title: import_z24.z.string().min(1),
+  company: import_z24.z.string().min(1),
+  jobDescription: import_z24.z.string().min(1),
+  resumeId: import_z24.z.string().min(1),
   jobType: import_z24.z.string().nullable().optional(),
   averageSalary: import_z24.z.string().nullable().optional(),
   matchScore: import_z24.z.number().min(0).max(100).nullable().optional(),
-  note: import_z24.z.string().nullable().optional(),
   keywords: import_z24.z.array(import_z24.z.string()).optional()
 });
-var UpdateJobMatchingDto = class extends (0, import_dto24.createZodDto)(updateJobMatchingSchema) {
+var CreateJobMatchingDto = class extends (0, import_dto24.createZodDto)(createJobMatchingSchema) {
+};
+
+// src/dto/job-matching/update.ts
+var import_dto25 = require("nestjs-zod/dto");
+var import_z25 = require("nestjs-zod/z");
+var updateJobMatchingSchema = import_z25.z.object({
+  title: import_z25.z.string().min(1).optional(),
+  company: import_z25.z.string().min(1).optional(),
+  jobDescription: import_z25.z.string().min(1).optional(),
+  jobType: import_z25.z.string().nullable().optional(),
+  averageSalary: import_z25.z.string().nullable().optional(),
+  matchScore: import_z25.z.number().min(0).max(100).nullable().optional(),
+  note: import_z25.z.string().nullable().optional(),
+  keywords: import_z25.z.array(import_z25.z.string()).optional()
+});
+var UpdateJobMatchingDto = class extends (0, import_dto25.createZodDto)(updateJobMatchingSchema) {
 };
 
 // src/dto/job-matching/note.ts
-var import_dto25 = require("nestjs-zod/dto");
-var import_z25 = require("nestjs-zod/z");
-var updateNoteSchema = import_z25.z.object({
-  note: import_z25.z.string().optional()
+var import_dto26 = require("nestjs-zod/dto");
+var import_z26 = require("nestjs-zod/z");
+var updateNoteSchema = import_z26.z.object({
+  note: import_z26.z.string().optional()
 });
-var UpdateNoteDto = class extends (0, import_dto25.createZodDto)(updateNoteSchema) {
+var UpdateNoteDto = class extends (0, import_dto26.createZodDto)(updateNoteSchema) {
 };
 
 // src/dto/job-matching/job-matching.ts
-var import_dto26 = require("nestjs-zod/dto");
-var import_z26 = require("nestjs-zod/z");
-var jobMatchingSchema = import_z26.z.object({
-  id: import_z26.z.string(),
-  title: import_z26.z.string(),
-  company: import_z26.z.string(),
-  jobDescription: import_z26.z.string(),
-  jobType: import_z26.z.string().nullable(),
-  averageSalary: import_z26.z.string().nullable(),
-  matchScore: import_z26.z.number().nullable(),
-  trackerIndex: import_z26.z.number(),
-  note: import_z26.z.string().nullable(),
-  active: import_z26.z.boolean(),
-  createdAt: import_z26.z.date(),
-  updatedAt: import_z26.z.date(),
-  resumeId: import_z26.z.string(),
-  userId: import_z26.z.string(),
-  keywords: import_z26.z.array(import_z26.z.string())
+var import_dto27 = require("nestjs-zod/dto");
+var import_z27 = require("nestjs-zod/z");
+var jobMatchingSchema = import_z27.z.object({
+  id: import_z27.z.string(),
+  title: import_z27.z.string(),
+  company: import_z27.z.string(),
+  jobDescription: import_z27.z.string(),
+  jobType: import_z27.z.string().nullable(),
+  averageSalary: import_z27.z.string().nullable(),
+  matchScore: import_z27.z.number().nullable(),
+  trackerIndex: import_z27.z.number(),
+  note: import_z27.z.string().nullable(),
+  active: import_z27.z.boolean(),
+  createdAt: import_z27.z.date(),
+  updatedAt: import_z27.z.date(),
+  resumeId: import_z27.z.string(),
+  userId: import_z27.z.string(),
+  keywords: import_z27.z.array(import_z27.z.string())
 });
-var JobMatchingDto = class extends (0, import_dto26.createZodDto)(jobMatchingSchema) {
+var JobMatchingDto = class extends (0, import_dto27.createZodDto)(jobMatchingSchema) {
 };
 
 // src/dto/newsletter/index.ts
-var import_dto27 = require("nestjs-zod/dto");
-var import_z27 = require("nestjs-zod/z");
-var subscribeNewsletterSchema = import_z27.z.object({
-  email: import_z27.z.string().email()
+var import_dto28 = require("nestjs-zod/dto");
+var import_z28 = require("nestjs-zod/z");
+var subscribeNewsletterSchema = import_z28.z.object({
+  email: import_z28.z.string().email()
 });
-var SubscribeNewsletterDto = class extends (0, import_dto27.createZodDto)(subscribeNewsletterSchema) {
+var SubscribeNewsletterDto = class extends (0, import_dto28.createZodDto)(subscribeNewsletterSchema) {
 };
 
 // src/utils/namespaces/csv.ts
@@ -1306,262 +1317,262 @@ var import_clsx = require("clsx");
 var import_tailwind_merge = require("tailwind-merge");
 
 // src/dto/resume/create.ts
-var import_dto28 = require("nestjs-zod/dto");
-var import_z28 = require("nestjs-zod/z");
-var createResumeSchema = import_z28.z.object({
-  title: import_z28.z.string().min(1),
-  slug: import_z28.z.string().min(1).transform(kebabCase).optional(),
-  templateId: import_z28.z.string().min(1, { message: "templateId is required and must be a non-empty string" }),
+var import_dto29 = require("nestjs-zod/dto");
+var import_z29 = require("nestjs-zod/z");
+var createResumeSchema = import_z29.z.object({
+  title: import_z29.z.string().min(1),
+  slug: import_z29.z.string().min(1).transform(kebabCase).optional(),
+  templateId: import_z29.z.string().min(1, { message: "templateId is required and must be a non-empty string" }),
   // ✅ NEW: Required template selection
-  visibility: import_z28.z.enum(["public", "private"]).default("private"),
-  organization: import_z28.z.string().nullable().optional()
+  visibility: import_z29.z.enum(["public", "private"]).default("private"),
+  organization: import_z29.z.string().nullable().optional()
 });
-var CreateResumeDto = class extends (0, import_dto28.createZodDto)(createResumeSchema) {
+var CreateResumeDto = class extends (0, import_dto29.createZodDto)(createResumeSchema) {
 };
 
 // src/dto/resume/delete.ts
-var import_dto29 = require("nestjs-zod/dto");
-var import_z29 = require("nestjs-zod/z");
-var deleteResumeSchema = import_z29.z.object({
+var import_dto30 = require("nestjs-zod/dto");
+var import_z30 = require("nestjs-zod/z");
+var deleteResumeSchema = import_z30.z.object({
   id: idSchema
 });
-var DeleteResumeDto = class extends (0, import_dto29.createZodDto)(deleteResumeSchema) {
+var DeleteResumeDto = class extends (0, import_dto30.createZodDto)(deleteResumeSchema) {
 };
 
 // src/dto/resume/import.ts
-var import_dto30 = require("nestjs-zod/dto");
-var import_z30 = require("nestjs-zod/z");
-var importResumeSchema = import_z30.z.object({
-  title: import_z30.z.string().optional(),
-  slug: import_z30.z.string().min(1).transform(kebabCase).optional(),
-  visibility: import_z30.z.enum(["public", "private"]).default("private").optional(),
+var import_dto31 = require("nestjs-zod/dto");
+var import_z31 = require("nestjs-zod/z");
+var importResumeSchema = import_z31.z.object({
+  title: import_z31.z.string().optional(),
+  slug: import_z31.z.string().min(1).transform(kebabCase).optional(),
+  visibility: import_z31.z.enum(["public", "private"]).default("private").optional(),
   templateId: idSchema.optional(),
   // ✅ Optional templateId for imports
   data: resumeDataSchema
 });
-var ImportResumeDto = class extends (0, import_dto30.createZodDto)(importResumeSchema) {
+var ImportResumeDto = class extends (0, import_dto31.createZodDto)(importResumeSchema) {
 };
 
 // src/dto/resume/resume.ts
-var import_dto32 = require("nestjs-zod/dto");
-var import_z32 = require("nestjs-zod/z");
+var import_dto33 = require("nestjs-zod/dto");
+var import_z33 = require("nestjs-zod/z");
 
 // src/dto/template/template.ts
-var import_dto31 = require("nestjs-zod/dto");
-var import_z31 = require("nestjs-zod/z");
-var metadataSchema2 = import_z31.z.object({
-  template: import_z31.z.string(),
-  layout: import_z31.z.array(import_z31.z.array(import_z31.z.array(import_z31.z.string()))),
-  theme: import_z31.z.object({
-    background: import_z31.z.string(),
-    text: import_z31.z.string(),
-    primary: import_z31.z.string()
+var import_dto32 = require("nestjs-zod/dto");
+var import_z32 = require("nestjs-zod/z");
+var metadataSchema2 = import_z32.z.object({
+  template: import_z32.z.string(),
+  layout: import_z32.z.array(import_z32.z.array(import_z32.z.array(import_z32.z.string()))),
+  theme: import_z32.z.object({
+    background: import_z32.z.string(),
+    text: import_z32.z.string(),
+    primary: import_z32.z.string()
   }),
-  typography: import_z31.z.object({
-    font: import_z31.z.object({
-      family: import_z31.z.string(),
-      size: import_z31.z.number(),
-      variants: import_z31.z.array(import_z31.z.string()),
-      subset: import_z31.z.string()
+  typography: import_z32.z.object({
+    font: import_z32.z.object({
+      family: import_z32.z.string(),
+      size: import_z32.z.number(),
+      variants: import_z32.z.array(import_z32.z.string()),
+      subset: import_z32.z.string()
     }),
-    lineHeight: import_z31.z.number(),
-    hideIcons: import_z31.z.boolean(),
-    underlineLinks: import_z31.z.boolean()
+    lineHeight: import_z32.z.number(),
+    hideIcons: import_z32.z.boolean(),
+    underlineLinks: import_z32.z.boolean()
   }),
-  css: import_z31.z.object({
-    value: import_z31.z.string(),
-    visible: import_z31.z.boolean()
+  css: import_z32.z.object({
+    value: import_z32.z.string(),
+    visible: import_z32.z.boolean()
   }),
-  page: import_z31.z.object({
-    margin: import_z31.z.number(),
-    format: import_z31.z.string(),
-    options: import_z31.z.object({
-      breakLine: import_z31.z.boolean(),
-      pageNumbers: import_z31.z.boolean()
+  page: import_z32.z.object({
+    margin: import_z32.z.number(),
+    format: import_z32.z.string(),
+    options: import_z32.z.object({
+      breakLine: import_z32.z.boolean(),
+      pageNumbers: import_z32.z.boolean()
     })
   }),
-  notes: import_z31.z.string()
+  notes: import_z32.z.string()
 });
-var createTemplateSchema = import_z31.z.object({
-  name: import_z31.z.string().min(1),
-  slug: import_z31.z.string().min(1),
-  description: import_z31.z.string().optional(),
-  preview: import_z31.z.string().url().optional(),
+var createTemplateSchema = import_z32.z.object({
+  name: import_z32.z.string().min(1),
+  slug: import_z32.z.string().min(1),
+  description: import_z32.z.string().optional(),
+  preview: import_z32.z.string().url().optional(),
   metadata: metadataSchema2,
   // Admin sets all template metadata
-  isActive: import_z31.z.boolean().default(true),
-  isPremium: import_z31.z.boolean().default(false)
+  isActive: import_z32.z.boolean().default(true),
+  isPremium: import_z32.z.boolean().default(false)
 });
 var updateTemplateSchema = createTemplateSchema.partial();
-var templateSchema = import_z31.z.object({
+var templateSchema = import_z32.z.object({
   id: idSchema,
-  name: import_z31.z.string(),
-  slug: import_z31.z.string(),
-  description: import_z31.z.string().nullable(),
-  preview: import_z31.z.string().nullable(),
+  name: import_z32.z.string(),
+  slug: import_z32.z.string(),
+  description: import_z32.z.string().nullable(),
+  preview: import_z32.z.string().nullable(),
   metadata: metadataSchema2,
   createdBy: idSchema,
-  isActive: import_z31.z.boolean(),
-  isPremium: import_z31.z.boolean(),
-  version: import_z31.z.number(),
-  createdAt: import_z31.z.date().or(import_z31.z.dateString()),
-  updatedAt: import_z31.z.date().or(import_z31.z.dateString())
+  isActive: import_z32.z.boolean(),
+  isPremium: import_z32.z.boolean(),
+  version: import_z32.z.number(),
+  createdAt: import_z32.z.date().or(import_z32.z.dateString()),
+  updatedAt: import_z32.z.date().or(import_z32.z.dateString())
 });
-var CreateTemplateDto = class extends (0, import_dto31.createZodDto)(createTemplateSchema) {
+var CreateTemplateDto = class extends (0, import_dto32.createZodDto)(createTemplateSchema) {
 };
-var UpdateTemplateDto = class extends (0, import_dto31.createZodDto)(updateTemplateSchema) {
+var UpdateTemplateDto = class extends (0, import_dto32.createZodDto)(updateTemplateSchema) {
 };
-var TemplateDto = class extends (0, import_dto31.createZodDto)(templateSchema) {
+var TemplateDto = class extends (0, import_dto32.createZodDto)(templateSchema) {
 };
 
 // src/dto/resume/resume.ts
-var resumeSchema = import_z32.z.object({
+var resumeSchema = import_z33.z.object({
   id: idSchema,
-  title: import_z32.z.string(),
-  slug: import_z32.z.string(),
+  title: import_z33.z.string(),
+  slug: import_z33.z.string(),
   templateId: idSchema,
   // ✅ NEW
   template: templateSchema.optional(),
   // ✅ NEW: Include template in response
   data: resumeDataSchema.default(defaultResumeData),
-  visibility: import_z32.z.enum(["private", "public"]).default("private"),
-  locked: import_z32.z.boolean().default(false),
-  organization: import_z32.z.string().nullable().optional(),
+  visibility: import_z33.z.enum(["private", "public"]).default("private"),
+  locked: import_z33.z.boolean().default(false),
+  organization: import_z33.z.string().nullable().optional(),
   userId: idSchema,
   user: userSchema.optional(),
-  createdAt: import_z32.z.date().or(import_z32.z.dateString()),
-  updatedAt: import_z32.z.date().or(import_z32.z.dateString())
+  createdAt: import_z33.z.date().or(import_z33.z.dateString()),
+  updatedAt: import_z33.z.date().or(import_z33.z.dateString())
 });
-var ResumeDto = class extends (0, import_dto32.createZodDto)(resumeSchema) {
+var ResumeDto = class extends (0, import_dto33.createZodDto)(resumeSchema) {
 };
 
 // src/dto/resume/update.ts
-var import_dto33 = require("nestjs-zod/dto");
+var import_dto34 = require("nestjs-zod/dto");
 var updateResumeSchema = resumeSchema.partial().omit({
   templateId: true,
   // ✅ Users cannot change template
   template: true
   // ✅ Template is read-only for users
 });
-var UpdateResumeDto = class extends (0, import_dto33.createZodDto)(updateResumeSchema) {
+var UpdateResumeDto = class extends (0, import_dto34.createZodDto)(updateResumeSchema) {
 };
 
 // src/dto/resume/url.ts
-var import_dto34 = require("nestjs-zod/dto");
-var import_z33 = require("nestjs-zod/z");
-var urlSchema2 = import_z33.z.object({ url: import_z33.z.string().url() });
-var UrlDto = class extends (0, import_dto34.createZodDto)(urlSchema2) {
+var import_dto35 = require("nestjs-zod/dto");
+var import_z34 = require("nestjs-zod/z");
+var urlSchema2 = import_z34.z.object({ url: import_z34.z.string().url() });
+var UrlDto = class extends (0, import_dto35.createZodDto)(urlSchema2) {
 };
 
 // src/dto/resume-analysis/create.ts
-var import_dto35 = require("nestjs-zod/dto");
-var import_z34 = require("nestjs-zod/z");
-var createResumeAnalysisSchema = import_z34.z.object({
-  resumeId: import_z34.z.string().min(1),
-  overallScore: import_z34.z.number().min(0).max(100),
-  status: import_z34.z.enum(["processing", "completed", "failed"]).default("processing"),
-  version: import_z34.z.number().int().positive().default(1),
-  results: import_z34.z.record(import_z34.z.any()),
+var import_dto36 = require("nestjs-zod/dto");
+var import_z35 = require("nestjs-zod/z");
+var createResumeAnalysisSchema = import_z35.z.object({
+  resumeId: import_z35.z.string().min(1),
+  overallScore: import_z35.z.number().min(0).max(100),
+  status: import_z35.z.enum(["processing", "completed", "failed"]).default("processing"),
+  version: import_z35.z.number().int().positive().default(1),
+  results: import_z35.z.record(import_z35.z.any()),
   // JSON object with analysis results
-  jobMatchingId: import_z34.z.string().nullable().optional(),
-  coverLetterId: import_z34.z.string().nullable().optional()
+  jobMatchingId: import_z35.z.string().nullable().optional(),
+  coverLetterId: import_z35.z.string().nullable().optional()
 });
-var CreateResumeAnalysisDto = class extends (0, import_dto35.createZodDto)(createResumeAnalysisSchema) {
+var CreateResumeAnalysisDto = class extends (0, import_dto36.createZodDto)(createResumeAnalysisSchema) {
 };
 
 // src/dto/resume-analysis/resume-analysis.ts
-var import_dto36 = require("nestjs-zod/dto");
-var import_z35 = require("nestjs-zod/z");
-var resumeAnalysisSchema = import_z35.z.object({
-  id: import_z35.z.string(),
-  overallScore: import_z35.z.number(),
-  status: import_z35.z.enum(["processing", "completed", "failed"]),
-  version: import_z35.z.number().int().positive(),
-  trackerIndex: import_z35.z.number().int().positive(),
-  active: import_z35.z.boolean(),
-  results: import_z35.z.record(import_z35.z.any()),
+var import_dto37 = require("nestjs-zod/dto");
+var import_z36 = require("nestjs-zod/z");
+var resumeAnalysisSchema = import_z36.z.object({
+  id: import_z36.z.string(),
+  overallScore: import_z36.z.number(),
+  status: import_z36.z.enum(["processing", "completed", "failed"]),
+  version: import_z36.z.number().int().positive(),
+  trackerIndex: import_z36.z.number().int().positive(),
+  active: import_z36.z.boolean(),
+  results: import_z36.z.record(import_z36.z.any()),
   // JSON object with analysis results
-  createdAt: import_z35.z.date(),
-  updatedAt: import_z35.z.date(),
-  resumeId: import_z35.z.string(),
-  userId: import_z35.z.string(),
-  jobMatchingId: import_z35.z.string().nullable(),
-  coverLetterId: import_z35.z.string().nullable()
+  createdAt: import_z36.z.date(),
+  updatedAt: import_z36.z.date(),
+  resumeId: import_z36.z.string(),
+  userId: import_z36.z.string(),
+  jobMatchingId: import_z36.z.string().nullable(),
+  coverLetterId: import_z36.z.string().nullable()
 });
-var ResumeAnalysisDto = class extends (0, import_dto36.createZodDto)(resumeAnalysisSchema) {
+var ResumeAnalysisDto = class extends (0, import_dto37.createZodDto)(resumeAnalysisSchema) {
 };
 
 // src/dto/resume-guidance/create.ts
-var import_dto37 = require("nestjs-zod/dto");
-var import_z36 = require("nestjs-zod/z");
-var createResumeGuidanceSchema = import_z36.z.object({
-  resumeAnalysisId: import_z36.z.string().min(1),
-  resumeId: import_z36.z.string().min(1),
-  guidanceItems: import_z36.z.array(import_z36.z.object({
-    category: import_z36.z.string(),
-    suggestion: import_z36.z.string(),
-    approach: import_z36.z.array(import_z36.z.string()),
-    // Array of step-by-step instructions
-    notes: import_z36.z.string().optional(),
-    priority: import_z36.z.enum(["critical", "major", "minor"])
-  })),
-  notes: import_z36.z.string().nullable().optional()
-  // User-editable notes
-});
-var CreateResumeGuidanceDto = class extends (0, import_dto37.createZodDto)(createResumeGuidanceSchema) {
-};
-
-// src/dto/resume-guidance/resume-guidance.ts
 var import_dto38 = require("nestjs-zod/dto");
 var import_z37 = require("nestjs-zod/z");
-var resumeGuidanceSchema = import_z37.z.object({
-  id: import_z37.z.string(),
+var createResumeGuidanceSchema = import_z37.z.object({
+  resumeAnalysisId: import_z37.z.string().min(1),
+  resumeId: import_z37.z.string().min(1),
   guidanceItems: import_z37.z.array(import_z37.z.object({
     category: import_z37.z.string(),
     suggestion: import_z37.z.string(),
     approach: import_z37.z.array(import_z37.z.string()),
+    // Array of step-by-step instructions
     notes: import_z37.z.string().optional(),
     priority: import_z37.z.enum(["critical", "major", "minor"])
   })),
-  notes: import_z37.z.string().nullable(),
-  trackerIndex: import_z37.z.number().int().positive(),
-  active: import_z37.z.boolean(),
-  createdAt: import_z37.z.date(),
-  updatedAt: import_z37.z.date(),
-  resumeAnalysisId: import_z37.z.string(),
-  resumeId: import_z37.z.string(),
-  userId: import_z37.z.string()
+  notes: import_z37.z.string().nullable().optional()
+  // User-editable notes
 });
-var ResumeGuidanceDto = class extends (0, import_dto38.createZodDto)(resumeGuidanceSchema) {
+var CreateResumeGuidanceDto = class extends (0, import_dto38.createZodDto)(createResumeGuidanceSchema) {
+};
+
+// src/dto/resume-guidance/resume-guidance.ts
+var import_dto39 = require("nestjs-zod/dto");
+var import_z38 = require("nestjs-zod/z");
+var resumeGuidanceSchema = import_z38.z.object({
+  id: import_z38.z.string(),
+  guidanceItems: import_z38.z.array(import_z38.z.object({
+    category: import_z38.z.string(),
+    suggestion: import_z38.z.string(),
+    approach: import_z38.z.array(import_z38.z.string()),
+    notes: import_z38.z.string().optional(),
+    priority: import_z38.z.enum(["critical", "major", "minor"])
+  })),
+  notes: import_z38.z.string().nullable(),
+  trackerIndex: import_z38.z.number().int().positive(),
+  active: import_z38.z.boolean(),
+  createdAt: import_z38.z.date(),
+  updatedAt: import_z38.z.date(),
+  resumeAnalysisId: import_z38.z.string(),
+  resumeId: import_z38.z.string(),
+  userId: import_z38.z.string()
+});
+var ResumeGuidanceDto = class extends (0, import_dto39.createZodDto)(resumeGuidanceSchema) {
 };
 
 // src/dto/resume-guidance/update-notes.ts
-var import_dto39 = require("nestjs-zod/dto");
-var import_z38 = require("nestjs-zod/z");
-var updateNotesSchema = import_z38.z.object({
-  notes: import_z38.z.string().nullable()
+var import_dto40 = require("nestjs-zod/dto");
+var import_z39 = require("nestjs-zod/z");
+var updateNotesSchema = import_z39.z.object({
+  notes: import_z39.z.string().nullable()
 });
-var UpdateNotesDto = class extends (0, import_dto39.createZodDto)(updateNotesSchema) {
+var UpdateNotesDto = class extends (0, import_dto40.createZodDto)(updateNotesSchema) {
 };
 
 // src/dto/statistics/index.ts
-var import_dto40 = require("nestjs-zod/dto");
-var import_z39 = require("nestjs-zod/z");
-var statisticsSchema = import_z39.z.object({
-  views: import_z39.z.number().int().default(0),
-  downloads: import_z39.z.number().int().default(0)
+var import_dto41 = require("nestjs-zod/dto");
+var import_z40 = require("nestjs-zod/z");
+var statisticsSchema = import_z40.z.object({
+  views: import_z40.z.number().int().default(0),
+  downloads: import_z40.z.number().int().default(0)
 });
-var StatisticsDto = class extends (0, import_dto40.createZodDto)(statisticsSchema) {
+var StatisticsDto = class extends (0, import_dto41.createZodDto)(statisticsSchema) {
 };
 
 // src/dto/tracking-settings/update.ts
-var import_dto41 = require("nestjs-zod/dto");
-var import_z40 = require("nestjs-zod/z");
-var updateTrackingSettingsSchema = import_z40.z.object({
-  tagManagerId: import_z40.z.string().optional().nullable().transform((v) => v === "" ? null : v),
-  pixelId: import_z40.z.string().optional().nullable().transform((v) => v === "" ? null : v)
+var import_dto42 = require("nestjs-zod/dto");
+var import_z41 = require("nestjs-zod/z");
+var updateTrackingSettingsSchema = import_z41.z.object({
+  tagManagerId: import_z41.z.string().optional().nullable().transform((v) => v === "" ? null : v),
+  pixelId: import_z41.z.string().optional().nullable().transform((v) => v === "" ? null : v)
 });
-var UpdateTrackingSettingsDto = class extends (0, import_dto41.createZodDto)(
+var UpdateTrackingSettingsDto = class extends (0, import_dto42.createZodDto)(
   updateTrackingSettingsSchema
 ) {
 };
@@ -1588,6 +1599,7 @@ var UpdateTrackingSettingsDto = class extends (0, import_dto41.createZodDto)(
   LoginDto,
   MessageDto,
   NewResetPasswordDto,
+  OAuthExchangeDto,
   RegisterDto,
   ResetPasswordDto,
   ResumeAnalysisDto,
@@ -1632,6 +1644,7 @@ var UpdateTrackingSettingsDto = class extends (0, import_dto41.createZodDto)(
   jobMatchingSchema,
   loginSchema,
   messageSchema,
+  oauthExchangeSchema,
   registerSchema,
   resetPasswordSchema,
   resumeAnalysisSchema,
