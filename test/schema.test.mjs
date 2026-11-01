@@ -49,3 +49,10 @@ test("invalid enum values are rejected", () => {
   assert.equal(metadataSchema.safeParse({ presentation: { dateFormat: "dd.mm.yyyy" } }).success, false);
   assert.equal(metadataSchema.safeParse({ advanced: { bullets: "star" } }).success, false);
 });
+
+test("every allowed page format has a size", () => {
+  const { pageSizeMap } = require("../dist/utils/index.js");
+  for (const format of metadataSchema.shape.page.removeDefault().shape.format.removeDefault().options) {
+    assert.ok(pageSizeMap[format], `pageSizeMap.${format}`);
+  }
+});

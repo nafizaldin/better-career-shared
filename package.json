@@ -1,6 +1,6 @@
 {
   "name": "@better-career/shared",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Shared DTOs, Zod schemas and utilities for Better Career (backend, web, artboard)",
   "license": "UNLICENSED",
   "repository": "github:nafizaldin/better-career-shared",

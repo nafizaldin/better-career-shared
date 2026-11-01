@@ -72,6 +72,10 @@ declare const pageSizeMap: {
         width: number;
         height: number;
     };
+    legal: {
+        width: number;
+        height: number;
+    };
 };
 
 declare const delay: (time: number) => Promise<unknown>;

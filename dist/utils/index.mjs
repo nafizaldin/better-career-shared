@@ -8865,6 +8865,11 @@ var pageSizeMap = {
   letter: {
     width: 216,
     height: 279
+  },
+  // US Legal 8.5 x 14 in (schema metadata.page.format allows it since v1.2.0)
+  legal: {
+    width: 216,
+    height: 356
   }
 };
 
